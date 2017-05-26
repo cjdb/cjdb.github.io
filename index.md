@@ -1,1 +1,1 @@
-# cjdb.github.io
+# requires cjdb<website>
