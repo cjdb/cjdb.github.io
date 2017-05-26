@@ -1,1 +1,5 @@
-# requires cjdb<website>
+# `requires cjdb<website>`
+
+# `int main()`
+# `{`
+# `}`
