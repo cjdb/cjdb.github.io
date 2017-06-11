@@ -1,10 +1,10 @@
-Document Number: DXXXXR0
+**Document Number:** DXXXXR0
 
-Date: 2017-06-11
+**Date:** 2017-06-11
 
-Audience: Evolution Working Group
+**Audience:** Evolution Working Group
 
-Reply-to: Christopher Di Bella &lt;cjdb.ns@gmail.com&gt;
+**Reply-to:** Christopher Di Bella &lt;cjdb.ns@gmail.com&gt;
 
 # Proposal for adding alias declarations to concepts
 
