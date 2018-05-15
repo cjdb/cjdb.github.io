@@ -1,0 +1,9 @@
+# Site settings
+
+theme: jekyll-theme-cayman
+
+title: "Christopher Di Bella"
+email: "cjdb.ns@gmail.com"
+description: "Christopher Di Bella's Personal Website"
+
+show_downloads: false
