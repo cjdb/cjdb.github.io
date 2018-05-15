@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+   <channel>
+      <title>Christopher Di Bella's Developer Blog</title>
+      <link>https://www.cjdb.com.au</link>
+      <description>Christopher Di Bella's Developer Blog</description>
+      <language>en-au</language>
+      <atom:link href="https://www.cjdb.com.au/feed.xml" rel="self" type="application/rss+xml" />
+      <item>
+         <guid isPermaLink="false">nxLv9Osjwk-VMaHLVpAAVg</guid>
+         <title>Prepping Yourself to Conceptify Algorithms</title>
+         <pubDate>Tue, 15 May 2018 12:04:00 +0000</pubDate>
+         <link>https://www.cjdb.com.au/blog/2018/05/15/prepping-yourself-to-conceptify-algorithms</link>
+         <description><![CDATA[In this article, we explore what concepts are, where they are useful, and how they are different to things that exist in vanilla C++17.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+         <comments>https://github.com/cjdb/cjdb.github.io/issues/2</comments>
+      </item>
+   </channel>
+</rss>
