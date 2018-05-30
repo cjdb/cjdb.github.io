@@ -5,5 +5,6 @@ theme: jekyll-theme-cayman
 title: "Christopher Di Bella"
 email: "cjdb.ns@gmail.com"
 description: "Christopher Di Bella's Personal Website"
+google_analytics: "UA-119942036-1"
 
 show_downloads: false

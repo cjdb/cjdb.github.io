@@ -15,5 +15,13 @@
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/2</comments>
       </item>
+      <item>
+         <title>Transforming std::find into std::ranges::find</title>
+         <pubDate>Wed, 30 May 2018 14:00:00 +0100</pubDate>
+         <link>https://www.cjdb.com.au/transforming-std-find-into-std-ranges-find</link>
+         <description><![CDATA[Today, we dive into what std::find does, and how we can leverage various concepts to cleanly express its requirements, as achieved in std::ranges::find]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+         <comments>https://github.com/cjdb/cjdb.github.io/issues/5</comments>
+      </item>
    </channel>
 </rss>
