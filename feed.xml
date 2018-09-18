@@ -23,5 +23,13 @@
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/5</comments>
       </item>
+      <item>
+         <title>A Prime Opportunity for Ranges</title>
+         <pubDate>Fri, 21 Sep 2018 09:00:00 -0800</pubDate>
+         <link>https://www.cjdb.com.au/a-prime-opportunity-for-ranges</link>
+         <description><![CDATA[In this example, we look at why ranges are an excellent choice for helping our code to become more declaratve.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+         <comments>https://github.com/cjdb/cjdb.github.io/issues/6</comments>
+      </item>
    </channel>
 </rss>
