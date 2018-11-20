@@ -31,5 +31,13 @@
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/6</comments>
       </item>
+      <item>
+         <title>SG20 Education and Recommended Videos for Teaching C++</title>
+         <pubDate>Thu, 06 Dec 2018 23:15:00 +0000</pubDate>
+         <link>https://www.cjdb.com.au/sg20-and-videos</link>
+         <description><![CDATA[In today’s blog, we look at both the newly minted Study Group for education in the C++ Standard Committee. We also look at a small number of conference videos that I recommend teachers consider while they’re waiting for this Study Group to produce usable materials.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+         <comments>https://github.com/cjdb/cjdb.github.io/issues/7</comments>
+      </item>
    </channel>
 </rss>
