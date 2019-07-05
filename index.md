@@ -2,6 +2,17 @@
 
 # Articles
 
+## [A Quick Look at What P1754 Will Change (Part 1)](https://www.cjdb.com.au/p1754-changes-part-1)
+
+> 2019-07-08
+
+P1754, or Rename concepts to standard_case for C++20, while we still can is a proposal with a
+single, abundantly clear goal outlined in its name: to change the naming convention for all standard
+concepts from PascalCase to snake_case. Examples in P1754 are sadly lacking: it would have been nice
+to see an algorithm or two with the differences displayed side-by-side. I was curious about what it
+would look like, so I decided to contrast the two using the library that’s benefited from concepts
+the most: our algorithms library.
+
 ## [SG20 Education and Recommended Videos for Teaching C++](https://www.cjdb.com.au/sg20-and-videos)
 
 > 2018-12-06

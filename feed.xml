@@ -39,5 +39,13 @@
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/7</comments>
       </item>
+      <item>
+         <title>A Quick Look at What P1754 Will Change (Part 1)</title>
+         <pubDate>Mon, 08 Jul 2019 09:00:00 +0000</pubDate>
+         <link>https://www.cjdb.com.au/p1754-changes-part-1</link>
+         <description><![CDATA[P1754, or Rename concepts to standard_case for C++20, while we still can is a proposal with a single, abundantly clear goal outlined in its name: to change the naming convention for all standard concepts from PascalCase to snake_case. Examples in P1754 are sadly lacking: it would have been nice to see an algorithm or two with the differences displayed side-by-side. I was curious about what it would look like, so I decided to contrast the two using the library that’s benefited from concepts the most: our algorithms library.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+         <comments>https://github.com/cjdb/cjdb.github.io/issues</comments>
+      </item>
    </channel>
 </rss>
