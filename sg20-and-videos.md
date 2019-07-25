@@ -566,7 +566,7 @@ from, but it will help to answer some of the tougher questions that students wil
       <tr>
          <td align="center">1</td>
          <td align="center">CppCon 2016</td>
-         <td align="center">Bryce Addelstein Lelbach</td>
+         <td align="center">Bryce Adelstein Lelbach</td>
          <td align="center"><a href="https://youtu.be/Vck6kzWjY88">The C++17 Parallel Algorithms Library and Beyond</a></td>
          <td align="center">Everyone</td>
          <td align="center">60 min</td>
@@ -766,7 +766,7 @@ that we want to claim is 'efficient'.
       <tr>
          <td align="center">1</td>
          <td align="center">CppCon 2015</td>
-         <td align="center">Bryce Adelstein-Lelbach</td>
+         <td align="center">Bryce Adelstein Lelbach</td>
          <td align="center"><a href="https://youtu.be/zWxSZcpeS8Q">Benchmarking C++ Code</a></td>
          <td align="center">-</td>
          <td align="center">60 min</td>
