@@ -513,7 +513,7 @@ from, but it will help to answer some of the tougher questions that students wil
       <tr>
          <td align="center">-</td>
          <td align="center">CppCon 2018</td>
-         <td align="center">Simon Brand</td>
+         <td align="center">Sy Brand</td>
          <td align="center"><a href="https://youtu.be/J4A2B9eexiw">How to Write Well-Behaved Value Wrappers</a></td>
          <td align="center">Intermediate</td>
          <td align="center">60 min</td>
@@ -701,7 +701,7 @@ from, but it will help to answer some of the tougher questions that students wil
       <tr>
          <td align="center">-</td>
          <td align="center">CppCon 2018</td>
-         <td align="center">Simon Brand</td>
+         <td align="center">Sy Brand</td>
          <td align="center"><a href="https://youtu.be/0DDrseUomfU">How C++ Debuggers Work</a></td>
          <td align="center">Everyone</td>
          <td align="center">60 min</td>
@@ -813,7 +813,7 @@ If you'd like to find out when I blog next, please use my [RSS feed][rss].
 
 ## Acknowledgements
 
-Thanks to JC van Winkel, [Simon Brand][simon], [Kate Gregory][gregcons], [Nicole Mazzuca][nicole],
+Thanks to JC van Winkel, [Sy Brand][simon], [Kate Gregory][gregcons], [Nicole Mazzuca][nicole],
 [Matt Stark][stark], [Bjarne Stroustrup][bjarne], [Titus Winters][titus], [Michael Wong][michael],
 and [Shafik Yaghmour][shafik] for reviewing.
 

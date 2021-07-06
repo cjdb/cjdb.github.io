@@ -278,7 +278,7 @@ We use five range adaptors:
    <tr>
       <td><code>view::iota</code></td>
       <td>
-         Lazily creates a range of integers from the provided number to inifinity. 
+         Lazily creates a range of integers from the provided number to inifinity.
       </td>
    </tr>
    <tr>
@@ -548,7 +548,7 @@ conduct][19] before posting.
 
 ## Acknowledgements
 
-I'd like to offer thanks to [Arthur O'Dwyer][30], [Corentin Jabot][23], Daniel Soutar,
+I'd like to offer thanks to [Corentin Jabot][23], Daniel Soutar,
 [Gordon Brown][24], [JC van Winkel][29], Kostas Kyrimis, and [Tristan Brindle][28] for their
 feedback on this material.
 
@@ -581,4 +581,3 @@ feedback on this material.
 [27]: https://www.youtube.com/watch?v=LNXkPh3Z418
 [28]: https://github.com/tcbrindle
 [29]: https://www.linkedin.com/in/jc004/
-[30]: https://quuxplusone.github.io/blog/

@@ -757,7 +757,7 @@ feedback!
 ### Acknowledgements
 
 I would like to thank Arien Judge, Callum Howard, Duncan McBain, Gordon Brown, Kate Gregory, Matt
-Stark, Nicole Mazzuca, Shafik Yaghmour, Simon Brand, and Tristan Brindle for taking the time out to
+Stark, Nicole Mazzuca, Shafik Yaghmour, Sy Brand, and Tristan Brindle for taking the time out to
 review this article.
 
 [1]: http://elementsofprogramming.com

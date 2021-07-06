@@ -271,7 +271,7 @@ to model your concept.
 
 We'll take a look at how to conceptify one of the C++ standard algorithms in _Part Two_, and in
 _Part Three_, we'll be jumping into adding concepts to numeric algorithms, which are still under
-active research. Between this blog post and _Part Three_, [Simon Brand will be blogging about a case
+active research. Between this blog post and _Part Three_, [Sy Brand will be blogging about a case
 study that he's done on some numeric algorithms](https://blog.tartanllama.xyz/accumulate-vs-reduce),
 and why they are the way they are when you move to the parallelism sphere.
 
@@ -280,7 +280,7 @@ Till then!
 ## Thanks
 
 This blog wouldn't have been possible without the combined input from Arien Judge, Callum Howard,
-Casey Carter, Gordon Brown, Matt Egan, Morris Hafner, and Simon Brand. Thank you!
+Casey Carter, Gordon Brown, Matt Egan, Morris Hafner, and Sy Brand. Thank you!
 
 ## This website is a work-in-progress
 
