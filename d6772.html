@@ -447,121 +447,163 @@ code.sourceCode > span { display: inline; }
 <h1 id="toctitle">Contents</h1>
 <ul>
 <li><a href="#abstract"><span class="toc-section-number">1</span> Abstract<span></span></a></li>
-<li><a href="#motivation"><span class="toc-section-number">2</span> Motivation<span></span></a>
+<li><a href="#revision-history"><span class="toc-section-number">2</span> Revision history<span></span></a>
 <ul>
-<li><a href="#c"><span class="toc-section-number">2.1</span> C++<span></span></a></li>
-<li><a href="#software-engineering-practices"><span class="toc-section-number">2.2</span> Software engineering practices<span></span></a>
-<ul>
-<li><a href="#testing"><span class="toc-section-number">2.2.1</span> Testing<span></span></a></li>
-<li><a href="#benchmarking"><span class="toc-section-number">2.2.2</span> Benchmarking<span></span></a></li>
-<li><a href="#documentation"><span class="toc-section-number">2.2.3</span> Documentation<span></span></a></li>
-<li><a href="#ethics"><span class="toc-section-number">2.2.4</span> Ethics<span></span></a></li>
+<li><a href="#r1"><span class="toc-section-number">2.1</span> R1<span></span></a></li>
+<li><a href="#r0"><span class="toc-section-number">2.2</span> R0<span></span></a></li>
 </ul></li>
-</ul></li>
-<li><a href="#design"><span class="toc-section-number">3</span> Design<span></span></a>
+<li><a href="#motivation"><span class="toc-section-number">3</span> Motivation<span></span></a>
 <ul>
-<li><a href="#c-1"><span class="toc-section-number">3.1</span> C++<span></span></a>
+<li><a href="#c"><span class="toc-section-number">3.1</span> C++<span></span></a></li>
+<li><a href="#software-engineering-practices"><span class="toc-section-number">3.2</span> Software engineering practices<span></span></a>
 <ul>
-<li><a href="#program-composition"><span class="toc-section-number">3.1.1</span> Program composition<span></span></a></li>
-<li><a href="#containers-design"><span class="toc-section-number">3.1.2</span> Containers design<span></span></a></li>
-<li><a href="#generic-programming"><span class="toc-section-number">3.1.3</span> Generic programming<span></span></a></li>
-<li><a href="#relationship-with-comp6771"><span class="toc-section-number">3.1.4</span> Relationship with COMP6771<span></span></a></li>
+<li><a href="#testing"><span class="toc-section-number">3.2.1</span> Testing<span></span></a></li>
+<li><a href="#benchmarking"><span class="toc-section-number">3.2.2</span> Benchmarking<span></span></a></li>
+<li><a href="#ethics"><span class="toc-section-number">3.2.3</span> Ethics<span></span></a></li>
 </ul></li>
-<li><a href="#software-engineering-tools-and-practices"><span class="toc-section-number">3.2</span> Software engineering tools and practices<span></span></a>
+<li><a href="#there-is-a-lot-going-on-here.-are-you-sure-this-youre-going-to-fit-this-all-into-ten-weeks"><span class="toc-section-number">3.3</span> There is a <em>lot</em> going on here. Are you sure this you’re going to fit this all into ten weeks?<span></span></a></li>
+<li><a href="#overlap-with-other-courses"><span class="toc-section-number">3.4</span> Overlap with other courses<span></span></a></li>
+</ul></li>
+<li><a href="#design"><span class="toc-section-number">4</span> Design<span></span></a>
 <ul>
-<li><a href="#community"><span class="toc-section-number">3.2.1</span> Community<span></span></a></li>
-<li><a href="#ethics-1"><span class="toc-section-number">3.2.2</span> Ethics<span></span></a></li>
-</ul></li>
-<li><a href="#should-this-be-a-comp-or-seng-course"><span class="toc-section-number">3.3</span> Should this be a COMP or SENG course?<span></span></a></li>
-<li><a href="#prerequisites"><span class="toc-section-number">3.4</span> Prerequisites<span></span></a></li>
-<li><a href="#there-is-a-lot-going-on-here.-are-you-sure-this-youre-going-to-fit-this-all-into-ten-weeks"><span class="toc-section-number">3.5</span> There is a <em>lot</em> going on here. Are you sure this you’re going to fit this all into ten weeks?<span></span></a></li>
-</ul></li>
-<li><a href="#proposed-course"><span class="toc-section-number">4</span> Proposed course<span></span></a>
+<li><a href="#c-1"><span class="toc-section-number">4.1</span> C++<span></span></a>
 <ul>
-<li><a href="#objectives"><span class="toc-section-number">4.1</span> Objectives<span></span></a></li>
-<li><a href="#course-abstract"><span class="toc-section-number">4.2</span> Course abstract<span></span></a></li>
-<li><a href="#outcomes"><span class="toc-section-number">4.3</span> Outcomes<span></span></a></li>
-<li><a href="#assessment-structure"><span class="toc-section-number">4.4</span> Assessment structure<span></span></a>
-<ul>
-<li><a href="#assignment-1"><span class="toc-section-number">4.4.1</span> Assignment 1<span></span></a></li>
-<li><a href="#assignment-2"><span class="toc-section-number">4.4.2</span> Assignment 2<span></span></a></li>
-<li><a href="#assignment-3"><span class="toc-section-number">4.4.3</span> Assignment 3<span></span></a></li>
+<li><a href="#tooling"><span class="toc-section-number">4.1.1</span> Tooling<span></span></a></li>
+<li><a href="#program-composition"><span class="toc-section-number">4.1.2</span> Program composition<span></span></a></li>
+<li><a href="#containers-design"><span class="toc-section-number">4.1.3</span> Containers design<span></span></a></li>
+<li><a href="#generic-programming"><span class="toc-section-number">4.1.4</span> Generic programming<span></span></a></li>
+<li><a href="#relationship-with-comp6771"><span class="toc-section-number">4.1.5</span> Relationship with COMP6771<span></span></a></li>
 </ul></li>
-<li><a href="#class-strucutre"><span class="toc-section-number">4.5</span> Class strucutre<span></span></a></li>
+<li><a href="#software-engineering-tools-and-practices"><span class="toc-section-number">4.2</span> Software engineering tools and practices<span></span></a>
+<ul>
+<li><a href="#community"><span class="toc-section-number">4.2.1</span> Community<span></span></a></li>
+<li><a href="#ethics-1"><span class="toc-section-number">4.2.2</span> Ethics<span></span></a></li>
+</ul></li>
+<li><a href="#should-this-be-a-comp-or-seng-course"><span class="toc-section-number">4.3</span> Should this be a COMP or SENG course?<span></span></a></li>
+</ul></li>
+<li><a href="#proposed-course"><span class="toc-section-number">5</span> Proposed course<span></span></a>
+<ul>
+<li><a href="#course-abstract"><span class="toc-section-number">5.1</span> Course abstract<span></span></a></li>
+<li><a href="#objectives"><span class="toc-section-number">5.2</span> Objectives<span></span></a>
+<ul>
+<li><a href="#knowledge-and-understanding"><span class="toc-section-number">5.2.1</span> Knowledge and understanding<span></span></a></li>
+<li><a href="#skills"><span class="toc-section-number">5.2.2</span> Skills<span></span></a></li>
+<li><a href="#values-and-attitudes"><span class="toc-section-number">5.2.3</span> Values and attitudes<span></span></a></li>
+</ul></li>
+<li><a href="#outcomes"><span class="toc-section-number">5.3</span> Outcomes<span></span></a>
+<ul>
+<li><a href="#knowledge-and-understanding-1"><span class="toc-section-number">5.3.1</span> Knowledge and understanding<span></span></a></li>
+<li><a href="#skills-1"><span class="toc-section-number">5.3.2</span> Skills<span></span></a></li>
+</ul></li>
+<li><a href="#assessment-structure"><span class="toc-section-number">5.4</span> Assessment structure<span></span></a>
+<ul>
+<li><a href="#assignment-1"><span class="toc-section-number">5.4.1</span> Assignment 1<span></span></a></li>
+<li><a href="#assignment-2"><span class="toc-section-number">5.4.2</span> Assignment 2<span></span></a></li>
+<li><a href="#assignment-3"><span class="toc-section-number">5.4.3</span> Assignment 3<span></span></a></li>
+<li><a href="#lab-work"><span class="toc-section-number">5.4.4</span> Lab work<span></span></a></li>
+<li><a href="#exam"><span class="toc-section-number">5.4.5</span> Exam<span></span></a></li>
+</ul></li>
+<li><a href="#class-structure"><span class="toc-section-number">5.5</span> Class structure<span></span></a></li>
 </ul></li>
 </ul>
 </div>
 <h1 data-number="1" id="abstract"><span class="header-section-number">1</span> Abstract<a href="#abstract" class="self-link"></a></h1>
 <p>P6772 seeks to remedy this by introducing a new C++ course that follows on from where COMP6771 stops.</p>
-<h1 data-number="2" id="motivation"><span class="header-section-number">2</span> Motivation<a href="#motivation" class="self-link"></a></h1>
-<h2 data-number="2.1" id="c"><span class="header-section-number">2.1</span> C++<a href="#c" class="self-link"></a></h2>
+<h1 data-number="2" id="revision-history"><span class="header-section-number">2</span> Revision history<a href="#revision-history" class="self-link"></a></h1>
+<h2 data-number="2.1" id="r1"><span class="header-section-number">2.1</span> R1<a href="#r1" class="self-link"></a></h2>
+<ul>
+<li>Moves from Google Docs to Markdown-generated HTML.</li>
+<li>Adds Motivation and Design sections to better communicate why content is necessary and how it will be delivered.</li>
+<li>Removes the open-source component to give students breathing room.</li>
+</ul>
+<h2 data-number="2.2" id="r0"><span class="header-section-number">2.2</span> R0<a href="#r0" class="self-link"></a></h2>
+<ul>
+<li>Initial revision.</li>
+</ul>
+<h1 data-number="3" id="motivation"><span class="header-section-number">3</span> Motivation<a href="#motivation" class="self-link"></a></h1>
+<h2 data-number="3.1" id="c"><span class="header-section-number">3.1</span> C++<a href="#c" class="self-link"></a></h2>
 <p>C++ is a language that rapidly evolves over time and is applicable to most domains, making it difficult for <em>COMP6771 Advanced C++ Programming</em> to cover all the relevant content. While the delta between C++11, C++14, and C++17 is quite small between consecutive standards, the change between C++17 and C++20 is on a completely different scale. A lot of C++20’s new features either introduce new programming paradigms (e.g. ranges, coroutines), change the way in which we write C++ at a language level (e.g. concepts, consistent comparison, modules), or change the way in which we build C++ (modules). All of these new features immensely simplify C++ programs, but are competing for time with existing content that is almost entirely still relevant, but in some cases no more important than the new potential material.</p>
 <p>COMP6771 (and COMP3171/9171) has also always taken an interest in exposing tooling to make sure that students are building correct programs. Since the author’s involvement with the course, it has always encouraged tools to detect memory leaks (<a href="https://valgrind.org/">Valgrind</a> until 2014; <a href="https://clang.llvm.org/docs/AddressSanitizer.html">AddressSanitizer</a> since 2015). Since 2019, the course has also encouraged the use of IDEs (<a href="https://www.jetbrains.com/clion/">CLion</a> in 2019; <a href="https://code.visualstudio.com/">Visual Studio Code</a> with <a href="https://clangd.llvm.org/">clangd</a> since 2020), debuggers, build systems (<a href="https://bazel.build/">Bazel</a> in 2019; <a href="https://cmake.org/">CMake</a> since 2020), a <a href="https://clang.llvm.org/docs/ClangFormat.html">code formatter</a>, a <a href="https://clang.llvm.org/extra/clang-tidy/">linter</a>, a <a href="https://github.com/catchorg/Catch2">unit test framework</a>, and <a href="https://vcpkg.io/en/index.html">package management</a>. As C++ tooling has matured over the past decade, we have increasingly been exposing students to more and more tools to make their lives easier. It isn’t a free lunch, however, and we require time to educate students on the purpose of these tools, and how to use them to get the best experience (often disguised as “how to maximise your mark”). In a course that’s already filled to the brim, this is fairly difficult: we can either only superficially expose the tools, or hide them behind something else like an IDE, and while they reap the benefits, they’re none the wiser about losing the tooling if they move to a different ecosystem.</p>
-<p>The author has noticed — as have many software engineers the author has spoken with — that recent graduates often don’t have practical experience working on projects that existed before they came, and will continue to exist long after they leave. Much of their work exists in a vacuum, and lasts for only a term. It would be highly beneficial for students to get practical exposure to real-world projects where they need to use tools and participate in code reviews to ensure that they understand the process of software engineering.</p>
-<h2 data-number="2.2" id="software-engineering-practices"><span class="header-section-number">2.2</span> Software engineering practices<a href="#software-engineering-practices" class="self-link"></a></h2>
-<h3 data-number="2.2.1" id="testing"><span class="header-section-number">2.2.1</span> Testing<a href="#testing" class="self-link"></a></h3>
+<h2 data-number="3.2" id="software-engineering-practices"><span class="header-section-number">3.2</span> Software engineering practices<a href="#software-engineering-practices" class="self-link"></a></h2>
+<h3 data-number="3.2.1" id="testing"><span class="header-section-number">3.2.1</span> Testing<a href="#testing" class="self-link"></a></h3>
 <blockquote>
 <p>If you liked it, you should have put a CI test on it.</p>
 <p>– Google, with apologies to Beyoncé</p>
 </blockquote>
-<p>The author’s software engineering education, from <em>Software Design and Development</em> in the HSC, through their bachelor’s degree in computer science at UNSW has always encouraged testing (and at times, test-driven development). Unfortunately, this never translated into <em>how</em> to appropriately write tests, or how much testing is enough. Since having graduated, the author has seen a lot of code checked into projects that hasn’t been adequately tested, and has marked COMP6771 assignments that would have benefited from better testing. This is evidence that universities in general have room to improve when it comes to ensuring that graduates meet learning outcomes 1, 3, and 4.</p>
-<p>Additionally, the author didn’t come across continuous integration until their first full-time job, and has learnt about various forms of testing outside of unit and integration testing over the years. This suggests that UNSW can expand on the tests it pushes for (e.g. CI, fuzzing), which can improve student development.</p>
-<h3 data-number="2.2.2" id="benchmarking"><span class="header-section-number">2.2.2</span> Benchmarking<a href="#benchmarking" class="self-link"></a></h3>
+<p>The author’s software engineering education, from <em>Software Design and Development</em> in the HSC, through their bachelor’s degree in computer science at UNSW has always encouraged testing (and at times, test-driven development). Unfortunately, this never translated into <em>how</em> to appropriately write tests, or how much testing is enough. Additionally, the author didn’t come across continuous integration until their first full-time job, and has learnt about various forms of testing outside of unit and integration testing over the years. This suggests that UNSW can expand on the tests it pushes for (e.g. CI, fuzzing), which can improve student development.</p>
+<h4 data-number="3.2.1.1" id="why-this-should-be-taught-in-comp6772"><span class="header-section-number">3.2.1.1</span> Why this should be taught in COMP6772<a href="#why-this-should-be-taught-in-comp6772" class="self-link"></a></h4>
+<p>Since having graduated, the author has seen a lot of code checked into projects that hasn’t been adequately tested, and has marked COMP6771 assignments that would have benefited from better testing. This is evidence that universities in general have room to improve when it comes to ensuring that graduates meet learning outcomes 1, 3, and 4.</p>
+<p>While COMP6772 will continue to beat the drum about unit testing and TDD, it will also bring up the importance of CI and fuzzing.</p>
+<h3 data-number="3.2.2" id="benchmarking"><span class="header-section-number">3.2.2</span> Benchmarking<a href="#benchmarking" class="self-link"></a></h3>
 <blockquote>
 <p>You only care about performance that you have benchmarked. If you did not write a benchmark for your code, you do not care about its performance.</p>
 <p>– <a href="https://youtu.be/2EWejmkKlxs">Chandler Carruth, 2017</a></p>
 </blockquote>
-<p>The author never formally learnt about benchmarking while at university. COMP3171 (COMP6771) has emphasised the need for high performance code: its first (and possibly second) assignment is required to run in under a certain amount of time. This was facilitated by the POSIX tool <code class="sourceCode default">time</code>, which is a good start, but fails to tease out critical analysis related to practical performance.</p>
-<p>Worse still, computer science theory is at odds with physics. The theoretical time complexity for inserting an element into an arbitrary point of a linked list is <em>O</em>(1), while an array has <em>O</em>(n) complexity for the same operation, which suggests that linked lists are the ideal choice when this operation is the more frequent one.</p>
-<p>TODO: finish this section once benchmarking is complete (possibly find academic papers on this subject too).</p>
-<h3 data-number="2.2.3" id="documentation"><span class="header-section-number">2.2.3</span> Documentation<a href="#documentation" class="self-link"></a></h3>
-<p>While comments are encouraged at university, the author doesn’t recall any education on how to effectively write user-documentation, or why that’s even necessary (“surely they can figure it out from the API?”). The two main forms of documentation that the author is aware of are in-code documentation (such as <a href="https://www.doxygen.nl/index.html">Doxygen</a> or <a href="https://www.python.org/dev/peps/pep-0257">Docstring</a>), and documentation that exists outside code (such as <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a>).</p>
-<h3 data-number="2.2.4" id="ethics"><span class="header-section-number">2.2.4</span> Ethics<a href="#ethics" class="self-link"></a></h3>
+<p>The author never formally learnt about benchmarking while at university. COMP3171 (COMP6771) has emphasised the need for high performance code: its first (and possibly second) assignment is required to run in under a certain amount of time. This was facilitated by the POSIX tool <code class="sourceCode default">time</code>, which is a good start, but fails to tease out critical analysis related to practical performance. Worse still, computer science theory isn’t always in sync with the real world. For example, the theoretical time complexity for traversing the contents of a contiguous array is <em>O</em>(n), as it is for traversing the contents of a linked-list. However, due to cache locality, benchmarking reveals that contiguous arrays outperform linked lists in sequenced operations (and we haven’t even talked about harnessing parallelism or heterogeneous computing). COMP6771 touches on briefly brings this up when contrasting <code class="sourceCode default">std::vector</code> and <code class="sourceCode default">std::list</code> (and anecdotally, there’s always a non-significant number of surprised people), but has never had the time to prove, in large part due to the fact that educating students about how to write benchmarking code is hardly within course scope.</p>
+<h4 data-number="3.2.2.1" id="why-this-should-be-taught-in-comp6772-1"><span class="header-section-number">3.2.2.1</span> Why this should be taught in COMP6772<a href="#why-this-should-be-taught-in-comp6772-1" class="self-link"></a></h4>
+<p>C++ is a lightweight abstraction programming language, that gives you <em>control</em> over performance. As noted at the top, performance is only considered to be a genuine concern if a relevant benchmark has been built and analysed. While a good start (and good enough for COMP6771), writing a proper benchmark in C++ that meets Chandler’s assertion about performance isn’t as simple as the following.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">auto</span> <span class="kw">const</span> start <span class="op">=</span> std<span class="op">::</span>chrono<span class="op">::</span>high_resolution_clock<span class="op">::</span>now<span class="op">()</span>;</span>
+<span id="cb1-2"><a href="#cb1-2"></a>work_to_measure<span class="op">()</span>;</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">auto</span> <span class="kw">const</span> stop <span class="op">=</span> std<span class="op">::</span>chrono<span class="op">::</span>high_resolution_clock<span class="op">::</span>now<span class="op">()</span>;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>std<span class="op">::</span>cout <span class="op">&lt;&lt;</span> <span class="op">(</span>stop <span class="op">-</span> start<span class="op">).</span>count<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">&quot; ns</span><span class="sc">\n</span><span class="st">&quot;</span>;</span></code></pre></div>
+<p>The above lacks accuracy, and <del>doesn’t</del> can’t take into consideration the latency of operations such as allocation, which might irrationally impact a program’s run-time.</p>
+<h3 data-number="3.2.3" id="ethics"><span class="header-section-number">3.2.3</span> Ethics<a href="#ethics" class="self-link"></a></h3>
 <p>The author is a part of various communities in the world of software engineering, and has worked as a software engineer in three different countries (Australia, Scotland, USA). In all cases, the author has enjoyed immense privilege, and has either witnessed or heard from trusted primary sources: workplace sexism, racism, homophobia, transphobia, ableism, intimidation, harassment, abuse, mental health belittlement, disregard for others’ physical health and safety, and other antisocial behaviour. Due to this toxic behaviour, the author is aware of several people who have either left the community that they are a part of, or will leave very soon, if the behaviour continues. All three of the countries that the author has lived in have laws preventing this sort of behaviour, and yet it persists. This is unacceptable, and needs to be addressed as early on in a person’s career, to ensure that the listed behaviour does not become normalised for them.</p>
 <p>Another perspective to consider on the importance of ethics in software engineering is that software is built for people, by people, but it doesn’t necessarily treat everyone equally. Even large corporations such as <a href="https://www.bbc.com/news/technology-33347866">Google</a> and <a href="https://www.bbc.com/news/technology-57192898">Twitter</a> with enormous resources at their disposal have produced software that has engaged in discrimination. As with workplace behaviour, software that produces these results is completely unacceptable, and it is again within our ability to educate on the need for diverse and inclusive workplaces so that software solutions do not enage in antisocial behaviour.</p>
-<p>The author strongly believes that a single ethics course in the final year is unable to teach values that promote a safe workplace, where software solutions cater to all. It’s far too late in a student’s development, and it’s far too limited a time for teaching staff to cover all the relevant material. Worse, the author understands that many students (from many universities) hold their compulsory ethics classes in high contempt, because they don’t understand why education on ethics is necessary. The author does see the value in a consolidated ethics class at the end of a computer science or engineering program, but only if ethics subtopics are explored in every course that CSE has access to. Then, the final ethics course can do two things: draw links between the ethics components across courses, and explore topics that genuinely require a certain amount of maturity to discuss.</p>
+<h4 data-number="3.2.3.1" id="why-this-should-be-taught-in-comp6772-2"><span class="header-section-number">3.2.3.1</span> Why this should be taught in COMP6772<a href="#why-this-should-be-taught-in-comp6772-2" class="self-link"></a></h4>
+<p>The author strongly believes that a single ethics course in the final year is unable to teach values that promote a safe workplace, where software solutions cater to all. It’s far too late in a student’s development, and it’s far too limited a time for teaching staff to cover all the relevant material. Worse, the author understands that many students (from universities in multiple countries) hold their compulsory ethics classes in high contempt, because they don’t understand why education on ethics is necessary. The author does see the value in a consolidated ethics class at the end of a computer science or engineering program, but only if ethics subtopics are explored in every course that CSE has access to. Then, the final ethics course can do two things: draw links between the ethics components across courses, and explore topics that genuinely require a certain amount of maturity to discuss.</p>
 <p>The author is aware that this is a system-wide change to multiple programs, and while they would like to see this happen, is also aware that this kind of change is well beyond the scope of the proposal and would likely take years to complete. In the meantime, the author is of the opinion that a course could pilot having an ethics week to gauge its success, and relay this to the program committees.</p>
-<h1 data-number="3" id="design"><span class="header-section-number">3</span> Design<a href="#design" class="self-link"></a></h1>
+<h2 data-number="3.3" id="there-is-a-lot-going-on-here.-are-you-sure-this-youre-going-to-fit-this-all-into-ten-weeks"><span class="header-section-number">3.3</span> There is a <em>lot</em> going on here. Are you sure this you’re going to fit this all into ten weeks?<a href="#there-is-a-lot-going-on-here.-are-you-sure-this-youre-going-to-fit-this-all-into-ten-weeks" class="self-link"></a></h2>
+<p>In writing P6772R1, the author has internalised that there are at least two courses competing for attention within this proposal: a course that extends C++ education further than COMP6771 has the bandwidth to offer, and a course that teaches contemporary software engineering practices with a real-world project. It might be worth splitting the course in two: COMP6772 <em>Advanced C++ Programming</em>, and COMPXXXX <em>Software Engineering for Computer Scientists</em>.</p>
+<p><strong>Note that in the event of a split, an ethics module would be present in both courses.</strong></p>
+<h2 data-number="3.4" id="overlap-with-other-courses"><span class="header-section-number">3.4</span> Overlap with other courses<a href="#overlap-with-other-courses" class="self-link"></a></h2>
+<p>The author is aware that some of the software engineering content in this section may be taught in other courses. This shouldn’t be a discouraging factor from COMP6772 incorporating the material. Different lecturers will provide different perspectives on matters, and explain material in ways that may resonate with different people.</p>
+<p>Some topics⁠—like ethics and testing⁠—not only benefit from varied input, but also from repetition. We stand a better chance of getting students to care about critically important topics if they’re brought up at multiple junctions in their career.</p>
+<p>Finally, some overlap will be necessary because this course would otherwise have too many prerequisites. If we take a look at just the C++ content that COMP6772 proposes, without overlap, it would require students to take COMP6771 (C++ 101), COMP3141 (composition), COMP3121 (algorithms), COMP3231 (allocators), COMP3131 (lexers and parsers), and both MATH1081 and MATH3711 (group and ring theories). That’s an awful lot of prerequisites, and would probably result in only a handful of students ever even meeting the bar for entry. By cherry-picking relevant content and giving a light introduction/refresher, COMP6772 can drop almost all of these prerequisites.</p>
+<h1 data-number="4" id="design"><span class="header-section-number">4</span> Design<a href="#design" class="self-link"></a></h1>
 <p>The motivation section identifies many problems, and attempts to address them. The proposed course does not attempt to tackle them single-handedly, but rather aims to focus on exposing students to areas that the author is either adept or an expert in. Material that is repeated in previous courses will likely be presented with a different perspective, or serve as repetition to emphasise its importance.</p>
-<h2 data-number="3.1" id="c-1"><span class="header-section-number">3.1</span> C++<a href="#c-1" class="self-link"></a></h2>
+<h2 data-number="4.1" id="c-1"><span class="header-section-number">4.1</span> C++<a href="#c-1" class="self-link"></a></h2>
 <p>The course is a sequel course to <em>COMP6771 Advanced C++ Programming</em>, so it will expand students’ knowledge on current C++ programming techniuqes. More specifically, the course will explore program composition in C++, container design, and generic programming.</p>
-<h3 data-number="3.1.1" id="program-composition"><span class="header-section-number">3.1.1</span> Program composition<a href="#program-composition" class="self-link"></a></h3>
+<h3 data-number="4.1.1" id="tooling"><span class="header-section-number">4.1.1</span> Tooling<a href="#tooling" class="self-link"></a></h3>
+<ul>
+<li>Duration: two weeks.</li>
+<li>Introduces students to C++ tools beyond a compiler and debugger.
+<ul>
+<li>Advanced compiler and debugger techniques, build systems, compile-time analysis, run-time analysis, benchmarking, fuzz testing, continuous integration</li>
+</ul></li>
+<li>Assessment: passive, through other assessments.</li>
+</ul>
+<h3 data-number="4.1.2" id="program-composition"><span class="header-section-number">4.1.2</span> Program composition<a href="#program-composition" class="self-link"></a></h3>
 <ul>
 <li>Duration: two weeks.</li>
 <li>Gently introduces students to category theory and group theory.</li>
 <li>Details ranges, monads, coroutines, and how to effectively debug composed programs, as opposed to imperative programs.</li>
 <li>Assessment: a lexer and parser that must be written using the above.</li>
 </ul>
-<h3 data-number="3.1.2" id="containers-design"><span class="header-section-number">3.1.2</span> Containers design<a href="#containers-design" class="self-link"></a></h3>
+<h3 data-number="4.1.3" id="containers-design"><span class="header-section-number">4.1.3</span> Containers design<a href="#containers-design" class="self-link"></a></h3>
 <ul>
-<li>Duration: one week.</li>
+<li>Duration: two weeks.</li>
 <li>Details constant expressions, conditional noexcept, using allocators, placement new.</li>
 <li>Lectures will implement <code class="sourceCode default">std::vector</code> (COMP6771 approximates a <code class="sourceCode default">vector</code> implementation to teach RAII, whereas COMP6772 will implement a genuine <code class="sourceCode default">std::vector</code> to show how it works under the hood).</li>
 <li>Assessment: Implement a standard container (specific container TBD).</li>
 </ul>
-<h3 data-number="3.1.3" id="generic-programming"><span class="header-section-number">3.1.3</span> Generic programming<a href="#generic-programming" class="self-link"></a></h3>
+<h3 data-number="4.1.4" id="generic-programming"><span class="header-section-number">4.1.4</span> Generic programming<a href="#generic-programming" class="self-link"></a></h3>
 <ul>
-<li>Duration: three weeks.</li>
+<li>Duration: two weeks.</li>
 <li>Gently introduces abstract algebra.</li>
 <li>Details algorithm design, iterators, implementing an iterator, designing a range adaptor, and designing a concept.</li>
 </ul>
 <p>Readers should note that the “algorithm design” does not overlap with COMP3121/3821. We instead look at generalising algorithms, analysing their requirements, building an interface that broadly caters to as many users as possible (while meeting certain requirements), and then looking for optimisation opportunities.</p>
-<h3 data-number="3.1.4" id="relationship-with-comp6771"><span class="header-section-number">3.1.4</span> Relationship with COMP6771<a href="#relationship-with-comp6771" class="self-link"></a></h3>
+<h3 data-number="4.1.5" id="relationship-with-comp6771"><span class="header-section-number">4.1.5</span> Relationship with COMP6771<a href="#relationship-with-comp6771" class="self-link"></a></h3>
 <p>The author expects, that over time, the two courses will trade material. As features in more recent C++ standards become more mainstream, they may bubble their way up to COMP6771, and the older ways would end up in COMP6772. For example, C++20 introduced a feature known as consistent comparison, which reduces the number of overloaded comparison operators one needs to write from two-to-six to one or two (the compiler will generate the remainder). This is fairly new technology, and since it’s not widely deployed, it makes sense for COMP6771 to continue teaching the way that’s been available since the 80s. When consistent comparison is used by more of the community, then the respective LiCs may discuss whether or not it’s appropriate to trade this material, thereby giving casual students the easier to understand and more-likely-to-be-correct option, and leave the manual one to folks who are hungry for more C++.</p>
-<h2 data-number="3.2" id="software-engineering-tools-and-practices"><span class="header-section-number">3.2</span> Software engineering tools and practices<a href="#software-engineering-tools-and-practices" class="self-link"></a></h2>
-<h3 data-number="3.2.1" id="community"><span class="header-section-number">3.2.1</span> Community<a href="#community" class="self-link"></a></h3>
+<h2 data-number="4.2" id="software-engineering-tools-and-practices"><span class="header-section-number">4.2</span> Software engineering tools and practices<a href="#software-engineering-tools-and-practices" class="self-link"></a></h2>
+<h3 data-number="4.2.1" id="community"><span class="header-section-number">4.2.1</span> Community<a href="#community" class="self-link"></a></h3>
 <p>Popular programming languages, while tools, have thriving communities made up of people. That’s how tools come into being, and how the language evolves.</p>
-<h4 data-number="3.2.1.1" id="community-project-work"><span class="header-section-number">3.2.1.1</span> Community project work<a href="#community-project-work" class="self-link"></a></h4>
-<h3 data-number="3.2.2" id="ethics-1"><span class="header-section-number">3.2.2</span> Ethics<a href="#ethics-1" class="self-link"></a></h3>
+<h3 data-number="4.2.2" id="ethics-1"><span class="header-section-number">4.2.2</span> Ethics<a href="#ethics-1" class="self-link"></a></h3>
 <p>Until such a time that a first year COMP course teaches about diversity, equity, and inclusion, COMP6772 will dedicate one week to this topic. Once this criterion is met, COMP6772 will explore the ramifications of software that permits the proliferation of fake news and misinformation.</p>
-<h2 data-number="3.3" id="should-this-be-a-comp-or-seng-course"><span class="header-section-number">3.3</span> Should this be a COMP or SENG course?<a href="#should-this-be-a-comp-or-seng-course" class="self-link"></a></h2>
+<h2 data-number="4.3" id="should-this-be-a-comp-or-seng-course"><span class="header-section-number">4.3</span> Should this be a COMP or SENG course?<a href="#should-this-be-a-comp-or-seng-course" class="self-link"></a></h2>
 <p>The author firmly believes that this should be a course available to students studying computer science. Computer science may not be an official engineering degree, but many computer scientists end up graduating and finding themselves employed as software engineers. Therefore, the author is of the opinion that non-core courses that expose software engineering practices should be available for anyone who may find themselves employed as a software engineer, provided they meet the minimum maturity requirements.</p>
-<h2 data-number="3.4" id="prerequisites"><span class="header-section-number">3.4</span> Prerequisites<a href="#prerequisites" class="self-link"></a></h2>
-<p>COMP6772 is designed as a sequel to COMP6771, and therefore naturally requires COMP6771 as a prerequisite. The community project work necessitates a certain amount of technical maturity in a particular domain. The author has chosen <em>COMP3131 Programming Languages and Compilers</em> and <em>COMP3231/9201/3821/9283 (Extended) Operating Systems</em> as alternatives, since the author will be recommending projects that are related to these courses.</p>
-<h2 data-number="3.5" id="there-is-a-lot-going-on-here.-are-you-sure-this-youre-going-to-fit-this-all-into-ten-weeks"><span class="header-section-number">3.5</span> There is a <em>lot</em> going on here. Are you sure this you’re going to fit this all into ten weeks?<a href="#there-is-a-lot-going-on-here.-are-you-sure-this-youre-going-to-fit-this-all-into-ten-weeks" class="self-link"></a></h2>
-<p>In writing P6772R1, the author has internalised that there are at least two courses competing for attention within this proposal: a course that extends C++ education further than COMP6771 has the bandwidth to offer, and a course that teaches contemporary software engineering practices with a real-world project. It might be worth splitting the course in two: COMP6772 <em>Advanced C++ Programming</em>, and COMPXXXX <em>Software Engineering for Computer Scientists</em>.</p>
-<p><strong>Note that in the event of a split, an ethics module would be present in both courses.</strong></p>
-<h1 data-number="4" id="proposed-course"><span class="header-section-number">4</span> Proposed course<a href="#proposed-course" class="self-link"></a></h1>
+<h1 data-number="5" id="proposed-course"><span class="header-section-number">5</span> Proposed course<a href="#proposed-course" class="self-link"></a></h1>
 <ul>
 <li><strong>Units of credit:</strong> 6</li>
 <li><strong>Contact hours:</strong>
@@ -569,16 +611,276 @@ code.sourceCode > span { display: inline; }
 <li><strong>Lectures:</strong> 4</li>
 <li><strong>Tute/Lab:</strong> 2</li>
 </ul></li>
-<li><strong>Prerequisites:</strong> COMP6771, and at least one of COMP3131 or COMP3231/9201/3821/9283</li>
+<li><strong>Prerequisites:</strong> COMP6771, and at least one of COMP3121/3821, COMP3131, or COMP3231/9201/3821/9283.</li>
 </ul>
-<h2 data-number="4.1" id="objectives"><span class="header-section-number">4.1</span> Objectives<a href="#objectives" class="self-link"></a></h2>
-<h2 data-number="4.2" id="course-abstract"><span class="header-section-number">4.2</span> Course abstract<a href="#course-abstract" class="self-link"></a></h2>
-<h2 data-number="4.3" id="outcomes"><span class="header-section-number">4.3</span> Outcomes<a href="#outcomes" class="self-link"></a></h2>
-<h2 data-number="4.4" id="assessment-structure"><span class="header-section-number">4.4</span> Assessment structure<a href="#assessment-structure" class="self-link"></a></h2>
-<h3 data-number="4.4.1" id="assignment-1"><span class="header-section-number">4.4.1</span> Assignment 1<a href="#assignment-1" class="self-link"></a></h3>
-<h3 data-number="4.4.2" id="assignment-2"><span class="header-section-number">4.4.2</span> Assignment 2<a href="#assignment-2" class="self-link"></a></h3>
-<h3 data-number="4.4.3" id="assignment-3"><span class="header-section-number">4.4.3</span> Assignment 3<a href="#assignment-3" class="self-link"></a></h3>
-<h2 data-number="4.5" id="class-strucutre"><span class="header-section-number">4.5</span> Class strucutre<a href="#class-strucutre" class="self-link"></a></h2>
+<h2 data-number="5.1" id="course-abstract"><span class="header-section-number">5.1</span> Course abstract<a href="#course-abstract" class="self-link"></a></h2>
+<p>This course continues teaching C++ where COMP6771 leaves it. Deepens knowledge learnt in COMP6771; introduces advanced topics that will reshape the way in which one writes C++ programs.</p>
+<p>Detailed study of complex C++ tools for better, faster, and correct programs. Program composition in C++. Building containers that isare performance-sensitive. Generic programming.</p>
+<h2 data-number="5.2" id="objectives"><span class="header-section-number">5.2</span> Objectives<a href="#objectives" class="self-link"></a></h2>
+<h3 data-number="5.2.1" id="knowledge-and-understanding"><span class="header-section-number">5.2.1</span> Knowledge and understanding<a href="#knowledge-and-understanding" class="self-link"></a></h3>
+<p>Students will develop knowledge and understanding of:</p>
+<ul>
+<li>contemporary C++ software engineering practices</li>
+<li>the philosophy of C++</li>
+<li>social and ethical issues, and their effect on software engineering</li>
+</ul>
+<h3 data-number="5.2.2" id="skills"><span class="header-section-number">5.2.2</span> Skills<a href="#skills" class="self-link"></a></h3>
+<p>Students will develop skills in:</p>
+<ul>
+<li>using C++ tools</li>
+<li>more in-depth C++ programming techniques</li>
+</ul>
+<h3 data-number="5.2.3" id="values-and-attitudes"><span class="header-section-number">5.2.3</span> Values and attitudes<a href="#values-and-attitudes" class="self-link"></a></h3>
+<p>Students:</p>
+<ul>
+<li>appreciate the complexity of software engineering beyond the scope of university</li>
+<li>employ software engineering best practices in their projects</li>
+<li>value the need for considering social and ethical issues as they develop software</li>
+</ul>
+<h2 data-number="5.3" id="outcomes"><span class="header-section-number">5.3</span> Outcomes<a href="#outcomes" class="self-link"></a></h2>
+<h3 data-number="5.3.1" id="knowledge-and-understanding-1"><span class="header-section-number">5.3.1</span> Knowledge and understanding<a href="#knowledge-and-understanding-1" class="self-link"></a></h3>
+<table>
+<colgroup>
+<col style="width: 41%"></col>
+<col style="width: 58%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th><div style="text-align:center">
+<strong>Objectives</strong>
+</div></th>
+<th><div style="text-align:center">
+<strong>Outcomes</strong>
+</div></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Students develop knoweldge and understanding of:</td>
+<td>A student:</td>
+</tr>
+<tr class="even">
+<td><ol type="1">
+<li>contemporary C++ software engineering practices</li>
+</ol></td>
+<td><ul>
+<li>describes incidents in a detailed manner when asking for help</li>
+<li>discusses the benefits and drawbacks of using libraries</li>
+<li>explains the benefits of using tooling</li>
+<li>describes the trade-offs of link-time and profile-guided optimisation</li>
+<li>distinguishes between standard library implementations</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td><ol start="2" type="1">
+<li>the philosophy of C++</li>
+</ol></td>
+<td><ul>
+<li>describes the concepts underpinning generic programming</li>
+<li>explains the purpose of allocators</li>
+<li>discusses the benefits and drawbacks of argument-dependent lookup</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><ol start="3" type="1">
+<li>social and ethical issues, and their effect on software engineering</li>
+</ol></td>
+<td><ul>
+<li>discusses and evaluates social and ethical issues in several contexts</li>
+<li>constructs software solutions that address social and ethical issues</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<h3 data-number="5.3.2" id="skills-1"><span class="header-section-number">5.3.2</span> Skills<a href="#skills-1" class="self-link"></a></h3>
+<table>
+<colgroup>
+<col style="width: 35%"></col>
+<col style="width: 64%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th><div style="text-align:center">
+<strong>Objectives</strong>
+</div></th>
+<th><div style="text-align:center">
+<strong>Outcomes</strong>
+</div></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Students develop skills in:</td>
+<td>A student:</td>
+</tr>
+<tr class="even">
+<td><ol start="4" type="1">
+<li>using C++ tools</li>
+</ol></td>
+<td><ul>
+<li>synthesises a build environment</li>
+<li>employs compile-time analysis to ensure best practices are followed</li>
+<li>employs run-time analysis to narrow down the existence of bugs</li>
+<li>constructs unit tests to ensure correctness</li>
+<li>constructs fuzz tests to ensure correctness</li>
+<li>constructs benchmarks to measure performance</li>
+<li>constructs documentation to detail how and why interfaces should be used</li>
+<li>applies tools to automate development processes</li>
+<li>synthesises documentation for their designs and interfaces</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td><ol start="5" type="1">
+<li>more in-depth C++ programming techniques</li>
+</ol></td>
+<td><ul>
+<li>composes solutions using range adaptors, monads, and coroutines</li>
+<li>synthesises generic algorithms using concepts</li>
+<li>constructs an allocator-aware container</li>
+<li>constructs a range adaptor</li>
+<li>evaluates the need for esoteric C++ features</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<h2 data-number="5.4" id="assessment-structure"><span class="header-section-number">5.4</span> Assessment structure<a href="#assessment-structure" class="self-link"></a></h2>
+<ul>
+<li><p><em>Technical assignments:</em> 40%</p></li>
+<li><p><em>Essay:</em> 30%</p></li>
+<li><p><em>Lab work:</em> 15%</p></li>
+<li><p><em>Final exam:</em> 15%</p></li>
+<li><p>To ensure student participation in all assessments, students need to pass all four components.</p></li>
+<li><p>Students all have one “bad week” card, where they can request a two-day extension for <em>an</em> assignment, no questions asked, and no evidence required.</p></li>
+</ul>
+<h3 data-number="5.4.1" id="assignment-1"><span class="header-section-number">5.4.1</span> Assignment 1<a href="#assignment-1" class="self-link"></a></h3>
+<ul>
+<li><em>Area of focus:</em> Composition in C++.</li>
+<li><em>Brief description:</em> Students use range adaptors, monads, and coroutines to build a lexer and parser.</li>
+<li><em>Weighting:</em> 20% of final mark.</li>
+</ul>
+<h3 data-number="5.4.2" id="assignment-2"><span class="header-section-number">5.4.2</span> Assignment 2<a href="#assignment-2" class="self-link"></a></h3>
+<ul>
+<li><em>Area of focus:</em> Ethics.</li>
+<li><em>Brief description:</em> Students write an essay on a contemporary issue concerning diversity, equity, and inclusivity.</li>
+<li><em>Weighting:</em> 25% of final mark. The weighting reflects the importance of the topic rather than its difficulty.</li>
+</ul>
+<h3 data-number="5.4.3" id="assignment-3"><span class="header-section-number">5.4.3</span> Assignment 3<a href="#assignment-3" class="self-link"></a></h3>
+<ul>
+<li><em>Area of focus:</em> Containers and allocators</li>
+<li><em>Brief description:</em> Students implement an allocator-aware container.</li>
+<li><em>Weighting:</em> 20% of final mark.</li>
+</ul>
+<h3 data-number="5.4.4" id="lab-work"><span class="header-section-number">5.4.4</span> Lab work<a href="#lab-work" class="self-link"></a></h3>
+<p>Specifics to be fleshed out, but will cover outcomes that assignments do not.</p>
+<h3 data-number="5.4.5" id="exam"><span class="header-section-number">5.4.5</span> Exam<a href="#exam" class="self-link"></a></h3>
+<p>Specifics to be fleshed out, but will cover most technical outcomes.</p>
+<h2 data-number="5.5" id="class-structure"><span class="header-section-number">5.5</span> Class structure<a href="#class-structure" class="self-link"></a></h2>
+<table>
+<colgroup>
+<col style="width: 9%"></col>
+<col style="width: 44%"></col>
+<col style="width: 14%"></col>
+<col style="width: 31%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th><div style="text-align:center">
+<strong>Week</strong>
+</div></th>
+<th><div style="text-align:center">
+<strong>Lectures</strong>
+</div></th>
+<th><div style="text-align:center">
+<strong>Tute/Lab</strong>
+</div></th>
+<th><div style="text-align:center">
+<strong>Assessment</strong>
+</div></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><ul>
+<li>Course outline</li>
+<li>What is software engineering?</li>
+<li>The C++ community</li>
+<li>Tools beyond the compiler</li>
+<li>Libraries</li>
+</ul></td>
+<td>TBD</td>
+<td>Assignment 1 released</td>
+</tr>
+<tr class="even">
+<td>2-3</td>
+<td><ul>
+<li>Category theory basics</li>
+<li>Composition using
+<ul>
+<li>Range adaptors</li>
+<li>Monads</li>
+<li>Coroutines</li>
+</ul></li>
+<li>Debugging techniques</li>
+</ul></td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><ul>
+<li>Unit testing (revised)</li>
+<li>Fuzz testing</li>
+<li>Documentation</li>
+</ul></td>
+<td>TBD</td>
+<td>Assignment 1 due EOW</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><ul>
+<li>Equity</li>
+<li>Diversity and inclusivity</li>
+<li>Ramifications of poor/no ethics via case study</li>
+</ul></td>
+<td>TBD</td>
+<td>Assignment 2 released</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>No classes</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>7-8</td>
+<td><ul>
+<li>‘Advanced’ templates</li>
+<li>Constant expressions</li>
+<li><code class="sourceCode default">noexcept</code> specifiers</li>
+<li>Allocators</li>
+<li>Uninitialised memory algos</li>
+</ul></td>
+<td>TBD</td>
+<td>Assignment 2 due EOW7<br />
+Assignment 3 released</td>
+</tr>
+<tr class="odd">
+<td>9-10</td>
+<td><ul>
+<li>Abstract algebra basics</li>
+<li>What is generic programming?</li>
+<li>Producing a generic algorithm</li>
+<li>Iterators and coordinates</li>
+<li>Synthesising an iterator</li>
+<li>Designing a range adaptor</li>
+<li>Designing a concept</li>
+</ul></td>
+<td>TBD</td>
+<td>Assignment 3 due EOW9</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </body>
