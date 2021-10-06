@@ -447,7 +447,11 @@ code.sourceCode > span { display: inline; }
 <h1 id="toctitle">Contents</h1>
 <ul>
 <li><a href="#abstract"><span class="toc-section-number">1</span> Abstract<span></span></a></li>
-<li><a href="#motivation"><span class="toc-section-number">2</span> Motivation<span></span></a></li>
+<li><a href="#motivation"><span class="toc-section-number">2</span> Motivation<span></span></a>
+<ul>
+<li><a href="#what-is-generic-programming"><span class="toc-section-number">2.1</span> What is generic programming?<span></span></a></li>
+<li><a href="#comparing-and-contrasting-with-comp3141"><span class="toc-section-number">2.2</span> Comparing and contrasting with COMP3141<span></span></a></li>
+</ul></li>
 <li><a href="#changes-to-the-course-design"><span class="toc-section-number">3</span> Changes to the course design<span></span></a>
 <ul>
 <li><a href="#tooling"><span class="toc-section-number">3.1</span> Tooling<span></span></a></li>
@@ -473,6 +477,7 @@ code.sourceCode > span { display: inline; }
 </ul></li>
 <li><a href="#class-strucutre"><span class="toc-section-number">4.4</span> Class strucutre<span></span></a></li>
 </ul></li>
+<li><a href="#bibliography"><span class="toc-section-number">5</span> References<span></span></a></li>
 </ul>
 </div>
 <section id="abstract" data-number="1">
@@ -492,6 +497,37 @@ code.sourceCode > span { display: inline; }
 <p>An astute reader should notice that all the pairs above have now been struck: the latter three don’t have ‘C++’ in their name, and the first one has an invalid name for <em>COMP6772</em>. Hayden also made the observation that the relationship between <em>COMP6771</em> and <em>COMP6772</em> is kinda like <em>COMP1917</em> and <em>COMP1927</em> (sic): 1917 is about “learning the language”, and 1927 gives a little bit more about the language, but is mainly focussed on using it, and its application. I strongly agree.</p>
 <p>With Hayden’s advice and observations in mind, P6772R1’s proposed material and my background in generic programming, the best name for the course is <em>Generic Programming</em>. P6772R1 doesn’t propose a course on generic programming, which is a bit of a problem. Fortunately, it can be slightly adjusted to be a course on this topic, without damaging the integrity of the course that’s already been proposed.</p>
 <p>By removing the content on allocators, which are have less utility anyway, and narrowing the amount of time spent on software engineering practices from two weeks to one week, we’re able to have a course that spends the majority of its time exploring how to leverage generic programming either by using abstractions or synthesisng them.</p>
+<section id="what-is-generic-programming" data-number="2.1">
+<h2 data-number="2.1"><span class="header-section-number">2.1</span> What is generic programming?<a href="#what-is-generic-programming" class="self-link"></a></h2>
+<blockquote>
+<p><strong>Generic programming</strong> is an approach to programming that focuses on designing algorithms and data structures so that they work in the most general setting possible.</p>
+<p>— ‘From Mathematics to Generic Programming’, Alexander A. Stepanov and Daniel E. Rose</p>
+</blockquote>
+<p>Generic programming is essentially a computer science derivation of abstract algebra. This involves analysing concrete algorithms, and deriving their requirements so that an interface accepts valid usage, while rejecting misuse.</p>
+<blockquote>
+<p>Generic programming is about abstracting and classifying algorithms and data structures. It gets its inspiration from Knuth and not from type theory. Its goal is the incremental construction of systematic catalogs of useful, efficient and abstract algorithms and data structures. Such an undertaking is still a dream.</p>
+<p>— ‘Short History of STL’, Alexander Stepanov</p>
+</blockquote>
+<p>Generic programming is often confused with simply using templates (or generics, as they’re called in many other languages). Just like object-oriented programming is far more than simply using classes, generic programming is far more than using parameterised types. To my knowledge, CSE doesn’t have a course that fully explores this space.</p>
+</section>
+<section id="comparing-and-contrasting-with-comp3141" data-number="2.2">
+<h2 data-number="2.2"><span class="header-section-number">2.2</span> Comparing and contrasting with COMP3141<a href="#comparing-and-contrasting-with-comp3141" class="self-link"></a></h2>
+<p>COMP3141 seems to mentions generic programming once toward the end of its final lecture, but given the context, I get the impression this is in passing, rather than an in-depth study. As such, I’ve concluded that the courses are different, even if there’s potentially some overlap.</p>
+<p>At the request of Tom Kunc, I’ve done a quick survey on COMP3141 to identify potential areas of overlap, and justify why they’re necessary. The following topics are common to both COMP3141 and COMP6772:</p>
+<ul>
+<li>Abstraction</li>
+<li>Category theory</li>
+<li>Currying, lazy evaluation, and program composition</li>
+<li>Linear orderings</li>
+<li>Monads</li>
+<li>Semigroups, monoids, and semirings</li>
+<li>Sum types</li>
+</ul>
+<p>Program composition in C++ fits together differently than in Haskell, and it’s only partially explored in COMP6771 by briefly introducing the algorithms library (see <span class="citation" data-cites="P6772R1">[<a href="#ref-P6772R1" role="doc-biblioref">P6772R1</a>]</span> for why). Program composition is also a strong motivation for generic programming synthesis. Stepanov refers to the STL algorithms as puzzle pieces that fit together to solve other kinds of algorithms. Pipelines and monads are relatively new in the world of C++, and my experience both with COMP6771 and with being involved in the C++ community is that C++ programmers just aren’t used to thinking about this sort of stuff in C++.</p>
+<p>Sum types are just sort of around: <code class="sourceCode default">expected</code> is an error type we’ll be using for monadic error handling, and we might touch on <code class="sourceCode default">std::variant</code> as the more general sum type, but I don’t expect to labour on this topic too much. COMP6771 treats all errors as exceptions, but COMP6772 will demonstrate that there are other—sometimes better—ways to handle errors (again <span class="citation" data-cites="P6772R1">[<a href="#ref-P6772R1" role="doc-biblioref">P6772R1</a>]</span> covers the main reason why, and I also support how COMP6771 is doing stuff right now).</p>
+<p>The mathematics overlap is completely unavoidable. While category theory isn’t strictly necessary for teaching composition, it enriches it. Abstract algebra, on the other hand, is absolutely necessary for drilling into generic programming. I couldn’t see any lecture material on groups or rings, but all of these are explored, as we build out algorithms that are dependent on these algebraic strucutres. COMP3141 is only available to pre-honours undergrads, but COMP6772 is available to pretty much everyone. In order to cater to postgrads who don’t have a strong maths background, covering this content is critical. Furthermore, these topics are often ones that people find hard. By having a short refresher, it gives folks a chance to stretch their legs and creates a space for them to feel comfortable asking questions.</p>
+<p>Linear orderings are required for exploring regular types and coordinate structures such as iterators.</p>
+</section>
 </section>
 <section id="changes-to-the-course-design" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Changes to the course design<a href="#changes-to-the-course-design" class="self-link"></a></h1>
@@ -822,6 +858,15 @@ Assignment 3 released</td>
 </tbody>
 </table>
 </section>
+</section>
+<section id="bibliography" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> References<a href="#bibliography" class="self-link"></a></h1>
+<div id="refs" class="references hanging-indent" role="doc-bibliography">
+<div id="ref-P6772R1">
+<p>[P6772R1] Christopher Di Bella. 2021-06-04. COMP6772 Advanced Software Engineering. <br />
+<a href="https://www.cjdb.com.au/p6772r1.html">https://www.cjdb.com.au/p6772r1.html</a></p>
+</div>
+</div>
 </section>
 </div>
 </div>
