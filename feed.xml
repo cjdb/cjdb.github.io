@@ -7,6 +7,14 @@
       <language>en-au</language>
       <atom:link href="https://www.cjdb.com.au/feed.xml" rel="self" type="application/rss+xml" />
       <item>
+        <guid isPermaLink="false">0e42a487-25b7-4a4d-9f3f-d977f97b7606</guid>
+         <title>Preferential Voting</title>
+         <pubDate>Tue, 27 Apr 2022 12:30:00 +0000</pubDate>
+         <link>https://www.cjdb.com.au/preferential-voting</link>
+         <description><![CDATA[In this article, we learn about the Australian preferential voting system.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+      </item>
+      <item>
          <guid isPermaLink="false">nxLv9Osjwk-VMaHLVpAAVg</guid>
          <title>Prepping Yourself to Conceptify Algorithms</title>
          <pubDate>Tue, 15 May 2018 12:04:00 +0000</pubDate>

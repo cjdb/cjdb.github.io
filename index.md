@@ -2,6 +2,17 @@
 
 # Articles
 
+## [How voting for your House of Representatives Member works](https://www.cjdb.com.au/preferential-voting)
+
+> 2022-04-27
+
+Australia uses preferential voting to elect candidates to the House of Representatives. Preferential
+voting is also known as instant-runoff voting or ranked-choice voting. In this video, we'll
+break down how preferential voting works in detail, using the Division of Clark as an example.
+
+This article remains entirely independent of political opinion. Two opinions are cast: one on voting
+systems, which we talk about next; and one on How to Vote Cards, which we talk about at the end.
+
 ## [A Quick Look at What P1754 Will Change (Part 1)](https://www.cjdb.com.au/p1754-changes-part-1)
 
 > 2019-07-08
