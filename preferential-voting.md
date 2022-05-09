@@ -49,7 +49,9 @@ when writing or counting][pencils]. Don't provide any identifying information (s
 address, date-of-birth, etc.). We call a ballot paper that's followed all the rules a _formal_
 ballot. **Only formal votes are counted and contribute to the election result**. The AEC provides a
 [lengthy guide][formal] outlining what constitutes formal and informal ballots and they also have a
-[practice mode][practice].
+[practice mode][practice]. Below is an example of a formal ballot paper from the practice mode.
+
+![Sample practice ballot provided by the Australian Electoral Commission.](formal-hor.png)
 
 ## Case study: Division of Clark
 
