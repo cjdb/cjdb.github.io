@@ -2,12 +2,21 @@
 
 # Articles
 
+## [How Senators are elected](senate-elections.md)
+
+> 2022-05-14
+
+Just as with the House of Representatives, Australia uses preferential voting to elect Senators, but
+our votes are counted using a different mechanism that gets us proportional representation. In this
+blog post, we're going to learn how to fill out a Senate ballot, and how our Senate ballots are
+counted.
+
 ## [How voting for your House of Representatives Member works](https://www.cjdb.com.au/preferential-voting)
 
 > 2022-04-27
 
 Australia uses preferential voting to elect candidates to the House of Representatives. Preferential
-voting is also known as instant-runoff voting or ranked-choice voting. In this video, we'll
+voting is also known as instant-runoff voting or ranked-choice voting. In this article, we'll
 break down how preferential voting works in detail, using the Division of Clark as an example.
 
 This article remains entirely independent of political opinion. Two opinions are cast: one on voting
