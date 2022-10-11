@@ -279,7 +279,7 @@ teachers are a subset of programmers, this includes you.
          <td align="center">-</td>
          <td align="center">GoingNative 2013</td>
          <td align="center">Sean Parent</td>
-         <td align="center"><a href="https://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning">C++ Seasoning</a></td>
+         <td align="center"><a href="https://learn.microsoft.com/en-us/events/goingnative-2013/cpp-seasoning">C++ Seasoning</a></td>
          <td align="center">-</td>
          <td align="center">75 min</td>
       </tr>
@@ -310,8 +310,8 @@ teachers are a subset of programmers, this includes you.
       <tr>
          <td align="center">-</td>
          <td align="center">GoingNative 2013</td>
-         <td align="center">Stephan T. Lavaej</td>
-         <td align="center"><a href="https://channel9.msdn.com/Events/GoingNative/2013/Don-t-Help-the-Compiler">Don't Help the Compiler</a></td>
+         <td align="center">Stephan T. Lavavej</td>
+         <td align="center"><a href="https://learn.microsoft.com/en-us/events/goingnative-2013/don-t-help-compiler">Don't Help the Compiler</a></td>
          <td align="center">-</td>
          <td align="center">75 min</td>
       </tr>
