@@ -567,8 +567,8 @@ feedback on this material.
 [13]: https://hub.docker.com/r/cjdb/amcpp-stdlib/
 [14]: https://pastebin.com/FtN6Jktt
 [15]: https://wg21.link/p0836
-[16]: https://www.cjdb.com.au/blog/2018/05/15/prepping-yourself-to-conceptify-algorithms
-[17]: https://www.cjdb.com.au/transforming-std-find-into-std-ranges-find
+[16]: blog/2018/05/15/prepping-yourself-to-conceptify-algorithms
+[17]: transforming-std-find-into-std-ranges-find
 [18]: https://github.com/cjdb/cjdb.github.io/issues/6
 [19]: https://github.com/cjdb/cjdb.github.io/blob/master/CODE_OF_CONDUCT.md
 [20]: https://github.com/ericniebler/range-v3

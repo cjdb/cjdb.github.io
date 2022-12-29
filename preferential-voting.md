@@ -51,7 +51,7 @@ ballot. **Only formal votes are counted and contribute to the election result**.
 [lengthy guide][formal] outlining what constitutes formal and informal ballots and they also have a
 [practice mode][practice]. Below is an example of a formal ballot paper from the practice mode.
 
-![Sample practice ballot provided by the Australian Electoral Commission.](formal-hor.png)
+![Sample practice ballot provided by the Australian Electoral Commission.](images/formal-hor.png)
 
 ## Case study: Division of Clark
 

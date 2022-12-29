@@ -70,7 +70,7 @@ outlining what constitutes formal and informal ballots and they also have a [pra
 
 ## Understanding the Senate ballot
 
-![Sample practice ballot provided by the Australian Electoral Commission.](senate-ballot.png)
+![Sample practice ballot provided by the Australian Electoral Commission.](images/senate-ballot.png)
 
 The Senate ballot paper is white and looks like the sample ballot above. The thick black line
 divides two separate ways of voting: we can either number the boxes above it, or we can number the
@@ -82,7 +82,7 @@ of Representatives. We can number the boxes however we want.
 
 ### Voting Below the Line
 
-![Example filling out for Below the Line, with votes randomly assigned to fourteen of seventeen candidates.](btl-1.png)
+![Example filling out for Below the Line, with votes randomly assigned to fourteen of seventeen candidates.](images/btl-1.png)
 
 In this example, we can see that the voter has randomly numbered the boxes below the line, and has
 even left some of the boxes blank. Because the instructions said to number "at least 12 boxes", and
@@ -92,14 +92,14 @@ the voter wrote in 14, their ballot is still formal.
 
 ### Voting Above the Line
 
-![Example filling out for Above the Line, with votes randomly assigned to six of seven groups.](atl-1.png)
+![Example filling out for Above the Line, with votes randomly assigned to six of seven groups.](images/atl-1.png)
 
 For convenience, we can also preference groups of candidates. Voting above the line tells the
 counters to treat our ballot as if we had numbered the boxes below the line in ascending order for
 the group. That means that the ballot just above this paragraph is exactly the same as the following
 one!
 
-![Example filling out for Below the Line that's identical to our Above the Line example.](btl-2.png)
+![Example filling out for Below the Line that's identical to our Above the Line example.](images/btl-2.png)
 
 This kind of voting is relatively new: it only came about in 2016. There was a different method for
 Above the Line voting prior to the 2016 federal election. If you're a voter older than 24 and aren't

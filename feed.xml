@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
    <channel>
       <title>Christopher Di Bella's Developer Blog</title>
-      <link>https://www.cjdb.com.au</link>
+      <link>https://blog.cjdb.xyz</link>
       <description>Christopher Di Bella's Developer Blog</description>
       <language>en-au</language>
-      <atom:link href="https://www.cjdb.com.au/feed.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://blog.cjdb.xyz/feed.xml" rel="self" type="application/rss+xml" />
       <item>
         <guid isPermaLink="false">43e36161-ca10-4705-bdd4-cbe0e2048aa2</guid>
          <title>Preferential Voting</title>
          <pubDate>Tue, 14 May 2022 07:00:00 +0000</pubDate>
-         <link>https://www.cjdb.com.au/senate-elections</link>
+         <link>https://blog.cjdb.xyz/senate-elections</link>
          <description><![CDATA[In this article, we learn how Australian Senators are elected.]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
       </item>
@@ -18,7 +18,7 @@
         <guid isPermaLink="false">0e42a487-25b7-4a4d-9f3f-d977f97b7606</guid>
          <title>Preferential Voting</title>
          <pubDate>Tue, 27 Apr 2022 12:30:00 +0000</pubDate>
-         <link>https://www.cjdb.com.au/preferential-voting</link>
+         <link>https://blog.cjdb.xyz/preferential-voting</link>
          <description><![CDATA[In this article, we learn about the Australian preferential voting system.]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
       </item>
@@ -26,7 +26,7 @@
          <guid isPermaLink="false">nxLv9Osjwk-VMaHLVpAAVg</guid>
          <title>Prepping Yourself to Conceptify Algorithms</title>
          <pubDate>Tue, 15 May 2018 12:04:00 +0000</pubDate>
-         <link>https://www.cjdb.com.au/blog/2018/05/15/prepping-yourself-to-conceptify-algorithms</link>
+         <link>https://blog.cjdb.xyz/blog/2018/05/15/prepping-yourself-to-conceptify-algorithms</link>
          <description><![CDATA[In this article, we explore what concepts are, where they are useful, and how they are different to things that exist in vanilla C++17.]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/2</comments>
@@ -34,7 +34,7 @@
       <item>
          <title>Transforming std::find into std::ranges::find</title>
          <pubDate>Wed, 30 May 2018 14:00:00 +0100</pubDate>
-         <link>https://www.cjdb.com.au/transforming-std-find-into-std-ranges-find</link>
+         <link>https://blog.cjdb.xyz/transforming-std-find-into-std-ranges-find</link>
          <description><![CDATA[Today, we dive into what std::find does, and how we can leverage various concepts to cleanly express its requirements, as achieved in std::ranges::find]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/5</comments>
@@ -42,7 +42,7 @@
       <item>
          <title>A Prime Opportunity for Ranges</title>
          <pubDate>Fri, 21 Sep 2018 09:00:00 -0800</pubDate>
-         <link>https://www.cjdb.com.au/a-prime-opportunity-for-ranges</link>
+         <link>https://blog.cjdb.xyz/a-prime-opportunity-for-ranges</link>
          <description><![CDATA[In this example, we look at why ranges are an excellent choice for helping our code to become more declaratve.]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/6</comments>
@@ -50,7 +50,7 @@
       <item>
          <title>SG20 Education and Recommended Videos for Teaching C++</title>
          <pubDate>Thu, 06 Dec 2018 23:15:00 +0000</pubDate>
-         <link>https://www.cjdb.com.au/sg20-and-videos</link>
+         <link>https://blog.cjdb.xyz/sg20-and-videos</link>
          <description><![CDATA[In today’s blog, we look at both the newly minted Study Group for education in the C++ Standard Committee. We also look at a small number of conference videos that I recommend teachers consider while they’re waiting for this Study Group to produce usable materials.]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues/7</comments>
@@ -58,7 +58,7 @@
       <item>
          <title>A Quick Look at What P1754 Will Change (Part 1)</title>
          <pubDate>Mon, 08 Jul 2019 09:00:00 +0000</pubDate>
-         <link>https://www.cjdb.com.au/p1754-changes-part-1</link>
+         <link>https://blog.cjdb.xyz/p1754-changes-part-1</link>
          <description><![CDATA[P1754, or Rename concepts to standard_case for C++20, while we still can is a proposal with a single, abundantly clear goal outlined in its name: to change the naming convention for all standard concepts from PascalCase to snake_case. Examples in P1754 are sadly lacking: it would have been nice to see an algorithm or two with the differences displayed side-by-side. I was curious about what it would look like, so I decided to contrast the two using the library that’s benefited from concepts the most: our algorithms library.]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
          <comments>https://github.com/cjdb/cjdb.github.io/issues</comments>

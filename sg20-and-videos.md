@@ -813,7 +813,7 @@ If you'd like to find out when I blog next, please use my [RSS feed][rss].
 
 ## Acknowledgements
 
-Thanks to JC van Winkel, [Sy Brand][simon], [Kate Gregory][gregcons], [Nicole Mazzuca][nicole],
+Thanks to JC van Winkel, [Sy Brand][sy], [Kate Gregory][gregcons], [Nicole Mazzuca][nicole],
 [Matt Stark][stark], [Bjarne Stroustrup][bjarne], [Titus Winters][titus], [Michael Wong][michael],
 and [Shafik Yaghmour][shafik] for reviewing.
 
@@ -831,8 +831,8 @@ and [Shafik Yaghmour][shafik] for reviewing.
 [michael]: https://wongmichael.com/about
 [P0939]: https://wg21.link/p0939
 [P1231]: https://wg21.link/p1231
-[rss]: https://www.cjdb.com.au/feed.xml
+[rss]: feed.xml
 [shafik]: https://t.co/LI3H5fOQUI
-[simon]: https://tartanllama.xyz
+[sy]: https://tartanllama.xyz
 [stark]: https://github.com/matts1
 [titus]: https://twitter.com/tituswinters

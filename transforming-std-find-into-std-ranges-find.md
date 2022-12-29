@@ -1,6 +1,6 @@
 # Transforming `std::find` into `std::ranges::find`
 
-The [last time we met](https://www.cjdb.com.au/blog/2018/05/15/prepping-yourself-to-conceptify-algorithms),
+The [last time we met](blog/2018/05/15/prepping-yourself-to-conceptify-algorithms.md),
 we had some fun discovering what it means to write a concept. Specifically, we derived the concept
 `ranges::EqualityComparableWith`, which allows us to describe algorithms that check for cross-type
 equivalence (in other words, checking that two objects with potentially different types are
@@ -16,7 +16,7 @@ resemble what we can enjoy in the Ranges TS. As with last time, there is a lot o
 so make yourself that drink now: you won't want to interrupt the flow half-way through!
 
 **Warning: this article is a direct continuation of [_Prepping Yourself to Conceptify
-Algorithms_](https://www.cjdb.com.au/blog/2018/05/15/prepping-yourself-to-conceptify-algorithms). You
+Algorithms_](blog/2018/05/15/prepping-yourself-to-conceptify-algorithms.md). You
 may be left in the dark about how and why things work if you skip the first part.**
 
 ## Refining and weakening concepts
@@ -746,7 +746,7 @@ minimal pressure, and usually spark very interesting discussions.
 ### RSS Feed
 
 It's 2018, and I've just learnt about what RSS is (I first heard about it in 2009 or 2010). I've set
-up an [RSS feed](https://www.cjdb.com.au/feed.xml) in case you wish to follow more of my blog posts.
+up an [RSS feed](feed.xml) in case you wish to follow more of my blog posts.
 
 ### Comments and feedback
 
