@@ -15,6 +15,9 @@
     <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
 
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
     <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
     <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
@@ -33,15 +36,17 @@
     <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
   <meta name="author" content="Christopher Di Bella" />
-  <meta name="description" content="Introduces the series Applied Modern C++." />
   <title>Applied Modern C++</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -60,8 +65,9 @@
       <div class="row">
             <div class="col-12">
 
-
-      <h1 id="introduction">Introduction</h1>
+      
+      <meta name="description" content="Introduces the series Applied Modern C++." />
+<h1 id="introduction">Introduction</h1>
 <div style="text-align: right;">
 <em>2022-12-29</em>
 </div>
@@ -92,167 +98,49 @@
 <h2 id="what-is-c">What is C++?</h2>
 <p>A simple web-search for “what is C++?” will reveal a zillion different answers to the question. Most of them are correct from a certain point of view, so to get to the point, here’s a distilled definition:</p>
 <blockquote>
-<p>C++ is a lightweight abstraction programming language, or put another way, C++ is a language that lets you choose the right abstractions for the situation.</p>
+<p>C++ is a programming language that prioritises performance by letting you choose appropriate abstractions for your situation.</p>
 </blockquote>
 <p>It achieves this because it’s built upon two philosophical design pillars. The first is that there shouldn’t be any room for another language between C++ and the hardware (except assembly). The second is that abstractions should have as little a cost as possible: preferably none, if we can get away with it.</p>
 <h3 id="is-c-still-worth-learning">Is C++ still worth learning?</h3>
-<p>Every year, people either ask or try to answer this question. It’s an interesting question: your time is a valuable, and you probably want to know whether it’s worth investing in this particular endeavour. If nothing else, like with most programming languages, taking the time out to learn C++ will broaden your perspective on how to write programs. To really answer the question, we must first ask another important question:</p>
+<p>Every year, people either ask or try to answer this question. It’s an interesting question: your time is valuable, and you probably want to know whether it’s worth investing in this particular endeavour. If nothing else, like with most programming languages, taking the time out to learn C++ will broaden your perspective on how to write programs. To really answer the question, we must first ask another important question:</p>
 <blockquote>
 <p>What can I <em>use</em> C++ for?</p>
 </blockquote>
-<p>Once we answer this question, we should be in a position to answer the original question.</p>
+<p>Once we answer this question, we should be in a position to answer the original question. Below are a handful of well-known products that C++ has been used to develop.</p>
 <style>
-.product-table {
-  display: table;
-}
-.product-table-row-group {
-  display: table-row-group;
-}
-.product-table-row {
-  display: table-row;
-}
-.product-table-cell {
-  display: table-cell;
-  font-weight: bold;
-  text-align: center;
-  height: 110px;
-}
-.product-table-cell img {
-  padding-left: 40px;
-  padding-right: 40px;
+.product {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 120px;
 }
 </style>
 <center>
-<div class="product-table">
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Web browsers
-</div>
-<div class="product-table-cell">
-<img src="images/products/firefox.svg" alt="Mozilla Firefox" style="height:90px;" />
-</div>
-<div class="product-table-cell">
-<img src="images/products/chromium.svg" alt="Chromium" style="height:90px;" />
-</div>
-</div>
-</div>
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Scientific research
-</div>
-<div class="product-table-cell">
-<img src="images/products/csiro.svg" alt="CSIRO" style="height:90px;" />
-</div>
-<div class="product-table-cell">
-<img src="images/products/cern.webp" alt="CERN" style="height:90px;" />
-</div>
-</div>
-</div>
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Navigation
-</div>
-<div class="product-table-cell">
-<img src="images/products/maps.svg" alt="Google Maps" style="height:90px;" />
-</div>
-<div class="product-table-cell">
-<img src="images/products/garmin.svg" alt="Garmin" style="height:90px;" />
-</div>
-</div>
-</div>
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Developer tools
-</div>
-<div class="product-table-cell">
-<a href="https://llvm.org/"><img src="images/products/llvm.webp" alt="LLVM Project" style="height:90px;" /></a>
-</div>
-<div class="product-table-cell">
-<img src="images/products/visual-studio.svg" alt="Microsoft Visual Studio" style="height:90px;" />
-</div>
-</div>
-</div>
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Games
-</div>
-<div class="product-table-cell">
-<img src="images/products/doom-eternal.webp" alt="Doom Eternal" style="height:90px;" />
-</div>
-<div class="product-table-cell">
-<img src="images/products/skyrim.webp" alt="The Elder Scrolls V: Skyrim" style="height:90px;" />
-</div>
-</div>
-</div>
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Office software
-</div>
-<div class="product-table-cell">
-<img src="images/products/ms-office.svg" alt="Microsoft Office" style="height:90px;" />
-</div>
-<div class="product-table-cell">
-<img src="images/products/openoffice.svg" alt="Apache OpenOffice" style="height:90px;" />
-</div>
-</div>
-</div>
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Platforms
-</div>
-<div class="product-table-cell">
-<img src="images/products/android.svg" alt="Android" style="height:90px;" />
-</div>
-<div class="product-table-cell">
-<img src="images/products/openjdk.svg" alt="OpenJDK" style="height:90px;" />
-</div>
-</div>
-</div>
-<div class="product-table-row-group">
-<div class="product-table-row">
-<div class="product-table-cell">
-Editing software
-</div>
-<div class="product-table-cell">
-<img src="images/products/obs.svg" alt="OBS Studio" style="height:90px;" />
-</div>
-<div class="product-table-cell">
-<img src="images/products/blender.svg" alt="Blender" style="height:90px;" />
-</div>
-</div>
-</div>
-</div>
+<img class="product" src="images/products/firefox.svg"           title="Web browser: Firefox"                     alt="Web browser: Firefox" /> <img class="product" src="images/products/chromium.svg"          title="Web browser: Chromium"                    alt="Web browser: Chromium" /> <img class="product" src="images/products/safari.svg"            title="Web browser: Safari"                      alt="Web browser: Safari" /> <img class="product" src="images/products/csiro.svg"             title="Scientific research: CSIRO"               alt="Scientific research: CSIRO" /> <img class="product" src="images/products/cern.webp"             title="Scientific research: CERN"                alt="Scientific research: CERN" /> <img class="product" src="images/products/llvm.webp"             title="Developer tools: LLVM projet"             alt="Developer tools: LLVM Project" /> <img class="product" src="images/products/visual-studio.svg"     title="Developer tools: Microsoft Visual Studio" alt="Developer tools: Microsoft Visual Studio" /> <img class="product" src="images/products/maps.svg"              title="Navigation: Google Maps"                  alt="Navigation: Google Maps" /> <img class="product" src="images/products/ms-office.svg"         title="Office software: Microsoft Office"        alt="Office software: Microsoft Office" /> <img class="product" src="images/products/openoffice.svg"        title="Office software: Apache OpenOffice"       alt="Office software: Apache OpenOffice" /> <img class="product" src="images/products/android.svg"           title="Platform: Android"                        alt="Platform: Android" /> <img class="product" src="images/products/unreal.svg"            title="Game development: Unreal Engine"          alt="Game development: Unreal Engine" /> <img class="product" src="images/products/adobe-photoshop.svg"   title="Computer graphics: Adobe Photoshop"       alt="Computer graphics: Adobe Photoshop" /> <img class="product" src="images/products/adobe-illustrator.svg" title="Computer graphics: Adobe Illustrator"     alt="Computer graphics: Adobe Illustrator" /> <img class="product" src="images/products/tensorflow.svg"        title="Machine learning: Tensorflow"             alt="Machine learning: Tensorflow" /> <img class="product" src="images/products/kde.svg"               title="Desktop environment: KDE Project"         alt="Desktop environment: KDE Project" /> <img class="product" src="images/products/obs.svg"               title="Screencasting: OBS Studio"                alt="Screencasting: OBS Studio" /> <img class="product" src="images/products/doom-eternal.webp"     title="Video game: Doom Eternal"                 alt="Video game: Doom Eternal" /> <img class="product" src="images/products/houdini.webp"          title="3D animation: Houdini"                 alt="3D animation: Houdini" /> <img class="product" src="images/products/star-wars.svg"         title="Video game: Star Wars Jedi: Fallen Order" alt="Video game: Star Wars Jedi: Fallen Order" /> <img class="product" src="images/products/blender.svg"           title="3D animation: Blender"                    alt="3D animation: Blender" /> <img class="product" src="images/products/skyrim.webp"           title="Video game: The Elder Scrolls V: Skyrim"  alt="Video game: The Elder Scrolls V: Skyrim" /> <img class="product" src="images/products/unity.svg"             title="Game development: Unity Game Engine"      alt="Game development: Unity Game Engine" /> <img class="product" src="images/products/openjdk.svg"           title="Platform: OpenJDK"                        alt="Platform: OpenJDK" /> <img class="product" src="images/products/ableton.svg"           title="Audio software: Ableton Live"             alt="Audio software: Ableton Live" />
 </center>
-<p>The list of products above are just a taste of the domains C++ is used in. C++ is also used in driver software, telecommunications, embedded SoCs, finance, audio, desktop environments, and security software. These are all enthralling applications of C++, by far, my favourite examples of C++ are out of this world. That’s right, C++ is used in space too! The <a href="https://en.wikipedia.org/wiki/James_Webb_Space_Telescope">James Webb Space Telescope</a> and the <a href="https://en.wikipedia.org/wiki/Mars_rover">Mars Rovers</a> all have components that are written using C++.</p>
+<p>The list of products above are just a taste of the domains C++ is used in. C++ is also used in driver software, telecommunications, embedded SoCs, finance, audio, desktop environments, and security software. These are all enthralling applications of C++, but, my favourite examples of C++—by far—are out of this world. That’s right, C++ is used in space too! The <a href="https://en.wikipedia.org/wiki/James_Webb_Space_Telescope">James Webb Space Telescope</a> and the <a href="https://en.wikipedia.org/wiki/Mars_rover">Mars Rovers</a> all have components that are written using C++.</p>
 <figure>
 <img src="images/products/jwst.webp" height="600" alt="" /><figcaption><a href="https://webbtelescope.org/contents/media/images/01GK2KKTR81SGYF24YBGYG7TAP?Type=Observations&amp;page=1&amp;filterUUID=91dfa083-c258-4f9f-bef1-8f40c26f4c97">Pillars of Creation (NIRCam and MIRI Composite Image)</a>, a James Webb Space Telescope observation. Image courtesy of NASA, ESA, CSA, and STScI. Image processing conducted by Joseph DePasquale (STScI), Alyssa Pagan (STScI), and Anton M. Koekemoer (STScI).</figcaption>
 </figure>
 <figure>
 <img src="images/products/mars-rover.webp" height="600" alt="" /><figcaption><a href="https://mars.nasa.gov/resources/25382/curiositys-selfie-at-the-mary-anning-location-on-mars/?site=msl">Curiosity’s Selfie at the ‘Mary Anning’ Location on Mars</a>, courtesy of NASA/JPL-Caltech/MSSS.</figcaption>
 </figure>
-<p>C++ is applicable to so many domains because it’s able to run on pretty much any computer. We’ll look at what that in detail later on.</p>
+<p>C++ is applicable to so many domains because it’s able to run on pretty much any computer. We’ll look at that in detail later on.</p>
 <p>We’ve seen at least sixteen unique domains so far, and we’re not even close to scratching the surface on how many use-cases C++ has in the real world. So, yes, I think you should learn C++ regardless of which year it is. You’ll definitely be able to find something that you can do using C++.</p>
 <h2 id="who-this-series-is-written-for">Who this series is written for</h2>
 <p>This series targets programmers with at least a year’s experience with programming. Teaching complete novices is delicate work, backed by over four decades of peer-reviewed research into computer science education: I’m not qualified to teach that level.</p>
 <h3 id="c-is-not-a-programming-language-for-complete-novices">C++ is not a programming language for complete novices</h3>
-<p>Consultation with computer science education experts (those who have conducted peer-reviewed reseach into the field) identified that most industrially-used programming languages are not suitable for folks who have yet to learn programming. This isn’t unique to C++: other popular languages</p>
 <p>Computer science education experts—those who have conducted peer-reviewed research—have identified that developing the ability to think in terms of algorithms is one of the first things that one should learn when starting to write code. Most industrially-used programming languages have a lot of things that will needlessly frustrate aspiring programmers during a critical stage in their development. This is true of C++, but also applies to other popular languages such as C, C#, Java, Rust, and Haskell.</p>
 <p>If you’re just starting out, I suggest you first learn <a href="https://scratch.mit.edu/">Scratch</a>, <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers">Python</a>, or <a href="https://www.w3schools.com/js/">JavaScript</a>; and come back in a year’s time. However, if your heart’s set on learning C++ first, you are still welcome: just be prepared to spend a fair amount of time researching topics that will be considered assumed knowledge.</p>
 <h3 id="back-to-experienced-programmers">Back to experienced programmers</h3>
 <p>You’ll need at least a few programs under your belt. Other than that, no experience is necessary. You don’t need to be well-versed in computer science or software engineering: everything we need will be discussed as it becomes relevant.</p>
 <h3 id="do-i-need-to-know-c-before-learning-c">Do I need to know C before learning C++?</h3>
-<p>Plugging this into Google will give you a host of people saying that because C++ is based on C, you should learn C first. This is well intended advice, but it’s not the correct way to go about learning C++. Just like we don’t start learning to speak contemporary English by starting with <a href="https://en.wikipedia.org/wiki/Old_English">Old English</a>, <a href="https://en.wikipedia.org/wiki/Middle_English">Middle English</a>, or even <a href="https://en.wikipedia.org/wiki/Early_Modern_English">Early Modern English</a>, it makes little sense to learn C++ by starting with C.</p>
-<p>There are good reasons to learn how to write programs in C, but since they look vastly different to C++ programs, considering it a prerequisite to learn C++ isn’t among them.</p>
+<p>Plugging this into Google will give you a host of people saying that because C++ is based on C, you should learn C first. This is well intended advice, but it’s not the correct way to go about learning C++. Just like we don’t start learning to speak contemporary English by starting with <a href="https://en.wikipedia.org/wiki/Old_English">Old English</a>, <a href="https://en.wikipedia.org/wiki/Middle_English">Middle English</a>, or even <a href="https://en.wikipedia.org/wiki/Early_Modern_English">Early Modern English</a>, it makes little sense to learn C++ by starting with C. Well-written C programs look vastly different to well-written C++ programs, and so learning C for the sake of learning C++ will just have you writing lower quality code in both C and C++.</p>
+<p>There are definitely good reasons to learn how to write programs in C, but learning it in order to learn how to use C++ is not among them.</p>
 <h2 id="series-structure">Series Structure</h2>
 <p>Learning C++ isn’t a small task, and so I’ve broken this series up to help you digest the content. If you were taking this as a third-year university course, you’d probably need around twelve or fifteen weeks with six hours of classes.</p>
-<p>There are two main sections: a seciton on <em>using</em> abstractions, and one on <em>building</em> abstractions. Each section is further divided into two modules, and each module will be comprised of many chapters.</p>
+<p>There are two main sections: a section on <em>using</em> abstractions, and one on <em>building</em> abstractions. Each section is further divided into two modules, and each module will be comprised of many chapters.</p>
 <p><strong>Section 1: Using abstractions</strong></p>
 <ul>
 <li><strong>Module 1</strong> is focussed on introducing you to the fundamentals of writing programs using C++. The goal isn’t to show you a bunch of random C++ features in isolation, but rather to get you to a functional level of programming. By the end of Module 1, you’ll be able to write simple programs using C++.</li>
@@ -260,7 +148,7 @@ Editing software
 </ul>
 <p><strong>Section 2: Building abstractions</strong></p>
 <ul>
-<li><strong>Module 3</strong> begins to reveal the inner workings of how abstractions are made. Most interesting C++ programs depend on some amount of the programmer building their own abstractions, so we’re going to finally get stuck into some of the more common techniques that C++ programmers use.</li>
+<li><strong>Module 3</strong> begins to reveal the inner workings of how abstractions are made. Most interesting C++ programs require programmers to build their own abstractions, so we’re finally going to get stuck into some of the more common techniques that C++ programmers use.</li>
 <li><strong>Module 4</strong> pulls the curtain back even further, revealing more abstraction techniques than its predecessor.</li>
 </ul>
 <h3 id="rough-table-of-contents">Rough table of contents</h3>
@@ -327,7 +215,7 @@ Editing software
 <p>For most people, the day-to-day advantage of #include &lt;C++&gt; is the <a href="https://www.includecpp.org/discord/">Discord server</a>, where you can talk about C++, diversity, and lots of domain-specific topics. There’s even got a section for C++ beginners!</p>
 <h2 id="resources">Resources</h2>
 <p>A useful resource that we’ll use a lot is called <a href="https://en.cppreference.com/w/">cppreference</a>, which we’ll use for documentation.</p>
-<p>Since Module 1 is about grasping the basics, we’ll be using the online editor <a href="https://godbolt.org/z/cf5fcMKd7">Compiler Explorer</a>. Compiler Explorer is an extremely cheap buy-in that doesn’t involve you investing loads of time setting up a development environment, just to write your first few porgrams. Instead, we’ll get you up and running with minimal assembly; once you’re at a functional stage, we’ll sink some time into installing and exploring our toolchain in some detail.</p>
+<p>Since Module 1 is about grasping the basics, we’ll be using the online editor <a href="https://godbolt.org/z/cf5fcMKd7">Compiler Explorer</a>. Compiler Explorer is an extremely cheap buy-in that doesn’t involve you investing loads of time setting up a development environment, just to write your first few programs. Instead, we’ll get you up and running with minimal assembly; once you’re at a functional stage, we’ll sink some time into installing and exploring our toolchain in some detail.</p>
 <h3 id="how-to-succeed-with-learning-c">How to succeed with learning C++</h3>
 <p>Let’s chat about how to succeed with learning C++. Peer-reviewed research has identified that people learning a new programming language tend to rely on features that feel familiar from previous programming languages; even if those features aren’t the best way to write programs in the new language. My own experience with teaching C++ to Java programmers at a university serves as additional evidence to those researchers’ point. To succeed in learning C++, you really do need to get to know C++ and be its friend, rather than an acquaintance that you only see at the shops every now and again. As such, try and challenge yourself to write C++ only using the features that we’ve discussed, and don’t use anything that might “feel” familiar from your prior experience.</p>
 <p>Most chapters will have a set of quzzies and exercises for you to complete, so that you’ve got a way to practice what we’ve covered. It’s important that you practice writing C++ at least a few times a week so that you meet the chapter objectives. It’s also important that you complete more than just the examples that we work through, because those examples are only a demonstration.</p>
