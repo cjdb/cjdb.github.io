@@ -72,11 +72,11 @@
 <em>2022-12-29</em>
 </div>
 <p><em>Applied Modern C++</em> is a series of blog posts—written as if they were a part of a book—dedicated to helping you learn how to write programs using C++. Perhaps you’re taking a class on C++ programming at university, or are needing to learn how to use C++ for your next team, or are simply wanting to learn a new language to see how things are done in another programming language. Whatever the case may be, welcome to the world of C++!</p>
-<p><strong>Objectives and outcomes</strong></p>
+<h3 id="objectives-and-outcomes">Objectives and outcomes</h3>
 <table>
 <colgroup>
-<col style="width: 42%" />
-<col style="width: 57%" />
+<col style="width: 41%" />
+<col style="width: 58%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -87,14 +87,20 @@
 <tbody>
 <tr class="odd">
 <td>understanding of what C++ is</td>
-<td><em>describe</em> the design pillars upon which C++ rests</td>
+<td><ul>
+<li><em>describe</em> the design pillars upon which C++ rests</li>
+</ul></td>
 </tr>
 <tr class="even">
 <td>appreciation for the versatility of C++</td>
-<td><em>identify</em> five or more different domains that use C++</td>
+<td><ul>
+<li><em>identify</em> five or more different domains that use C++</li>
+</ul></td>
 </tr>
 </tbody>
 </table>
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>Thank you to Sy Brand and Hana Dusíková for providing feedback on early drafts of this blog.</p>
 <h2 id="what-is-c">What is C++?</h2>
 <p>A simple web-search for “what is C++?” will reveal a zillion different answers to the question. Most of them are correct from a certain point of view, so to get to the point, here’s a distilled definition:</p>
 <blockquote>
@@ -117,9 +123,9 @@
 }
 </style>
 <center>
-<img class="product" src="images/products/firefox.svg"           title="Web browser: Firefox"                     alt="Web browser: Firefox" /> <img class="product" src="images/products/chromium.svg"          title="Web browser: Chromium"                    alt="Web browser: Chromium" /> <img class="product" src="images/products/safari.svg"            title="Web browser: Safari"                      alt="Web browser: Safari" /> <img class="product" src="images/products/maps.svg"              title="Navigation: Google Maps"                  alt="Navigation: Google Maps" /> <img class="product" src="images/products/csiro.svg"             title="Scientific research: CSIRO"               alt="Scientific research: CSIRO" /> <img class="product" src="images/products/cern.webp"             title="Scientific research: CERN"                alt="Scientific research: CERN" /> <img class="product" src="images/products/llvm.webp"             title="Developer tools: LLVM projet"             alt="Developer tools: LLVM Project" /> <img class="product" src="images/products/visual-studio.svg"     title="Developer tools: Microsoft Visual Studio" alt="Developer tools: Microsoft Visual Studio" /> <img class="product" src="images/products/ms-office.svg"         title="Office software: Microsoft Office"        alt="Office software: Microsoft Office" /> <img class="product" src="images/products/openoffice.svg"        title="Office software: Apache OpenOffice"       alt="Office software: Apache OpenOffice" /> <img class="product" src="images/products/android.svg"           title="Platform: Android"                        alt="Platform: Android" /> <img class="product" src="images/products/unreal.svg"            title="Game development: Unreal Engine"          alt="Game development: Unreal Engine" /> <img class="product" src="images/products/adobe-photoshop.svg"   title="Computer graphics: Adobe Photoshop"       alt="Computer graphics: Adobe Photoshop" /> <img class="product" src="images/products/tensorflow.svg"        title="Machine learning: Tensorflow"             alt="Machine learning: Tensorflow" /> <img class="product" src="images/products/kde.svg"               title="Desktop environment: KDE Project"         alt="Desktop environment: KDE Project" /> <img class="product" src="images/products/obs.svg"               title="Screencasting: OBS Studio"                alt="Screencasting: OBS Studio" /> <img class="product" src="images/products/doom-eternal.webp"     title="Video game: Doom Eternal"                 alt="Video game: Doom Eternal" /> <img class="product" src="images/products/houdini.webp"          title="3D animation: Houdini"                    alt="3D animation: Houdini" /> <img class="product" src="images/products/star-wars.svg"         title="Video game: Star Wars Jedi: Fallen Order" alt="Video game: Star Wars Jedi: Fallen Order" /> <img class="product" src="images/products/blender.svg"           title="3D animation: Blender"                    alt="3D animation: Blender" /> <img class="product" src="images/products/skyrim.webp"           title="Video game: The Elder Scrolls V: Skyrim"  alt="Video game: The Elder Scrolls V: Skyrim" /> <img class="product" src="images/products/unity.svg"             title="Game development: Unity Game Engine"      alt="Game development: Unity Game Engine" /> <img class="product" src="images/products/openjdk.svg"           title="Platform: OpenJDK"                        alt="Platform: OpenJDK" /> <img class="product" src="images/products/ableton.svg"           title="Audio software: Ableton Live"             alt="Audio software: Ableton Live" />
+<img class="product" src="images/products/firefox.svg"           title="Web browser: Firefox"                     alt="Web browser: Firefox" /> <img class="product" src="images/products/chromium.svg"          title="Web browser: Chromium"                    alt="Web browser: Chromium" /> <img class="product" src="images/products/safari.svg"            title="Web browser: Safari"                      alt="Web browser: Safari" /> <img class="product" src="images/products/maps.svg"              title="Navigation: Google Maps"                  alt="Navigation: Google Maps" /> <img class="product" src="images/products/csiro.svg"             title="Scientific research: CSIRO"               alt="Scientific research: CSIRO" /> <img class="product" src="images/products/cern.webp"             title="Scientific research: CERN"                alt="Scientific research: CERN" /> <img class="product" src="images/products/llvm.webp"             title="Developer tools: LLVM projet"             alt="Developer tools: LLVM Project" /> <img class="product" src="images/products/visual-studio.svg"     title="Developer tools: Microsoft Visual Studio" alt="Developer tools: Microsoft Visual Studio" /> <img class="product" src="images/products/ms-office.svg"         title="Office software: Microsoft Office"        alt="Office software: Microsoft Office" /> <img class="product" src="images/products/openoffice.svg"        title="Office software: Apache OpenOffice"       alt="Office software: Apache OpenOffice" /> <img class="product" src="images/products/android.svg"           title="Platform: Android"                        alt="Platform: Android" /> <img class="product" src="images/products/unreal.svg"            title="Game development: Unreal Engine"          alt="Game development: Unreal Engine" /> <img class="product" src="images/products/adobe-photoshop.svg"   title="Computer graphics: Adobe Photoshop"       alt="Computer graphics: Adobe Photoshop" /> <img class="product" src="images/products/tensorflow.svg"        title="Machine learning: Tensorflow"             alt="Machine learning: Tensorflow" /> <img class="product" src="images/products/kde.svg"               title="Desktop environment: KDE Project"         alt="Desktop environment: KDE Project" /> <img class="product" src="images/products/obs.svg"               title="Screencasting: OBS Studio"                alt="Screencasting: OBS Studio" /> <img class="product" src="images/products/doom-eternal.webp"     title="Video game: Doom Eternal"                 alt="Video game: Doom Eternal" /> <img class="product" src="images/products/houdini.webp"          title="3D animation: Houdini"                    alt="3D animation: Houdini" /> <img class="product" src="images/products/star-wars.svg"         title="Video game: Star Wars Jedi: Fallen Order" alt="Video game: Star Wars Jedi: Fallen Order" /> <img class="product" src="images/products/blender.svg"           title="3D animation: Blender"                    alt="3D animation: Blender" /> <img class="product" src="images/products/skyrim.webp"           title="Video game: The Elder Scrolls V: Skyrim"  alt="Video game: The Elder Scrolls V: Skyrim" /> <img class="product" src="images/products/unity.svg"             title="Game development: Unity Game Engine"      alt="Game development: Unity Game Engine" /> <img class="product" src="images/products/openjdk.svg"           title="Platform: OpenJDK"                        alt="Platform: OpenJDK" /> <img class="product" src="images/products/fmod.svg"              title="Audio processing: FMOD"                   alt="Audio processing: FMOD" />
 </center>
-<p>The list of products above are just a taste of the domains C++ is used in. C++ is also used in driver software, telecommunications, embedded SoCs, finance, and security software. These are all enthralling applications of C++, but, my favourite examples of C++—by far—are out of this world. That’s right, C++ is used in space too! The <a href="https://en.wikipedia.org/wiki/James_Webb_Space_Telescope">James Webb Space Telescope</a> and the <a href="https://en.wikipedia.org/wiki/Mars_rover">Mars Rovers</a> all have components that are written using C++.</p>
+<p>The list of products above are just a taste of the domains C++ is used in. C++ is also used in driver software, audio, telecommunications, embedded SoCs, finance, and security software. These are all enthralling applications of C++, but, my favourite examples of C++—by far—are out of this world. That’s right, C++ is used in space too! The <a href="https://en.wikipedia.org/wiki/James_Webb_Space_Telescope">James Webb Space Telescope</a> and the <a href="https://en.wikipedia.org/wiki/Mars_rover">Mars Rovers</a> all have components that are written using C++.</p>
 <figure>
 <img src="images/products/jwst.webp" height="600" alt="" /><figcaption><a href="https://webbtelescope.org/contents/media/images/01GK2KKTR81SGYF24YBGYG7TAP?Type=Observations&amp;page=1&amp;filterUUID=91dfa083-c258-4f9f-bef1-8f40c26f4c97">Pillars of Creation (NIRCam and MIRI Composite Image)</a>, a James Webb Space Telescope observation. Image courtesy of NASA, ESA, CSA, and STScI. Image processing conducted by Joseph DePasquale (STScI), Alyssa Pagan (STScI), and Anton M. Koekemoer (STScI).</figcaption>
 </figure>
@@ -200,9 +206,7 @@
 </blockquote>
 <p>is a fairly lofty objective because you have no way of determining if you do understand what kind of language C++ really is. It’s great at the high level, but terrible at the assessment level. To ground the objective in reality, we map each <em>objective</em> to one or more <em>outcomes</em>, such as</p>
 <blockquote>
-<ul>
-<li><em>describe</em> the design pillars upon which C++ rests</li>
-</ul>
+<p><em>describe</em> the design pillars upon which C++ rests</p>
 </blockquote>
 <p>Now we have some sort of schema for determining whether or not someone understands what C++ is. The verbs that hold pedagogical meaning are italicised, and are <a href="https://educationstandards.nsw.edu.au/wps/portal/nesa/11-12/hsc/hsc-student-guide/glossary-keywords">defined by the New South Wales Education Standards Authority’s Glossary of Key Words</a>.</p>
 <h3 id="a-note-to-teachers-and-experienced-programmers">A note to teachers and experienced programmers</h3>
