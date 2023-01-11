@@ -7,8 +7,23 @@
       <language>en-au</language>
       <atom:link href="https://blog.cjdb.xyz/feed.xml" rel="self" type="application/rss+xml" />
       <item>
+        <guid isPermaLink="false">41fe9675-61e1-47b8-a608-72d6f7f62fcf</guid>
+         <title>Applied Modern C++ --- Hello, C++!</title>
+         <pubDate>Mon, 15 Jan 2023 08:00:00 +0000</pubDate>
+         <link>https://blog.cjdb.xyz/applied-modern-cxx-02.html</link>
+         <description><![CDATA[Introduces the reader to their first C++ programs.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+      </item>
+        <guid isPermaLink="false">41fe9675-61e1-47b8-a608-72d6f7f62fcf</guid>
+         <title>Applied Modern C++ --- Introduction</title>
+         <pubDate>Mon, 15 Jan 2023 08:00:00 +0000</pubDate>
+         <link>https://blog.cjdb.xyz/applied-modern-cxx-01.html</link>
+         <description><![CDATA[Introduces the series Applied Modern C++.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+      </item>
+      <item>
         <guid isPermaLink="false">43e36161-ca10-4705-bdd4-cbe0e2048aa2</guid>
-         <title>Preferential Voting</title>
+         <title>How senators are elected</title>
          <pubDate>Tue, 14 May 2022 07:00:00 +0000</pubDate>
          <link>https://blog.cjdb.xyz/senate-elections</link>
          <description><![CDATA[In this article, we learn how Australian Senators are elected.]]></description>
