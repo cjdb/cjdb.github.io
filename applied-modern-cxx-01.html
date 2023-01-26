@@ -73,7 +73,7 @@
       <div class="row">
             <div class="col-12">
 
-      
+
       <div class="fixed-table">
 <div class="table-row-group">
 <div class="table-row">
@@ -93,30 +93,36 @@
 <p><em>Applied Modern C++</em> is a series of blog posts—written as if they were a part of a book—dedicated to helping you learn how to write programs using C++. Perhaps you’re taking a class on C++ programming at university, or are needing to learn how to use C++ for your next team, or are simply wanting to learn a new language to see how things are done in another programming language. Whatever the case may be, welcome to the world of C++!</p>
 <h2 id="chapter-table-of-contents">Chapter table of contents</h2>
 <ol type="1">
+<li><a href="#chapter-1-introduction">Chapter 1: Introduction</a>
+<ol type="1">
 <li><a href="#objectives-and-outcomes">Objectives and outcomes</a></li>
 <li><a href="#acknowledgements">Acknowledgements</a></li>
-<li><a href="#what-is-cxx">What is C++?</a>
+<li><a href="#what-is-c">What is C++?</a>
 <ol type="1">
-<li><a href="#is-cxx-still-worth-learning">Is C++ still worth learning?</a></li>
+<li><a href="#is-c-still-worth-learning">Is C++ still worth learning?</a></li>
 </ol></li>
 <li><a href="#who-this-series-is-written-for">Who this series is written for</a>
 <ol type="1">
-<li><a href="#cxx-is-not-a-programming-language-for-complete-novices">C++ is not a programming language for complete novices</a></li>
+<li><a href="#c-is-not-a-programming-language-for-complete-novices">C++ is not a programming language for complete novices</a></li>
 <li><a href="#back-to-experienced-programmers">Back to experienced programmers</a></li>
-<li><a href="#do-i-need-to-know-c-before-learning-cxx">Do I need to know C before learning C++?</a></li>
-<li><a href="#which-version-of-cxx-are-we-learning">Which version of C++ are we learning?</a></li>
+<li><a href="#do-i-need-to-know-c-before-learning-c">Do I need to know C before learning C++?</a></li>
+<li><a href="#which-version-of-c-are-we-learning">Which version of C++ are we learning?</a></li>
 </ol></li>
 <li><a href="#series-structure">Series structure</a>
 <ol type="1">
 <li><a href="#chapter-structure">Chapter structure</a></li>
-<li><a href="#a-note-to-experienced-programmers">A note to teachers and experienced programmers</a></li>
+<li><a href="#a-note-to-teachers-and-experienced-programmers">A note to teachers and experienced programmers</a></li>
 </ol></li>
-<li><a href="#the-cxx-community">The C++ community</a></li>
-<li><a href="#resources">Resources</a></li>
+<li><a href="#the-c-community">The C++ community</a></li>
+<li><a href="#resources">Resources</a>
+<ol type="1">
+<li><a href="#how-to-succeed-with-learning-c">How to succeed with learning C++</a></li>
+</ol></li>
 <li><a href="#feedback">Feedback</a></li>
 <li><a href="#summary">Summary</a></li>
+</ol></li>
 </ol>
-<h2 id="objectives-and-outcomes"><span id="objectives-and-outcomes">Objectives and outcomes</span></h2>
+<h2 id="objectives-and-outcomes">Objectives and outcomes</h2>
 <table>
 <colgroup>
 <col style="width: 41%" />
@@ -143,15 +149,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="acknowledgements"><span id="acknowledgements">Acknowledgements</span></h2>
+<h2 id="acknowledgements">Acknowledgements</h2>
 <p>Thank you to Sy Brand and Hana Dusíková for providing feedback on early drafts of this blog.</p>
-<h2 id="what-is-c"><span id="what-is-cxx">What is C++?</span></h2>
+<h2 id="what-is-c">What is C++?</h2>
 <p>A simple web-search for “what is C++?” will reveal a zillion different answers to the question. Most of them are correct from a certain point of view, so to get to the point, here’s a distilled definition:</p>
 <blockquote>
 <p>C++ is a programming language that prioritises performance by letting you choose appropriate abstractions for your situation.</p>
 </blockquote>
 <p>It achieves this because it’s built upon two philosophical design pillars. The first is that there shouldn’t be any room for another language between C++ and the hardware (except assembly). The second is that abstractions should have as little a cost as possible: preferably none, if we can get away with it.</p>
-<h3 id="is-c-still-worth-learning"><span id="is-cxx-still-worth-learning">Is C++ still worth learning?</span></h3>
+<h3 id="is-c-still-worth-learning">Is C++ still worth learning?</h3>
 <p>Every year, people either ask or try to answer this question. It’s an interesting question: your time is valuable, and you probably want to know whether it’s worth investing in this particular endeavour. If nothing else, like with most programming languages, taking the time out to learn C++ will broaden your perspective on how to write programs. To really answer the question, we must first ask another important question:</p>
 <blockquote>
 <p>What can I <em>use</em> C++ for?</p>
@@ -178,19 +184,19 @@
 </figure>
 <p>C++ is applicable to so many domains because it’s able to run on pretty much any computer. We’ll look at that in detail later on.</p>
 <p>We’ve seen around twenty unique domains so far, and we’re not even close to scratching the surface on how many use-cases C++ has in the real world. So, yes, I think you should learn C++ regardless of which year it is. You’ll definitely be able to find something that you can do using C++.</p>
-<h2 id="who-this-series-is-written-for"><span id="who-this-series-is-written-for">Who this series is written for</span></h2>
+<h2 id="who-this-series-is-written-for">Who this series is written for</h2>
 <p>This series targets programmers with at least a year’s experience with programming. Teaching complete novices is delicate work, backed by over four decades of peer-reviewed research into computer science education: I’m not qualified to teach that level.</p>
-<h3 id="c-is-not-a-programming-language-for-complete-novices"><span id="cxx-is-not-a-programming-language-for-complete-novices">C++ is not a programming language for complete novices</span></h3>
+<h3 id="c-is-not-a-programming-language-for-complete-novices">C++ is not a programming language for complete novices</h3>
 <p>Computer science education experts—those who have conducted peer-reviewed research—have identified that developing the ability to think in terms of algorithms is one of the first things that one should learn when starting to write code. Most industrially-used programming languages have a lot of things that will needlessly frustrate aspiring programmers during a critical stage in their development. This is true of C++, but also applies to other popular languages such as C, C#, Java, Rust, and Haskell.</p>
 <p>If you’re just starting out, I suggest you first learn <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers" target="_blank">Python</a>, or <a href="https://www.w3schools.com/js/" target="_blank">JavaScript</a>; and come back in a year’s time. However, if your heart’s set on learning C++ first, you are still welcome: just be prepared to spend a fair amount of time researching topics that will be considered assumed knowledge.</p>
-<h3 id="back-to-experienced-programmers"><span id="back-to-experienced-programmers">Back to experienced programmers</span></h3>
+<h3 id="back-to-experienced-programmers">Back to experienced programmers</h3>
 <p>You’ll need at least a few programs under your belt. Other than that, no experience is necessary. You don’t need to be well-versed in computer science or software engineering: everything we need will be discussed as it becomes relevant.</p>
-<h3 id="do-i-need-to-know-c-before-learning-c"><span id="do-i-need-to-know-c-before-learning-cxx">Do I need to know C before learning C++?</span></h3>
+<h3 id="do-i-need-to-know-c-before-learning-c">Do I need to know C before learning C++?</h3>
 <p>Plugging this into Google will give you a host of people saying that because C++ is based on C, you should learn C first. This is well intended advice, but it’s not the correct way to go about learning C++. Just like we don’t start learning to speak contemporary English by starting with <a href="https://en.wikipedia.org/wiki/Old_English" target="_blank">Old English</a>, <a href="https://en.wikipedia.org/wiki/Middle_English" target="_blank">Middle English</a>, or even <a href="https://en.wikipedia.org/wiki/Early_Modern_English" target="_blank">Early Modern English</a>, it makes little sense to learn C++ by starting with C. Well-written C programs look vastly different to well-written C++ programs, and so learning C for the sake of learning C++ will just have you writing lower quality code in both C and C++.</p>
 <p>There are definitely good reasons to learn how to write programs in C, but learning it in order to learn how to use C++ is not among them.</p>
-<h3 id="which-version-of-c-are-we-learning"><span id="which-version-of-cxx-are-we-learning">Which version of C++ are we learning?</span></h3>
+<h3 id="which-version-of-c-are-we-learning">Which version of C++ are we learning?</h3>
 <p>We presently use C++20, though this will likely change over time.</p>
-<h2 id="series-structure"><span id="series-structure">Series structure</span></h2>
+<h2 id="series-structure">Series structure</h2>
 <p>Learning C++ isn’t a small task, and so I’ve broken this series up to help you digest the content. If you were taking this as a third-year university course, you’d probably need around twelve or fifteen weeks with six hours of classes.</p>
 <p>There are two main sections: a section on <em>using</em> abstractions, and one on <em>building</em> abstractions. Each section is further divided into two modules, and each module will be comprised of many chapters.</p>
 <p><strong>Section 1: Using abstractions</strong></p>
@@ -204,7 +210,7 @@
 <li><strong>Module 4</strong> pulls the curtain back even further, revealing more abstraction techniques than its predecessor.</li>
 </ul>
 <p>There’s a rough <a href="applied-modern-cxx-00.html">table of contents</a>, if you’d like to see what’s ahead, but only Module 1 is seriously fleshed out.</p>
-<h3 id="chapter-structure"><span id="chapter-structure">Chapter structure</span></h3>
+<h3 id="chapter-structure">Chapter structure</h3>
 <p><strong>Objectives</strong></p>
 <p>At the start of each chapter, there will be a list of objectives for the chapter that outline where you’re expected to develop. The purpose of these objectives is to communicate what the chapter’s goals are, and what it hopes you’ll get out of the chapter.</p>
 <p><strong>Outcomes</strong></p>
@@ -217,27 +223,27 @@
 <p><em>describe</em> the design pillars upon which C++ rests</p>
 </blockquote>
 <p>Now we have some sort of schema for determining whether or not someone understands what C++ is. The verbs that hold pedagogical meaning are italicised, and are <a href="https://educationstandards.nsw.edu.au/wps/portal/nesa/11-12/hsc/hsc-student-guide/glossary-keywords" target="_blank">defined by the New South Wales Education Standards Authority’s Glossary of Key Words</a>.</p>
-<h3 id="a-note-to-teachers-and-experienced-programmers"><span id="a-note-to-experienced-programmers">A note to teachers and experienced programmers</span></h3>
+<h3 id="a-note-to-teachers-and-experienced-programmers">A note to teachers and experienced programmers</h3>
 <p>One of this series’ underpinning philosophical points is to <em>slowly</em> expose readers to content. It often does this by simplifying complex topics so that they’re digestible. If something seems incomplete or slightly off, then it’s very likely that we’re going to be revisiting the material in a later chapter in far more detail. While it’s likely that this series does contain mistakes, please make sure that this isn’t a simplification for the sake of the reader before correcting or “filling in the gaps”.</p>
-<h2 id="the-c-community"><span id="the-cxx-community">The C++ community</span></h2>
+<h2 id="the-c-community">The C++ community</h2>
 <p style="text-align: center;">
 <img src="images/include.webp" title="fig:" alt="#include &lt;C++&gt;" />
 </p>
-<p>If you’re looking for a group of people who are enthusiastic about C++, then #include &lt;C++&gt; should be your first stop. Not only is the group into C++, but they’re also about promoting kindness in professional workspaces, diversity, and inclusivity. Many groups are under-represented in software engineering, and particularly in C++ spaces: we’d like to change that. One of the coolest things that the group does is to sponsor people who are a part of under-represented groups to go to big C++ conferences like ACCU (Bristol, UK) and C++ North (Toronto, Canada).</p>
+<p>If you’re looking for a group of people who are enthusiastic about C++, then #include &lt;C++&gt; should be your first stop. Not only is the group into C++, but they’re also about promoting kindness in professional workspaces, diversity, and inclusivity. Many groups are under-represented in software engineering, and particularly in C++ spaces: we’d like to change that. One of the coolest things that the group does is to sponsor people who are a part of under-represented groups to go to big C++ conferences.</p>
 <p>For most people, the day-to-day advantage of #include &lt;C++&gt; is the <a href="https://www.includecpp.org/discord/" target="_blank">Discord server</a>, where you can talk about C++, diversity, and lots of domain-specific topics. There’s even got a section for C++ beginners!</p>
-<h2 id="resources"><span id="resources">Resources</span></h2>
+<h2 id="resources">Resources</h2>
 <p><a href="https://en.cppreference.com/w/" target="_blank">cppreference</a> is an unofficial, but extremely useful reference on standard C++. We’ll be consulting it for documentation.</p>
 <p>Since Module 1 is about grasping the basics, we’ll be using the online editor <a href="https://godbolt.org/z/1zjTqsqnz" target="_blank">Compiler Explorer</a>. Compiler Explorer is an extremely cheap buy-in that doesn’t involve you investing loads of time setting up a development environment, just to write your first few programs. Instead, we’ll get you up and running with minimal assembly; once you’re at a functional stage, we’ll sink some time into installing and exploring our toolchain in some detail. <strong>Each chapter will have its own Compiler Explorer link, and you should use it to ensure that you have the correct setup for that chapter.</strong></p>
-<h3 id="how-to-succeed-with-learning-c"><span id="how-to-succeed-with-learning-cxx">How to succeed with learning C++</span></h3>
+<h3 id="how-to-succeed-with-learning-c">How to succeed with learning C++</h3>
 <p>Let’s chat about how to succeed with learning C++. Peer-reviewed research has identified that people learning a new programming language tend to rely on features that feel familiar from previous programming languages; even if those features aren’t the best way to write programs in the new language. My own experience with teaching C++ to Java programmers at a university serves as additional evidence to those researchers’ point. To succeed in learning C++, you really do need to get to know C++ and be its friend, rather than an acquaintance that you only see at the shops every now and again. As such, try and challenge yourself to write C++ only using the features that we’ve discussed, and don’t use anything that might “feel” familiar from your prior experience.</p>
 <p>Most chapters will have a set of quzzies and exercises for you to complete, so that you’ve got a way to practice what we’ve covered. It’s important that you practice writing C++ at least a few times a week so that you meet the chapter objectives. It’s also important that you complete more than just the examples that we work through, because those examples are only a demonstration.</p>
 <p>Another tip for success is learning how to ask for help. This is an important skill that is rarely taught, and people often think they already know how to ask for help, so they don’t actually master this skill. If you take the time out to learn this from people who regularly offer help, you’ll find that your questions will be answered more quickly, and more richly.</p>
 <p>Once you’re close to the end of the series, you should start to read other people’s C++ code. We read code far more often than it’s written, and different programmers have different ways of approaching problems. Most of them won’t have read this content, and will thus be writing code that’s influenced by other means.</p>
 <p>Finally, remember to take breaks and look after yourself. Go out with friends, practice another hobby, study for another class. Routinely eat healthily, drink water, and get a good night’s sleep. I’ve been battling burnout for the past few years due to perpetually programming, and many of my friends who are also in their 20s and 30s are facing similar issues. Mixing stuff up and taking care of yourself is a good way to minimise burnout.</p>
-<h2 id="feedback"><span id="feedback">Feedback</span></h2>
+<h2 id="feedback">Feedback</h2>
 <p>If you’d like to provide feedback regarding this series, please <a href="https://github.com/cjdb/cjdb.github.io/issues" target="_blank">file an issue on GitHub</a>.</p>
 <p>If you’re interested in reading future chapters, subscribe to my <a href="https://blog.cjdb.xyz/feed.xml" target="_blank">RSS feed</a> to receive a notification at the time of publication. If you’d previously subscribed to my feed on my old website (www.cjdb.com.au), please be sure to note the new domain!</p>
-<h2 id="summary"><span id="summary">Summary</span></h2>
+<h2 id="summary">Summary</h2>
 <p>In this chapter, we demistified C++ from afar, calibrated the target audience of this text, and outlined how you can maximise your chances for success when learning a new programming language.</p>
 <div class="fixed-table">
 <div class="table-row-group">
