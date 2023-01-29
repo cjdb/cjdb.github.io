@@ -22,3 +22,10 @@ h1, h2, h3, h4, h5 {
   padding-bottom: 20px;
   width: 800px;
 }
+.abstract-machine-small {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 600px;
+}
