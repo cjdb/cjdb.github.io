@@ -2,6 +2,24 @@
 
 # Articles
 
+## [Applied Modern C++ --- Chapter 3: Simple types and objects](applied-modern-cxx-03.html)
+
+> 2023-01-30
+
+Introduces how to use some critically useful types.
+
+## [Applied Modern C++ --- Chapter 2: Hello, C++!](applied-modern-cxx-02.html)
+
+> 2023-01-16
+
+Introduces the reader to their first C++ programs.
+
+## [Applied Modern C++ --- Chapter 1: Introduction](applied-modern-cxx-01.html)
+
+> 2023-01-16
+
+Introduces the series Applied Modern C++.
+
 ## [How Senators are elected](senate-elections.md)
 
 > 2022-05-14
