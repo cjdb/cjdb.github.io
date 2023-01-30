@@ -7,6 +7,14 @@
       <language>en-au</language>
       <atom:link href="https://blog.cjdb.xyz/feed.xml" rel="self" type="application/rss+xml" />
       <item>
+        <guid isPermaLink="false">0c7f57c5-e53c-4678-8458-b999c3654a14</guid>
+         <title>Applied Modern C++ --- Simple types and objects</title>
+         <pubDate>Mon, 30 Jan 2023 15:00:00 +0000</pubDate>
+         <link>https://blog.cjdb.xyz/applied-modern-cxx-03.html</link>
+         <description><![CDATA[Introduces how to use some critically useful types.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+      </item>
+      <item>
         <guid isPermaLink="false">e94fe119-fe98-43ba-a6fd-ca0774f7bfea</guid>
          <title>Applied Modern C++ --- Hello, C++!</title>
          <pubDate>Mon, 15 Jan 2023 08:00:00 +0000</pubDate>
