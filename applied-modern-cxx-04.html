@@ -43,10 +43,80 @@
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
   <meta name="author" content="Christopher Di Bella" />
-  <title>Applied Modern C++: 404</title>
+  <meta name="date" content="2023-01-29" />
+  <title>Applied Modern C++ 4: Conversions</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
   <link rel="stylesheet" href="style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HPGZG0F5PP"></script>
+  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+  gtag('config', 'G-HPGZG0F5PP'); </script>
+  <meta name="keywords" content="C++, cplusplus, cpp, cxx" />
+  <meta name="description" content="Introduces the reader to conversions and initialisations." />
 </head>
 <body>
 
@@ -54,10 +124,11 @@
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">Applied Modern C++: 404</span>
+        <span class="doc-title">Applied Modern C++ 4: Conversions</span>
         <ul class="nav pull-right doc-info">
                     <li><p class="navbar-text">Christopher Di Bella</p></li>
-                            </ul>
+                              <li><p class="navbar-text">2023-01-29</p></li>
+                  </ul>
       </div>
     </div>
   </div>
@@ -69,15 +140,393 @@
       <div class="fixed-table">
 <div class="table-row-group">
 <div class="table-row">
+<div class="table-cell">
+<a href="applied-modern-cxx-03.html">Chapter 3: Types, objects, values</a>
+</div>
 <div class="table-cell" style="text-align: center;">
-<a href="applied-modern-cxx-00.html">Table of contents</a>
+<a href="applied-modern-cxx-00.html" target="_blank">Table of contents</a>
+</div>
+<div class="table-cell" style="text-align: right;">
+<a href="applied-modern-cxx-05.html">Chapter 5: Functions, scope, object lifetime</a>
 </div>
 </div>
 </div>
 </div>
-<h1 id="this-chapter-is-a-work-in-progress">This chapter is a work in progress!</h1>
-<p>You can see the release schedule for <em>Applied Modern C++</em> in the <a href="applied-modern-cxx-00.html">Table of Contents</a>.</p>
-<p>Please check back later, or subscribe to my <a href="feed.xml">RSS feed</a> to receive a notification at the time of publication. If you’d previously subscribed to my feed on my old website (www.cjdb.com.au), please be sure to note the new domain!</p>
+<h1 id="conversions-and-initialisation">Conversions and initialisation</h1>
+<p>Now that we have a rudimentary grasp of the type system and object model, we’re going to learn how conversions work, and two methods of initialisation.</p>
+<p>Don’t forget to open this lesson’s <a href="https://godbolt.org/z/sdv8Y9Ehd" target="_blank">Compiler Explorer</a> session! Unlike most other chapters—which use Catch2—we shall be printing to screen, since that should help you visualise what’s actually happening.</p>
+<h2 id="chapter-table-of-contents">Chapter table of contents</h2>
+<ol type="1">
+<li><a href="#conversions-and-initialisation">Conversions and initialisation</a>
+<ol type="1">
+<li><a href="#objectives-and-outcomes">Objectives and outcomes</a></li>
+<li><a href="#acknowledgements">Acknowledgements</a></li>
+<li><a href="#promotions">Promotions</a></li>
+<li><a href="#narrowing-conversions">Narrowing conversions</a></li>
+<li><a href="#mixing-expressions-with-different-types">Mixing expressions with different types</a>
+<ol type="1">
+<li><a href="#mixing-int-and-char-in-an-expression">Mixing <code>int</code> and <code>char</code> in an expression</a></li>
+<li><a href="#int-to-double-and-double-to-int-conversions"><code>int</code>-to-<code>double</code> and <code>double</code>-to-<code>int</code> conversions</a></li>
+<li><a href="#mixing-ints-and-doubles">Mixing <code>int</code>s and <code>double</code>s</a></li>
+</ol></li>
+<li><a href="#explicit-conversions">Explicit conversions</a></li>
+<li><a href="#minimising-conversions">Minimising conversions</a>
+<ol type="1">
+<li><a href="#braced-initialisation">Braced initialisation</a></li>
+<li><a href="#automatic-type-deduction">Automatic type deduction</a></li>
+</ol></li>
+<li><a href="#feedback">Feedback</a></li>
+<li><a href="#summary">Summary</a></li>
+</ol></li>
+</ol>
+<h2 id="objectives-and-outcomes">Objectives and outcomes</h2>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Objective (you will develop)</th>
+<th>Outcome (you will be able to)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>an understanding of conversions</td>
+<td><ul>
+<li><em>describe</em> promotions and narrowing conversions.</li>
+<li><em>recall</em> the direction promotions take.</li>
+<li><em>distinguish</em> between implicit conversions and explicit conversions.</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>skills in writing conversion operations</td>
+<td><ul>
+<li><em>synthesise</em> code that uses:
+<ul>
+<li>promotions and explicit conversions</li>
+<li>braced initialisation for built-in types</li>
+<li>type deduction</li>
+<li>expressions with mixed types</li>
+</ul></li>
+<li><em>synthesise</em> code that avoids implicit narrowing conversions.</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thank you to <a href="https://dippedrusk.com/" target="_blank">Vagrant Gautam</a> and Janet Cobb for providing feedback.</p>
+<h2 id="promotions">Promotions</h2>
+<p>Let’s start with the following program.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>{</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> letter = <span class="ch">&#39;A&#39;</span>; <span class="co">// value is 65 in UTF-8</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;letter: &#39;</span><span class="sc">{}</span><span class="st">&#39;</span><span class="sc">\n</span><span class="st">&quot;</span>, letter);</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> space = <span class="ch">&#39; &#39;</span>; <span class="co">// value is 32 in UTF-8</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;space: &#39;</span><span class="sc">{}</span><span class="st">&#39;</span><span class="sc">\n</span><span class="st">&quot;</span>, space);</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;letter + space: &#39;</span><span class="sc">{}</span><span class="st">&#39;</span><span class="sc">\n</span><span class="st">&quot;</span>, letter + space); <span class="co">// 65+32 in UTF-8 represents &#39;a&#39;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>}</span></code></pre></div>
+<p>You should get the following output:</p>
+<pre><code>letter: &#39;A&#39;
+space: &#39; &#39;
+letter + space: &#39;97&#39;</code></pre>
+<p>We can’t directly add <code>char</code>s. Although we can add two char objects, the value we get back seems to be an <code>int</code>. What’s going on there?</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-3/double-memory.svg"
+     title="An 8-by-4 grid of cells with the entire first row filled. The first row is as in Chapter 3. The second row has merged all eight of its cells into one big cell. Its type is `double`, and its value is π to eight decimal places."
+     alt="An 8-by-4 grid of cells with the entire first row filled. The first row is as in Chapter 3. The second row has merged all eight of its cells into one big cell. Its type is `double`, and its value is π to eight decimal places." />
+</center>
+<p>We looked at how objects with built-in types are represented in memory using an abstract machine in Chapter 3. With that machine, we saw that <code>int</code> is bigger than <code>char</code>, and that <code>double</code> is bigger than<code>int</code>. Also recall that values are bitwise representations of memory, with meaning given to them by types. Let’s take our value example from above and fit it into one of our object boxes.</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-4/char-a.svg"
+     title="An 8-by-1 grid of cells with the first cell filled. Its type is `char`, its value is `A`, and its binary representation is 0, 1, 0, 0, 0, 0, 0, 1, 0."
+     alt="An 8-by-1 grid of cells with the first cell filled. Its type is `char`, its value is `A`, and its binary representation is 0, 1, 0, 0, 0, 0, 0, 1, 0." />
+</center>
+<p>We only need one rows for this chapter. On this abstract machine, a byte is eight bits, which is consistent with most—if not all—modern computers. Our value only has seven significant bits, so it slips nicely into our <code>char</code> object, with a meaningless zero at the front.</p>
+<p>In code, that’s initialising our <code>char</code> with the value <code>'A'</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="dt">char</span> <span class="at">const</span> letter = <span class="ch">&#39;A&#39;</span>;</span></code></pre></div>
+<p>Now, what happens when we initialise an <code>int</code> object with our <code>letter</code>?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="dt">int</span> <span class="at">const</span> number = letter;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;number: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, number);</span></code></pre></div>
+<p>You should see <code>number: 65</code> appear in your program’s output. Looks like the <code>number</code> is <code>65</code>, but the <code>letter</code> is <code>'A'</code>: are the two values equal?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>fmt::print(<span class="st">&quot;letter == number: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, letter == number);</span></code></pre></div>
+<p>The system claims that they have the same value, but the character output is printing something completely different for <code>letter</code> and <code>number</code>! Remember that a value is how we interpret a bit sequence, and that types are responsible for doing that interpretation on our behalf.</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-4/char-int-a.svg"
+     title="An 8-by-1 grid of cells with the first cell filled as before. The next three cells are empty, and the final four cells are filled in to represent the integer 65. It has both the decimal representation for humans, and the binary representation for memory."
+     alt="An 8-by-1 grid of cells with the first cell filled as before. The next three cells are empty, and the final four cells are filled in to represent the integer 65. It has both the decimal representation for humans, and the binary representation for memory." />
+</center>
+<p>If we return to our abstract machine, we see that the value of <code>number</code> has the same significant bits as as <code>letter</code>. Remember that leading zeroes are insignificant.</p>
+<center>
+<pre><code>01000001
+⇓
+00000000 00000000 00000000 01000001</code></pre>
+</center>
+<p>When we try to write one type’s value into an object of a different type—like we are here—we’re performing a conversion. This <code>char</code>-to-<code>int</code> conversion is a special kind of conversion called a <em>promotion</em>, because an <code>int</code> is guaranteed to be able to store every possible value that a <code>char</code> can hold, and it’s a lossless conversion: we lose zero information.</p>
+<p><code>bool</code>-to-<code>int</code> conversions are also a promotion, for the same reason.</p>
+<p>Okay, so <code>char</code>-to-<code>int</code> conversions are promotions. What about <code>int</code>-to-<code>char</code> conversions? Are those possible?</p>
+<h2 id="narrowing-conversions">Narrowing conversions</h2>
+<p>Let’s go back to the abstract machine.</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-4/char-int-a.svg"
+     title="An 8-by-1 grid of cells with the first cell filled as before. The next three cells are empty, and the final four cells are filled in to represent the integer 65. It has both the decimal representation for humans, and the binary representation for memory."
+     alt="An 8-by-1 grid of cells with the first cell filled as before. The next three cells are empty, and the final four cells are filled in to represent the integer 65. It has both the decimal representation for humans, and the binary representation for memory." />
+</center>
+<p>If we were able to put the bits representing <code>'A'</code> into an <code>int</code>, and the bit sequence didn’t change, then it stands to reason that we can transfer those bits back, and keep the same value, right? Let’s find out.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="dt">char</span> <span class="at">const</span> another_letter = number;</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;another_letter: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, another_letter);</span></code></pre></div>
+<pre><code>another_letter: A</code></pre>
+<p>Okay, so it looks like this particular case worked out. What about if we have a much bigger number? Say, <span class="math inline">30017</span>, which needs fifteen bits to represent it?</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="dt">int</span> number = <span class="dv">30&#39;017</span>; <span class="co">// quote between digits is a digit separator</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;number: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, number);</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="dt">char</span> <span class="at">const</span> mystery = number;</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>fmt::print(<span class="st">&quot;mystery: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, mystery);</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>number = mystery;</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>fmt::print(<span class="st">&quot;number: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, number);</span></code></pre></div>
+<pre><code>number: 30017
+mystery: A
+number: 65</code></pre>
+<p>There’s now more information in <code>number</code> than a <code>char</code> can store, so the compiler first needs to compute a value that fits into a <code>char</code> object by wrapping the value around until it’s small enough to fit into the <code>char</code> object. Because we’re cramming a large value into a small space, we’re performing a lossy conversion. In other words, we lose information when we convert an <code>int</code> into a <code>char</code>. That’s why we get <code>65</code> back when we assign <code>mystery</code> to <code>number</code>.</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-4/int-to-char.svg"
+     title="The wide binary representation of 30017 is visually being 'fit' into the smaller `char` object by showing lines 'narrowing' it."
+     alt="The wide binary representation of 30017 is visually being 'fit' into the smaller `char` object by showing lines 'narrowing' it." />
+</center>
+<p>We call such conversions <em>narrowing conversions</em>, because we are putting a value into a region that might be too small for it to fit. All <code>int</code>-to-<code>char</code> conversions are narrowing, even if the value will fit into the <code>char</code> object, and similarly for <code>int</code>-to-<code>bool</code> conversions.</p>
+<h2 id="mixing-expressions-with-different-types">Mixing expressions with different types</h2>
+<h3 id="mixing-int-and-char-in-an-expression">Mixing <code>int</code> and <code>char</code> in an expression</h3>
+<p>When we mix ints and chars in expressions, the compiler will automatically convert the <code>char</code> to an <code>int</code>, and then evaluate the result. For example, the expression <code>'A' + 32</code> has the type <code>int</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="dt">int</span> <span class="at">const</span> number = <span class="ch">&#39;A&#39;</span> + <span class="dv">32</span>;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;number: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, number);</span></code></pre></div>
+<p>Of course, we can still store it in a <code>char</code> object.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="dt">char</span> <span class="at">const</span> letter = <span class="ch">&#39;A&#39;</span> + <span class="dv">32</span>;</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;letter: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, letter);</span></code></pre></div>
+<p>Let’s revisit the <code>char</code>-plus-<code>char</code> example.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>fmt::print(<span class="st">&quot;char + char: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, <span class="ch">&#39;A&#39;</span> + <span class="ch">&#39; &#39;</span>);</span></code></pre></div>
+<p>Due to some really old rules we inherited from a language designed in the sixties, performing arithmetic on chars immediately promotes <code>char</code> operands to <code>int</code>s. One of the reasons for this is because single-byte arithmetic is really easy to overflow, so the result is stored in an object that won’t overflow because it’s bigger. We don’t get this treatment for <code>int</code>s, however: an <code>int</code> plus an <code>int</code> is still an <code>int</code>.</p>
+<h3 id="int-to-double-and-double-to-int-conversions"><code>int</code>-to-<code>double</code> and <code>double</code>-to-<code>int</code> conversions</h3>
+<p>We’ve devoted a fair chunk of time to the <code>int</code>/<code>char</code> relationship because it’s fairly simple, and their representations are related. What about <code>int</code>-to-<code>double</code> conversions?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>{</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> gross = <span class="dv">144</span>;</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;gross: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, gross);</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> rational_gross = gross;</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;rational_gross * 2: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, rational_gross * <span class="dv">2</span>);</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>}</span></code></pre></div>
+<pre><code>gross: 144
+rational_gross: 144</code></pre>
+<p>It’s the same as before. Our abstract machine’s <code>double</code> object is eight bytes wide, which is twice as wide as an <code>int</code>. An <code>int</code>-to-<code>double</code> conversion will usually preserve all the information, but sometimes when the <code>int</code>’s magnitude is really big, a slight loss of precision can occur. I’ve never seen this happen on a modern, conventional PC, so I suspect it only happens on really exotic hardware: not the sort of stuff you’ll typically be using when learning C++. <code>int</code>-to-<code>double</code> conversions aren’t promotions, but they’re also not narrowing conversions.</p>
+<p><code>double</code>-to-<code>int</code> conversions, on the other hand, have more interesting and immediate consequences.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="dt">double</span> <span class="at">const</span> e = <span class="fl">2.71828183</span>;</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;e: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, e);</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="dt">int</span> <span class="at">const</span> e_as_int = e;</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>fmt::print(<span class="st">&quot;e_as_int: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, e_as_int);</span></code></pre></div>
+<pre><code>e: 2.71828183
+e_as_int: 2</code></pre>
+<p>Converting a <code>double</code> with a fractional component truncates (or discards) the fractional bit. That’s why an <code>int</code> representation of <code>e</code> is two and not three. Instead of rounding, it’s discarding the fractional component entirely. <code>double</code>-to-<code>int</code> conversions <em>are</em> narrowing conversions, and we’re only allowed to convert doubles to ints if the value can be represented by an <code>int</code>. Anything outside these bounds (e.g. infinity, <code>NaN</code>, etc.) is a logic error.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;limits&gt;</span><span class="pp"> </span><span class="co">// imports std::numeric_limits</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>{</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;int min value: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, <span class="bu">std::</span>numeric_limits&lt;<span class="dt">int</span>&gt;::min());</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;int max value: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, <span class="bu">std::</span>numeric_limits&lt;<span class="dt">int</span>&gt;::max());</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;double min value: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, <span class="bu">std::</span>numeric_limits&lt;<span class="dt">double</span>&gt;::min());</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;double max value: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, <span class="bu">std::</span>numeric_limits&lt;<span class="dt">double</span>&gt;::max());</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;double lowest value: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, <span class="bu">std::</span>numeric_limits&lt;<span class="dt">double</span>&gt;::lowest());</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true"></a>}</span></code></pre></div>
+<pre><code>int min value: -2147483648
+int max value: 2147483647
+double min value: 2.2250738585072014e-308
+double max value: 1.7976931348623157e+308
+double lowest value: -1.7976931348623157e+308</code></pre>
+<p>We can query the min/max values for <code>int</code>, <code>double</code>, and <code>char</code> using <code>std::numeric_limits</code>, with the type we want to query for inside angle brackets.</p>
+<h3 id="mixing-ints-and-doubles">Mixing <code>int</code>s and <code>double</code>s</h3>
+<p>We discussed <code>char</code> and cross-type operations involving <code>int</code> and <code>char</code> earlier, and how they always convert <code>char</code>s to <code>int</code>s before evaluating the operation. Take a moment to think about the code below before you copy it across to Compiler Explorer. What do you think happens for expressions involving <code>int</code>s and <code>double</code>s?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a>{</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> one_gross = <span class="dv">144</span>;</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> average_hobbit_height = <span class="fl">0.915</span>;</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;one gross of hobbits standing on each other&#39;s shoulders: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, one_gross * average_hobbit_height);</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;average_hobbit_height == 1: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, average_hobbit_height == <span class="dv">1</span>);</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a>}</span></code></pre></div>
+<pre><code>one gross of hobbits standing on each other&#39;s shoulders: 13176.0
+average_hobbit_height == 1: false</code></pre>
+<p>When mixing <code>int</code>s and <code>double</code>s in expressions, our <code>int</code>s are converted to <code>double</code>s, and so the resulting expression is a <code>double</code> expression.</p>
+<h2 id="explicit-conversions">Explicit conversions</h2>
+<p>What we’ve looked at so far in this chapter are called <em>implicit conversions</em>: that is, we’re converting values from one type to another, but we’re not stating that we ever intended to convert. This is often okay for lossless conversions: there’s no potential information loss, so we can get away without saying anything in many situations. Narrowing conversions, on the other hand, are a different story: it’s unclear as to whether or not you’re even aware that narrowing is happening.</p>
+<p>Ordinarily, we should try to minimise the number of conversions that we make by choosing appropriate types ahead of time. While this is a nice ideal, we can’t completely avoid conversions. Fortunately, C++ has a nice, loud way to tell readers that your intention is to narrow: called <code>static_cast</code>. This <code>static_cast</code> operator is known as an <em>explicit cast</em>, and is the preferred way to perform conversions (if you need to do a conversion at all).</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>{</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> average_hobbit_height = <span class="fl">0.915</span>;</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;average_hobbit_height: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, <span class="kw">static_cast</span>&lt;<span class="dt">int</span>&gt;(average_hobbit_height));</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;30&#39;017 as char: &#39;</span><span class="sc">{}</span><span class="st">&#39;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="kw">static_cast</span>&lt;<span class="dt">char</span>&gt;(<span class="dv">30&#39;017</span>));</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true"></a>}</span></code></pre></div>
+<p>We achieve this explicit cast by saying <code>static_cast&lt;destination_type&gt;(expression_to_convert)</code>. It’s a bit of a mouthful, but it’s almost impossible to miss when reading. The above code should print the following output.</p>
+<pre><code>average_hobbit_height: 0
+30&#39;017 as char: &#39;A&#39;</code></pre>
+<h2 id="minimising-conversions">Minimising conversions</h2>
+<p>We’ve talked about how implicit lossless conversions are usually okay, and why implicit narrowing conversions are not. The previous section also hinted that it’s better to avoid conversions whenever possible. At this point, it would be reasonable for you to ask if there’s a way to clamp down on making implicit narrowing conversions. There are a few ways that we can put a stop to implicit narrowing conversions. We’ll look at two.</p>
+<h3 id="braced-initialisation">Braced initialisation</h3>
+<p>The first way is to replace the equals sign in our initialisation with braces (<code>{</code> and <code>}</code>). This <em>braced-initialization</em> prohibits narrowing conversions. For now, just use it with built-in types: that is, don’t use it for <code>std::string</code>. In the program below, we attempt to initialise a <code>char</code> constant with an <code>int</code> variable.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a>{</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a>  <span class="dt">int</span> whole_number{<span class="dv">45</span>};</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;whole_number: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, whole_number);</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> letter{whole_number};</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;letter: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, letter);</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true"></a>}</span></code></pre></div>
+<p>We know from previous sections that <code>char const letter = whole_number</code> will work out okay, but now that we’re using this braced-initialisation, we get a compiler diagnostic<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<pre><code>error: non-constant-expression cannot be narrowed from type &#39;int&#39; to &#39;char&#39; in initializer list [-Wc++11-narrowing]
+  char const letter{whole_number};
+                    ^~~~~~~~~~~~
+note: insert an explicit cast to silence this issue
+  char const letter{whole_number};
+                    ^~~~~~~~~~~~
+                    static_cast&lt;char&gt;( )</code></pre>
+<p>This is good news: it means that the compiler is helping us catch subtle mistakes that could lead to catastrophic run-time errors<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. What about if <code>whole_number</code> was a constant? It turns out that for this very simple program, the compiler is able to determine that <code>45</code> will indeed fit in a <code>char</code>, and so it doesn’t give us a diagnostic. If the value wasn’t right in front of us, or the value were too big (say, <code>450</code>), then the compiler would issue an error instead of a program.</p>
+<p>Similarly, this error happens when we try to narrow <code>char</code>s to <code>bool</code>s, and <code>double</code>s to <code>int</code>s. This is a good thing: we’re limiting our ability to make mistakes by relying on the compiler.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>{</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> letter{<span class="ch">&#39;A&#39;</span>};</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> truth{letter};</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;truth: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, truth);</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> zero{<span class="fl">0.0</span>};</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;zero: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, zero);</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true"></a>}</span></code></pre></div>
+<pre><code>error: non-constant-expression cannot be narrowed from type &#39;char&#39; to &#39;bool&#39; in initializer list [-Wc++11-narrowing]
+  bool const truth{letter};
+                   ^~~~~~
+note: insert an explicit cast to silence this issue
+  bool const truth{letter};
+                   ^~~~~~
+                   static_cast&lt;bool&gt;( )
+error: type &#39;double&#39; cannot be narrowed to &#39;int&#39; in initializer list [-Wc++11-narrowing]
+  int const zero{0.0};
+                 ^~~
+note: insert an explicit cast to silence this issue
+  int const zero{0.0};
+                 ^~~
+                 static_cast&lt;int&gt;( )</code></pre>
+<p>The types don’t need to be an exact match: promotions and other lossless conversions are allowed because we know that the information will never be lost.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a>{</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> letter{<span class="ch">&#39;A&#39;</span>};</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;letter: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, letter);</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> letter_as_int{letter};</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;letter_as_int: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, letter_as_int);</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> truth_as_number{<span class="kw">true</span>};</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;truth_as_number: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, truth_as_number);</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> letter_as_double{letter};</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;letter_as_double: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, letter_as_double);</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true"></a>}</span></code></pre></div>
+<pre><code>letter: A
+letter_as_int: 65
+truth_as_number: 1
+letter_as_double: 65</code></pre>
+<p>This braced initialisation is the first way to prevent implicit narrowing conversions. Let’s move on to the second approach.</p>
+<h3 id="automatic-type-deduction">Automatic type deduction</h3>
+<p>Up until now, we’ve been explicitly stating the type of each object.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="dt">int</span> <span class="at">const</span> meaning_of_life = <span class="dv">42</span>;</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="dt">double</span> <span class="at">const</span> pi = <span class="fl">3.14159265</span>;</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a><span class="dt">char</span> <span class="at">const</span> first_latin_letter = <span class="ch">&#39;A&#39;</span>;</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a><span class="dt">bool</span> <span class="at">const</span> book_on_cxx = <span class="kw">true</span>;</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a><span class="bu">std::</span>string <span class="at">const</span> book_name = <span class="st">&quot;Applied Modern C++&quot;</span>;</span></code></pre></div>
+<p>With the exception of <code>std::string</code>, we know that each type that we’ve looked at so far has its own literal. All literals are expressions, and all expressions have types. It’s reasonable to conclude that the literals we’re using at the moment have the same types as the ones we’re putting them beside. That is:</p>
+<ul>
+<li><code>42</code> has the type <code>int</code></li>
+<li><code>3.14159265</code> has the type <code>double</code></li>
+<li><code>'A'</code> has the type <code>char</code></li>
+<li><code>true</code> has the type <code>bool</code></li>
+</ul>
+<p>Since each literal has a type associated with it, spelling out the name of the type is redundant. We can instead let the compiler automatically <em>deduce</em> the type on our behalf, by looking at the type on the right-hand side of the initialisation.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a>{</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a>  <span class="kw">auto</span> <span class="at">const</span> meaning_of_life = <span class="dv">42</span>;</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;meaning_of_life: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, meaning_of_life);</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true"></a>  <span class="kw">auto</span> <span class="at">const</span> pi = <span class="fl">3.14159265</span>;</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;pi: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, pi);</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true"></a>  <span class="kw">auto</span> <span class="at">const</span> first_latin_letter = <span class="ch">&#39;A&#39;</span>;</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;first_latin_letter: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, first_latin_letter);</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true"></a>  <span class="kw">auto</span> <span class="at">const</span> book_on_cxx = <span class="kw">true</span>;</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;book_on_cxx: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, book_on_cxx);</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true"></a>}</span></code></pre></div>
+<pre><code>meaning_of_life: 42
+pi: 3.14159265
+first_latin_letter: A
+book_on_cxx: true</code></pre>
+<p>These <code>auto</code>-declared types are identical to their explicit-type counterparts. The only difference is that we are asking the compiler to work out the type of our constant (or variable) based on the type of what’s on the right-hand side of the <code>=</code>. This almost reads like a mathematical description such as “let <span class="math inline"><em>p</em><em>i</em> = 3.14159265</span>”.</p>
+<p>Relying on type deduction helps us produce programs that are more likely to be correct. In cases where we only care about working with integers, it’s less important that we specifically use <code>int</code>, and more important that we program against the interface that integers offer us. Code changes over time; when we code against interfaces and let the compiler choose types on our behalf, it means that maintenance updates more seamlessly propagate through our code. Another reason that this syntax improves correctness is because the compiler requires us to initialise our variables in order to deduce the type.</p>
+<p>Our objects’ types are usually correct from the moment of declaration when we rely on type deduction. In cases where you really, really, really need to say what the type is, you can still do that. For example, to define a string using <code>auto</code>, we need to say the type on the <em>right-hand side</em> of the declaration:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="kw">auto</span> <span class="at">const</span> book_name = <span class="bu">std::</span>string(<span class="st">&quot;Applied Modern C++&quot;</span>);</span></code></pre></div>
+<p>This sort of reads as “let the constant <code>book_name</code> be a <code>std::string</code> with the value <code>"Applied Modern C++"</code>”. Because <code>std::string</code> isn’t a built-in type, we <em>need</em> to specify the type. We can also say the type’s name when using <code>auto</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="kw">auto</span> <span class="at">const</span> gross = <span class="dt">int</span>{<span class="dv">144</span>};</span></code></pre></div>
+<p>When the right-hand side of <code>=</code> isn’t a literal, the situation is pretty much the same. The objects that we’re defining have the same type as whatever is on the right-hand side.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="kw">auto</span> <span class="at">const</span> two_squared = <span class="bu">std::</span>pow(<span class="dv">2</span>, <span class="dv">2</span>);</span></code></pre></div>
+<p>As we progress, we’ll see more reasons for preferring this syntax. We’ll be using <code>auto</code> on the left-hand side of all object declarations from now on. I encourage you to make liberal use of it in your own code, or to at least stick with it until you finish the series, and only then evaluate whether or not you like the style. New stuff can be scary, so I completely understand if you’re cautious at the moment (I was staunchly against using <code>auto</code> when it was first shown to me). Give it some time, and you should find that your apprehension will eventually fade.</p>
+<h2 id="feedback">Feedback</h2>
+<p>If you’d like to provide feedback regarding this series, please <a href="https://github.com/cjdb/cjdb.github.io/issues" target="_blank">file an issue on GitHub</a>.</p>
+<p>If you’re interested in reading future chapters, subscribe to my <a href="https://blog.cjdb.xyz/feed.xml" target="_blank">RSS feed</a> to receive a notification at the time of publication. If you’d previously subscribed to my feed on my old website (www.cjdb.com.au), please be sure to note the new domain!</p>
+<h2 id="summary">Summary</h2>
+<p>This chapter broke down several kinds of conversions, which fell into two broad categories: implicit and explicit. We also discussed why conversions should be avoided, and strategies for avoiding them.</p>
+<div class="fixed-table">
+<div class="table-row-group">
+<div class="table-row">
+<div class="table-cell">
+<a href="applied-modern-cxx-03.html">Chapter 3: Types, objects, values</a>
+</div>
+<div class="table-cell" style="text-align: center;">
+<a href="applied-modern-cxx-00.html" target="_blank">Table of contents</a>
+</div>
+<div class="table-cell" style="text-align: right;">
+<a href="applied-modern-cxx-05.html">Chapter 5: Functions, scope, object lifetime</a>
+</div>
+</div>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>A diagnostic is any message that the compiler communicates to the programmer, including error messages, warnings, and notes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>While something such as an implicit conversion gone wrong might seem small, under the right circumstances, it can be a <a href="https://en.wikipedia.org/wiki/Ariane_5#Notable_launches" target="_blank">billion-dollar mistake</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
             </div>
     </div>
   </div>
