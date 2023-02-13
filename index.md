@@ -2,6 +2,12 @@
 
 # Articles
 
+## [Applied Modern C++ --- Chapter 4: Conversions](applied-modern-cxx-04.html)
+
+> 2023-02-12
+
+Introduces type conversions and initialisation.
+
 ## [Applied Modern C++ --- Chapter 3: Simple types and objects](applied-modern-cxx-03.html)
 
 > 2023-01-30

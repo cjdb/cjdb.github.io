@@ -116,7 +116,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
   gtag('config', 'G-HPGZG0F5PP'); </script>
   <meta name="keywords" content="C++, cplusplus, cpp, cxx" />
-  <meta name="description" content="Introduces the reader to conversions and initialisations." />
+  <meta name="description" content="Introduces type conversions and initialisation." />
 </head>
 <body>
 
@@ -216,7 +216,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <h2 id="acknowledgements">Acknowledgements</h2>
-<p>Thank you to <a href="https://dippedrusk.com/" target="_blank">Vagrant Gautam</a> and Janet Cobb for providing feedback.</p>
+<p>Thank you to <a href="https://dippedrusk.com/" target="_blank">Vagrant Gautam</a>, <a href="https://lesleylai.info/" target="_blank">Lesley Lai</a>, and Janet Cobb for providing feedback.</p>
 <h2 id="promotions">Promotions</h2>
 <p>Let’s start with the following program.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
@@ -328,7 +328,7 @@ number: 65</code></pre>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>}</span></code></pre></div>
 <pre><code>gross: 144
 rational_gross: 144</code></pre>
-<p>It’s the same as before. Our abstract machine’s <code>double</code> object is eight bytes wide, which is twice as wide as an <code>int</code>. An <code>int</code>-to-<code>double</code> conversion will usually preserve all the information, but sometimes when the <code>int</code>’s magnitude is really big, a slight loss of precision can occur. I’ve never seen this happen on a modern, conventional PC, so I suspect it only happens on really exotic hardware: not the sort of stuff you’ll typically be using when learning C++. <code>int</code>-to-<code>double</code> conversions aren’t promotions, but they’re also not narrowing conversions.</p>
+<p>It’s the same as before. Our abstract machine’s <code>double</code> object is eight bytes wide, which is twice as wide as an <code>int</code>. An <code>int</code>-to-<code>double</code> conversion will usually preserve all the information, but sometimes when the <code>int</code>’s magnitude is really big, a slight loss of precision can occur. I’ve never seen this happen on a modern, conventional PC, so I suspect it only happens on really exotic hardware: not the sort of stuff you’ll typically be using when learning C++. As a result, <code>int</code>-to-<code>double</code> conversions are considered narrowing conversions.</p>
 <p><code>double</code>-to-<code>int</code> conversions, on the other hand, have more interesting and immediate consequences.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="dt">double</span> <span class="at">const</span> e = <span class="fl">2.71828183</span>;</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;e: </span><span class="sc">{}\n</span><span class="st">&quot;</span>, e);</span>
