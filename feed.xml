@@ -8,8 +8,16 @@
       <atom:link href="https://blog.cjdb.xyz/feed.xml" rel="self" type="application/rss+xml" />
       <item>
         <guid isPermaLink="false">hpwgMGlGLUCeB6eCR5RyTw</guid>
+         <title>Applied Modern C++ 5 --- Functions</title>
+         <pubDate>Mon, 27 Feb 2023 08:00:00 +0000</pubDate>
+         <link>https://blog.cjdb.xyz/applied-modern-cxx-05.html</link>
+         <description><![CDATA[Covers how to use functions in C++.]]></description>
+         <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>
+      </item>
+      <item>
+        <guid isPermaLink="false">hpwgMGlGLUCeB6eCR5RyTw</guid>
          <title>Applied Modern C++ 4 --- Conversions</title>
-         <pubDate>Mon, 30 Jan 2023 15:00:00 +0000</pubDate>
+         <pubDate>Mon, 13 Jan 2023 08:00:00 +0000</pubDate>
          <link>https://blog.cjdb.xyz/applied-modern-cxx-04.html</link>
          <description><![CDATA[Introduces type conversions and initialisation.]]></description>
          <author>cjdb.ns@gmail.com (Christopher Di Bella)</author>

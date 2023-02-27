@@ -2,9 +2,15 @@
 
 # Articles
 
+## [Applied Modern C++ --- Chapter 5: Functions](applied-modern-cxx-05.html)
+
+> 2023-02-27
+
+Covers how to use functions in C++.
+
 ## [Applied Modern C++ --- Chapter 4: Conversions](applied-modern-cxx-04.html)
 
-> 2023-02-12
+> 2023-02-13
 
 Introduces type conversions and initialisation.
 
