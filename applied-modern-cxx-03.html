@@ -51,6 +51,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -83,11 +84,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -96,14 +97,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -113,8 +114,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <link rel="stylesheet" href="style.css" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HPGZG0F5PP"></script>
-  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-  gtag('config', 'G-HPGZG0F5PP'); </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HPGZG0F5PP');
+  </script>
   <meta name="keywords" content="C++, cplusplus, cpp, cxx" />
   <meta name="description" content="Introduces how to use some critically useful types." />
 </head>
@@ -124,9 +130,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">Applied Modern C++ 3: Simple types and objects</span>
+        <span class="doc-title">Applied Modern C++ 3: Simple types and
+objects</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Christopher Di Bella</p></li>
+                    <li><p class="navbar-text">Christopher Di
+Bella</p></li>
                               <li><p class="navbar-text">2023-01-30</p></li>
                   </ul>
       </div>
@@ -144,17 +152,24 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <a href="applied-modern-cxx-02.html">Chapter 2: Hello, C++!</a>
 </div>
 <div class="table-cell" style="text-align: center;">
-<a href="applied-modern-cxx-00.html" target="_blank">Table of contents</a>
+<a href="applied-modern-cxx-00.html" target="_blank">Table of
+contents</a>
 </div>
 <div class="table-cell" style="text-align: right;">
-<a href="applied-modern-cxx-04.html">Chapter 4: Conversions and initialisation</a>
+<a href="applied-modern-cxx-04.html">Chapter 4: Conversions and
+initialisation</a>
 </div>
 </div>
 </div>
 </div>
 <h1 id="simple-types-and-objects">Simple types and objects</h1>
-<p>This chapter introduces you to the very basics of the type system and object model, as well as useful expressions. Much of this chapter will feel like revision, but you should still pay attention since there are going to be subtle differences from what you’re used to.</p>
-<p>Be sure to open a new session of <a href="https://godbolt.org/z/Kdc8aoocj" target="_blank">Compiler Explorer</a>.</p>
+<p>This chapter introduces you to the very basics of the type system and
+object model, as well as useful expressions. Much of this chapter will
+feel like revision, but you should still pay attention since there are
+going to be subtle differences from what you’re used to.</p>
+<p>Be sure to open a new session of <a
+href="https://godbolt.org/z/Kdc8aoocj" target="_blank">Compiler
+Explorer</a>.</p>
 <h2 id="chapter-table-of-contents">Chapter table of contents</h2>
 <ol type="1">
 <li><a href="#simple-types-and-objects">Simple types and objects</a>
@@ -168,7 +183,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="#values">Values</a></li>
 <li><a href="#expressions">Expressions</a></li>
 </ol></li>
-<li><a href="#manipulating-numbers-logic-and-text">Manipulating numbers, logic, and text</a>
+<li><a href="#manipulating-numbers-logic-and-text">Manipulating numbers,
+logic, and text</a>
 <ol type="1">
 <li><a href="#introducing-catch2">Introducing Catch2</a></li>
 <li><a href="#constants">Constants</a>
@@ -182,8 +198,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="#strings">Strings</a></li>
 </ol></li>
 </ol></li>
-<li><a href="#object-representation-in-memory">Object representation in memory</a></li>
-<li><a href="#variables-and-modifying-expressions">Variables and modifying expressions</a></li>
+<li><a href="#object-representation-in-memory">Object representation in
+memory</a></li>
+<li><a href="#variables-and-modifying-expressions">Variables and
+modifying expressions</a></li>
 <li><a href="#const-correctness"><code>const</code>-correctness</a></li>
 </ol></li>
 <li><a href="#feedback">Feedback</a></li>
@@ -208,23 +226,29 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <td><ul>
 <li><em>define</em> the terms ‘type’, ‘object’, and ‘value’.</li>
 <li><em>describe</em> the relationship between objects and memory.</li>
-<li><em>distinguish</em> between C++ objects and other languages’ definitions.</li>
-<li><em>identify</em> the go-to types for arithmetic, logic, and text.</li>
-<li><em>describe</em> how the go-to types are represented as objects in an abstract machine.</li>
+<li><em>distinguish</em> between C++ objects and other languages’
+definitions.</li>
+<li><em>identify</em> the go-to types for arithmetic, logic, and
+text.</li>
+<li><em>describe</em> how the go-to types are represented as objects in
+an abstract machine.</li>
 </ul></td>
 </tr>
 <tr class="even">
 <td>an understanding of <code>const</code>-correctness</td>
 <td><ul>
 <li><em>distinguish</em> between constants and variables.</li>
-<li><em>describe</em> the benefits of <code>const</code>-correctness.</li>
-<li><em>evaluate</em> when variables are more appropriate than constants.</li>
+<li><em>describe</em> the benefits of
+<code>const</code>-correctness.</li>
+<li><em>evaluate</em> when variables are more appropriate than
+constants.</li>
 </ul></td>
 </tr>
 <tr class="odd">
 <td>skills in defining objects</td>
 <td><ul>
-<li><em>synthesise</em> programs that define constants and variables.</li>
+<li><em>synthesise</em> programs that define constants and
+variables.</li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -236,9 +260,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td>skills in arithmetic, logic, and string operations</td>
 <td><ul>
-<li><em>synthesise</em> arithmetic expressions for integers and floating-point numbers, including
+<li><em>synthesise</em> arithmetic expressions for integers and
+floating-point numbers, including
 <ul>
-<li>addition, subtraction, multiplication, division, and modular arithmetic</li>
+<li>addition, subtraction, multiplication, division, and modular
+arithmetic</li>
 <li>compound assignment involving the above operations</li>
 <li>increment and decrement operations</li>
 </ul></li>
@@ -259,12 +285,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <h2 id="acknowledgements">Acknowledgements</h2>
-<p>Thank you to <a href="https://dippedrusk.com/" target="_blank">Vagrant Gautam</a>, <a href="https://github.com/killerbee13" target="_blank">killerbee13</a>, and Janet Cobb for providing feedback.</p>
-<p>Thank you to Maren Pan for introducing me to Figma (the tool used for making graphics), and Luke D’Alessandro for providing alternative wording for the definition of objects.</p>
+<p>Thank you to <a href="https://dippedrusk.com/"
+target="_blank">Vagrant Gautam</a>, <a
+href="https://github.com/killerbee13" target="_blank">killerbee13</a>,
+and Janet Cobb for providing feedback.</p>
+<p>Thank you to Maren Pan for introducing me to Figma (the tool used for
+making graphics), and Luke D’Alessandro for providing alternative
+wording for the definition of objects.</p>
 <h2 id="vocabulary-calibration">Vocabulary calibration</h2>
-<p>Before we dive into code, we’re gonna quickly revise our vocabulary, since these terms often differ between languages, and they all have precise meanings in C++.</p>
+<p>Before we dive into code, we’re gonna quickly revise our vocabulary,
+since these terms often differ between languages, and they all have
+precise meanings in C++.</p>
 <h3 id="types">Types</h3>
-<p>We use <em>types</em> to specify sets of valid operations and values. Examples include <code>int</code>, <code>double</code>, <code>bool</code>, <code>char</code>, and <code>std::string</code>. Types are used to describe objects.</p>
+<p>We use <em>types</em> to specify sets of valid operations and values.
+Examples include <code>int</code>, <code>double</code>,
+<code>bool</code>, <code>char</code>, and <code>std::string</code>.
+Types are used to describe objects.</p>
 <h3 id="objects">Objects</h3>
 <center>
 <img class="abstract-machine"
@@ -272,55 +308,104 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
      title="An 8-by-4 grid of cells with only the first cell filled in. The first cell has the type `char` and the value `'A'`."
      alt="An 8-by-4 grid of cells with only the first cell filled in. The first cell has the type `char` and the value `'A'`." />
 </center>
-<p>An <em>object</em> is an instance of a type that occupies a region of memory. This includes built-in types, which you might find surprising if you’re coming from an object-oriented language like Java, where only class instances are considered objects.</p>
+<p>An <em>object</em> is an instance of a type that occupies a region of
+memory. This includes built-in types, which you might find surprising if
+you’re coming from an object-oriented language like Java, where only
+class instances are considered objects.</p>
 <h3 id="values">Values</h3>
-<p><em>Values</em> are the interpretation of an object according to a type, or a bit more plainly, what its meaning is. Values give <em>human meaning</em> to types and objects. Since objects are in memory, values are encoded in binary, and types transform that bit sequence into something reasonable to humans. For example, the bit sequence <code>01000001</code> will be interpreted as <code>65</code> when we’re working with integers, but as the letter <code>A</code> when doing text processing; it’s up to the type to tell us what it means.</p>
+<p><em>Values</em> are the interpretation of an object according to a
+type, or a bit more plainly, what its meaning is. Values give <em>human
+meaning</em> to types and objects. Since objects are in memory, values
+are encoded in binary, and types transform that bit sequence into
+something reasonable to humans. For example, the bit sequence
+<code>01000001</code> will be interpreted as <code>65</code> when we’re
+working with integers, but as the letter <code>A</code> when doing text
+processing; it’s up to the type to tell us what it means.</p>
 <h3 id="expressions">Expressions</h3>
-<p>Finally, an <em>expression</em> describes a specific computation. Some expressions, like addition, result in values; others cause side effects, like writing to the standard output.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="dv">1</span> + <span class="dv">2</span>; <span class="co">// returns a value</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>fmt::print(<span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span>);</span></code></pre></div>
-<h2 id="manipulating-numbers-logic-and-text">Manipulating numbers, logic, and text</h2>
-<p>Since the most fundamental things that a program can do are to manipulate numbers, logic, and text, we’ll keep this chapter simple, and dedicate it to them. Other interesting stuff like functions and collections appear in the two chapters following. Let’s jump into Compiler Explorer now, and start looking at some code.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;catch2/catch_test_macros.hpp&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Integers&quot;</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>{</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Finally, an <em>expression</em> describes a specific computation.
+Some expressions, like addition, result in values; others cause side
+effects, like writing to the standard output.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span><span class="op">;</span> <span class="co">// returns a value</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span></code></pre></div>
+<h2 id="manipulating-numbers-logic-and-text">Manipulating numbers,
+logic, and text</h2>
+<p>Since the most fundamental things that a program can do are to
+manipulate numbers, logic, and text, we’ll keep this chapter simple, and
+dedicate it to them. Other interesting stuff like functions and
+collections appear in the two chapters following. Let’s jump into
+Compiler Explorer now, and start looking at some code.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;catch2/catch_test_macros.hpp&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Integers&quot;</span><span class="op">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h3 id="introducing-catch2">Introducing Catch2</h3>
-<p>You should notice that instead of including <code>&lt;fmt/format.h&gt;</code> at the top, we now have <code>&lt;catch2/catch_test_macros.hpp&gt;</code>. <a href="https://github.com/catchorg/Catch2" target="_blank">Catch2</a> is a popular <a href="https://en.wikipedia.org/wiki/Unit_testing" target="_blank">unit-test</a> framework for C++, and we’ll often use it instead of writing trivial programs that are written to standard output. This will help you get to a functional level faster, since you’ll be able to test your code from the get-go. The framework handles the <code>main</code> for us in its implementation details, so we don’t need to worry about writing it out: instead, we’ll be writing test cases. All test cases are spelt with <code>TEST_CASE</code>, followed by a unique string inside the parentheses.</p>
+<p>You should notice that instead of including
+<code>&lt;fmt/format.h&gt;</code> at the top, we now have
+<code>&lt;catch2/catch_test_macros.hpp&gt;</code>. <a
+href="https://github.com/catchorg/Catch2" target="_blank">Catch2</a> is
+a popular <a href="https://en.wikipedia.org/wiki/Unit_testing"
+target="_blank">unit-test</a> framework for C++, and we’ll often use it
+instead of writing trivial programs that are written to standard output.
+This will help you get to a functional level faster, since you’ll be
+able to test your code from the get-go. The framework handles the
+<code>main</code> for us in its implementation details, so we don’t need
+to worry about writing it out: instead, we’ll be writing test cases. All
+test cases are spelt with <code>TEST_CASE</code>, followed by a unique
+string inside the parentheses.</p>
 <h3 id="constants">Constants</h3>
 <h4 id="integers">Integers</h4>
 <p>Let’s start by defining a constant integer.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Integers&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>{</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> width = <span class="dv">2</span>;</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>}</span></code></pre></div>
-<p>We use the type <code>int</code> to represent integers. Here, we’ve just defined an integer <em>constant</em> named <code>width</code> and initialised it with the value <code>2</code>. A constant is an object that has an identifier, and its value can’t be changed (i.e. its value remains constant).</p>
-<p>To define a constant, we specify the type (e.g. <code>int</code>), then add the <code>const</code>-qualifier, followed by the constant’s name (e.g. <code>width</code>), and then we initialise it with a value (e.g. <code>= 2</code>). If we forget to initialise our constant, then the compiler will tell us that.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Integers&quot;</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>{</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> width;</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Integers&quot;</span><span class="op">)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="at">const</span> width <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>We use the type <code>int</code> to represent integers. Here, we’ve
+just defined an integer <em>constant</em> named <code>width</code> and
+initialised it with the value <code>2</code>. A constant is an object
+that has an identifier, and its value can’t be changed (i.e. its value
+remains constant).</p>
+<p>To define a constant, we specify the type (e.g. <code>int</code>),
+then add the <code>const</code>-qualifier, followed by the constant’s
+name (e.g. <code>width</code>), and then we initialise it with a value
+(e.g. <code>= 2</code>). If we forget to initialise our constant, then
+the compiler will tell us that.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Integers&quot;</span><span class="op">)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="at">const</span> width<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <pre><code>&lt;source&gt;:5:13: error: default initialization of an object of const type &#39;const int&#39;
   int const width;
             ^
                   = 0</code></pre>
-<p>To check if two <code>int</code>s are equal, we use the equality operator (<code>==</code>). To check if they’re not equal, then we use the not-equal-to operator (<code>!=</code>). We also have all the inequality operators (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&gt;</code>) at our disposal.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Integers&quot;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>{</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> width = <span class="dv">2</span>;</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>  CHECK(width == <span class="dv">2</span>);</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>  CHECK(width != <span class="dv">3</span>);</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>  CHECK(width &lt;  <span class="dv">4</span>);</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>  CHECK(width &gt;  <span class="dv">1</span>);</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>  CHECK(width &lt;= <span class="dv">3</span>);</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>  CHECK(width &gt;= <span class="dv">2</span>);</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a>}</span></code></pre></div>
+<p>To check if two <code>int</code>s are equal, we use the equality
+operator (<code>==</code>). To check if they’re not equal, then we use
+the not-equal-to operator (<code>!=</code>). We also have all the
+inequality operators (<code>&lt;</code>, <code>&lt;=</code>,
+<code>&gt;=</code>, <code>&gt;</code>) at our disposal.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Integers&quot;</span><span class="op">)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="at">const</span> width <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">2</span><span class="op">);</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">!=</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&lt;</span>  <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&gt;</span>  <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&gt;=</span> <span class="dv">2</span><span class="op">);</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>When you run this program, you should see the following output.</p>
 <pre><code>===============================================================================
 All tests passed (6 assertions in 1 test case)</code></pre>
 <hr />
-<p>The <code>CHECK</code> operation is a part of the test framework, and it reports if the expression inside the parentheses is false. Let’s check that out by changing our first test from <code>CHECK(width == 2)</code> to <code>CHECK(width == 3)</code>.</p>
+<p>The <code>CHECK</code> operation is a part of the test framework, and
+it reports if the expression inside the parentheses is false. Let’s
+check that out by changing our first test from
+<code>CHECK(width == 2)</code> to <code>CHECK(width == 3)</code>.</p>
 <pre><code>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 output.s is a Catch v3.0.0-preview.3 host application.
 Run with -? for options
@@ -339,7 +424,14 @@ with expansion:
 ===============================================================================
 test cases: 1 | 1 failed
 assertions: 6 | 5 passed | 1 failed</code></pre>
-<p>Beginners sometimes get confused between using assertions and <code>CHECK</code>. The neat thing about using <code>CHECK</code> over an assertion is that they don’t disrupt a program’s flow: when a <code>CHECK</code> fails, the failure is reported, and the program moves on to the next <code>CHECK</code> instead of abruptly halting the program on the spot. We can verify this by changing <code>CHECK(width &gt; 1)</code> to <code>CHECK(width &gt; 2)</code>.</p>
+<p>Beginners sometimes get confused between using assertions and
+<code>CHECK</code>. The neat thing about using <code>CHECK</code> over
+an assertion is that they don’t disrupt a program’s flow: when a
+<code>CHECK</code> fails, the failure is reported, and the program moves
+on to the next <code>CHECK</code> instead of abruptly halting the
+program on the spot. We can verify this by changing
+<code>CHECK(width &gt; 1)</code> to
+<code>CHECK(width &gt; 2)</code>.</p>
 <pre><code>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 output.s is a Catch v3.0.0-preview.3 host application.
 Run with -? for options
@@ -364,156 +456,244 @@ with expansion:
 test cases: 1 | 1 failed
 assertions: 6 | 4 passed | 2 failed</code></pre>
 <hr />
-<p><code>int</code> supports the arithmetic operations you learnt about in school: we can add, negate, subtract, multiply, and divide.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>CHECK(width + <span class="dv">1</span> ==  <span class="dv">3</span>);  <span class="co">// addition</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>CHECK(-width == -<span class="dv">2</span>);     <span class="co">// negation</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>CHECK(width - <span class="dv">2</span> ==  <span class="dv">0</span>);  <span class="co">// subtraction</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>CHECK(width * -<span class="dv">4</span> == -<span class="dv">8</span>); <span class="co">// multiplication</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>CHECK(width / <span class="dv">2</span> == <span class="dv">1</span>);   <span class="co">// division</span></span></code></pre></div>
-<p>Precedence for these operators follows the normal rules in mathematics, and you can always wrap a subexpression in parentheses to make sure it’s evaluated before its parent expression.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>CHECK((width + <span class="dv">1</span>) / <span class="dv">3</span> == <span class="dv">1</span>);</span></code></pre></div>
-<p>When we divide an <code>int</code>, we get an <code>int</code> back, which might be surprising if you’re coming from JavaScript, which would give you back a fractional component too.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>CHECK(<span class="dv">5</span> / <span class="dv">2</span> == <span class="dv">2</span>);</span></code></pre></div>
-<p>Integer division in C++ is broken into two parts: we get the whole number component, which is what we have here, and then we also have a remainder component, which we get by using the modulus operation (<code>%</code>).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>CHECK(<span class="dv">5</span> % <span class="dv">2</span> == <span class="dv">1</span>);</span></code></pre></div>
+<p><code>int</code> supports the arithmetic operations you learnt about
+in school: we can add, negate, subtract, multiply, and divide.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>width <span class="op">+</span> <span class="dv">1</span> <span class="op">==</span>  <span class="dv">3</span><span class="op">);</span>  <span class="co">// addition</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(-</span>width <span class="op">==</span> <span class="op">-</span><span class="dv">2</span><span class="op">);</span>     <span class="co">// negation</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>width <span class="op">-</span> <span class="dv">2</span> <span class="op">==</span>  <span class="dv">0</span><span class="op">);</span>  <span class="co">// subtraction</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>width <span class="op">*</span> <span class="op">-</span><span class="dv">4</span> <span class="op">==</span> <span class="op">-</span><span class="dv">8</span><span class="op">);</span> <span class="co">// multiplication</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>width <span class="op">/</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span><span class="op">);</span>   <span class="co">// division</span></span></code></pre></div>
+<p>Precedence for these operators follows the normal rules in
+mathematics, and you can always wrap a subexpression in parentheses to
+make sure it’s evaluated before its parent expression.</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">((</span>width <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">1</span><span class="op">);</span></span></code></pre></div>
+<p>When we divide an <code>int</code>, we get an <code>int</code> back,
+which might be surprising if you’re coming from JavaScript, which would
+give you back a fractional component too.</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span><span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">2</span><span class="op">);</span></span></code></pre></div>
+<p>Integer division in C++ is broken into two parts: we get the whole
+number component, which is what we have here, and then we also have a
+remainder component, which we get by using the modulus operation
+(<code>%</code>).</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span><span class="dv">5</span> <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span><span class="op">);</span></span></code></pre></div>
 <blockquote>
 <p>“Five divides into two: twice, with one left over,”</p>
 </blockquote>
-<p>This is how I was taught to compute in primary school. In my uni discrete maths class, it would be <span class="math inline">5 ≡ 1 (mod 2)</span>.</p>
+<p>This is how I was taught to compute in primary school. In my uni
+discrete maths class, it would be <span
+class="math inline">5 ≡ 1 ( mod 2)</span>.</p>
 <h4 id="fractions">Fractions</h4>
-<p>If you’re still confused, that’s possibly because you’re used to there being only one number type. In C++, to represent rational numbers with fractional components, we use the type <code>double</code>. Perhaps the <code>double</code> type will help to clarify things.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Integers&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>{</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>  <span class="co">// Code from previous section...</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>}</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Fractions&quot;</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>{</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> width = <span class="fl">2.0</span>;</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a>}</span></code></pre></div>
+<p>If you’re still confused, that’s possibly because you’re used to
+there being only one number type. In C++, to represent rational numbers
+with fractional components, we use the type <code>double</code>. Perhaps
+the <code>double</code> type will help to clarify things.</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Integers&quot;</span><span class="op">)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Code from previous section...</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Fractions&quot;</span><span class="op">)</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> <span class="at">const</span> width <span class="op">=</span> <span class="fl">2.0</span><span class="op">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <hr />
-<p>For the initiated, doubles are <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" target="_blank">floating-point numbers</a>; for the uninitiated, this means support a much larger set of numbers, but the result may not always be exact. If you only need to support whole numbers, use <code>int</code>. We dissect the differences between <code>int</code> and <code>double</code> much later on.</p>
+<p>For the initiated, doubles are <a
+href="https://en.wikipedia.org/wiki/Floating-point_arithmetic"
+target="_blank">floating-point numbers</a>; for the uninitiated, this
+means support a much larger set of numbers, but the result may not
+always be exact. If you only need to support whole numbers, use
+<code>int</code>. We dissect the differences between <code>int</code>
+and <code>double</code> much later on.</p>
 <hr />
-<p>To distinguish a <code>double</code> literal from an <code>int</code> literal, we use the decimal point. See here that we’re using <code>2</code> for the int literal, and <code>2.0</code> for the double literal.</p>
-<p>Doubles support all of the arithmetic and logical operations that integers support, with the exception of the modulus operator. Division also gives us a number that has a fractional component.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Fractions&quot;</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>{</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> width = <span class="fl">2.0</span>;</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>  CHECK(width == <span class="fl">2.0</span>);</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>  CHECK(width != <span class="fl">3.0</span>);</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>  CHECK(width &lt; <span class="fl">4.0</span>);</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>  CHECK(width &lt;= <span class="fl">3.0</span>);</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>  CHECK(width &gt;= <span class="fl">2.0</span>);</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a>  CHECK(width &gt; <span class="fl">1.0</span>);</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a>  CHECK(width + <span class="fl">1.0</span> == <span class="fl">3.0</span>);   <span class="co">// addition</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true"></a>  CHECK(-width == -<span class="fl">2.0</span>);       <span class="co">// negation</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true"></a>  CHECK(width - <span class="fl">2.0</span> == <span class="fl">0.0</span>);   <span class="co">// subtraction</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true"></a>  CHECK(width * -<span class="fl">4.0</span> == -<span class="fl">8.0</span>); <span class="co">// multiplication</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true"></a>  CHECK(width / <span class="fl">2.0</span> == <span class="fl">1.0</span>);   <span class="co">// division</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true"></a>  <span class="co">// precedence</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true"></a>  CHECK((width + <span class="fl">1.0</span>) / <span class="fl">3.0</span> == <span class="fl">1.0</span>);</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true"></a>  <span class="co">// fractional component</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true"></a>  CHECK(<span class="fl">5.0</span> / <span class="fl">2.0</span> == <span class="fl">2.5</span>);</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true"></a>}</span></code></pre></div>
-<p>If we try to add a <code>double const remainder = width % 2.0;</code>, then we get the following output.</p>
+<p>To distinguish a <code>double</code> literal from an <code>int</code>
+literal, we use the decimal point. See here that we’re using
+<code>2</code> for the int literal, and <code>2.0</code> for the double
+literal.</p>
+<p>Doubles support all of the arithmetic and logical operations that
+integers support, with the exception of the modulus operator. Division
+also gives us a number that has a fractional component.</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Fractions&quot;</span><span class="op">)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> <span class="at">const</span> width <span class="op">=</span> <span class="fl">2.0</span><span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">==</span> <span class="fl">2.0</span><span class="op">);</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">!=</span> <span class="fl">3.0</span><span class="op">);</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&lt;</span> <span class="fl">4.0</span><span class="op">);</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&lt;=</span> <span class="fl">3.0</span><span class="op">);</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&gt;=</span> <span class="fl">2.0</span><span class="op">);</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">&gt;</span> <span class="fl">1.0</span><span class="op">);</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">+</span> <span class="fl">1.0</span> <span class="op">==</span> <span class="fl">3.0</span><span class="op">);</span>   <span class="co">// addition</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(-</span>width <span class="op">==</span> <span class="op">-</span><span class="fl">2.0</span><span class="op">);</span>       <span class="co">// negation</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">-</span> <span class="fl">2.0</span> <span class="op">==</span> <span class="fl">0.0</span><span class="op">);</span>   <span class="co">// subtraction</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">*</span> <span class="op">-</span><span class="fl">4.0</span> <span class="op">==</span> <span class="op">-</span><span class="fl">8.0</span><span class="op">);</span> <span class="co">// multiplication</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">/</span> <span class="fl">2.0</span> <span class="op">==</span> <span class="fl">1.0</span><span class="op">);</span>   <span class="co">// division</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// precedence</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">((</span>width <span class="op">+</span> <span class="fl">1.0</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3.0</span> <span class="op">==</span> <span class="fl">1.0</span><span class="op">);</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">// fractional component</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span><span class="fl">5.0</span> <span class="op">/</span> <span class="fl">2.0</span> <span class="op">==</span> <span class="fl">2.5</span><span class="op">);</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>If we try to add a
+<code>double const remainder = width % 2.0;</code>, then we get the
+following output.</p>
 <pre><code>error: invalid operands to binary expression (&#39;const double&#39; and &#39;double&#39;)
   double const remainder = width % 2.0;
                            ~~~~~ ^ ~~~</code></pre>
-<p>Some programming languages have a power operator, but C++ isn’t one of them. In order to compute interesting expressions like powers and trigonometric functions, we first need to use the <a href="https://en.cppreference.com/w/cpp/header/cmath" target="_blank"><code>&lt;cmath&gt;</code> library</a>. Then, we can use functions like <code>std::pow</code> and <code>std::sin</code> to compute stuff.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;catch2/catch_test_macros.hpp&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Integers&quot;</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>{</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>  <span class="co">// ...</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>}</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Fractions&quot;</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true"></a>{</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true"></a>  <span class="co">// ...</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true"></a>}</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Interesting maths&quot;</span>)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true"></a>{</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true"></a>  CHECK(<span class="bu">std::</span>pow(<span class="dv">2</span>, <span class="dv">3</span>) == <span class="dv">8</span>);</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true"></a>  CHECK(<span class="bu">std::</span>pow(<span class="fl">2.0</span>, <span class="fl">3.0</span>) == <span class="fl">8.0</span>);</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true"></a>  CHECK(<span class="bu">std::</span>sin(<span class="fl">0.0</span>) == <span class="fl">0.0</span>);</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Some programming languages have a power operator, but C++ isn’t one
+of them. In order to compute interesting expressions like powers and
+trigonometric functions, we first need to use the <a
+href="https://en.cppreference.com/w/cpp/header/cmath"
+target="_blank"><code>&lt;cmath&gt;</code> library</a>. Then, we can use
+functions like <code>std::pow</code> and <code>std::sin</code> to
+compute stuff.</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;catch2/catch_test_macros.hpp&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Integers&quot;</span><span class="op">)</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ...</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Fractions&quot;</span><span class="op">)</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ...</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Interesting maths&quot;</span><span class="op">)</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span><span class="bu">std::</span>pow<span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span> <span class="op">==</span> <span class="dv">8</span><span class="op">);</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span><span class="bu">std::</span>pow<span class="op">(</span><span class="fl">2.0</span><span class="op">,</span> <span class="fl">3.0</span><span class="op">)</span> <span class="op">==</span> <span class="fl">8.0</span><span class="op">);</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span><span class="bu">std::</span>sin<span class="op">(</span><span class="fl">0.0</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h4 id="logic">Logic</h4>
-<p>Our Boolean type is <code>bool</code>. There are only two values: <code>true</code> and <code>false</code>, and three operations: conjunction (<code>and</code>), disjunction (<code>or</code>), and logical negation (<code>not</code>).</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Booleans and logic&quot;</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>{</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> learning_cxx = <span class="kw">true</span>;</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a>  CHECK(learning_cxx != <span class="kw">false</span>);</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> is_chapter2 = <span class="kw">true</span>;</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a>  CHECK((learning_cxx <span class="kw">and</span> is_chapter2));</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> bored = <span class="kw">false</span>; <span class="co">// hopefully!</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true"></a>  CHECK((bored <span class="kw">or</span> learning_cxx));</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true"></a>  CHECK(<span class="kw">not</span> bored);</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true"></a>}</span></code></pre></div>
-<p>For complex technical reasons, <code>CHECK</code> is unable to support <code>learning_cxx and is_chapter2</code> and <code>bored or learning_cxx</code> without first wrapping them inside parentheses. You don’t need them in other contexts.</p>
+<p>Our Boolean type is <code>bool</code>. There are only two values:
+<code>true</code> and <code>false</code>, and three operations:
+conjunction (<code>and</code>), disjunction (<code>or</code>), and
+logical negation (<code>not</code>).</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Booleans and logic&quot;</span><span class="op">)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> learning_cxx <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>learning_cxx <span class="op">!=</span> <span class="kw">false</span><span class="op">);</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> is_chapter2 <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">((</span>learning_cxx <span class="kw">and</span> is_chapter2<span class="op">));</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> bored <span class="op">=</span> <span class="kw">false</span><span class="op">;</span> <span class="co">// hopefully!</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">((</span>bored <span class="kw">or</span> learning_cxx<span class="op">));</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span><span class="kw">not</span> bored<span class="op">);</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>For complex technical reasons, <code>CHECK</code> is unable to
+support <code>learning_cxx and is_chapter2</code> and
+<code>bored or learning_cxx</code> without first wrapping them inside
+parentheses. You don’t need them in other contexts.</p>
 <h4 id="text">Text</h4>
 <h5 id="single-characters">Single characters</h5>
-<p>Representing single characters is done using the <code>char</code> type, and <code>char</code> literals are delimited by single quotes (<code>'</code>). Below are some of the operations that <code>char</code> supports.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Single characters&quot;</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>{</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> first_latin_letter = <span class="ch">&#39;A&#39;</span>;</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a>  CHECK(first_latin_letter == <span class="ch">&#39;A&#39;</span>);</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>  CHECK(first_latin_letter != <span class="ch">&#39;a&#39;</span>);</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>  CHECK(first_latin_letter &lt;  <span class="ch">&#39;B&#39;</span>);</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a>  CHECK(first_latin_letter &gt;  <span class="ch">&#39;0&#39;</span>);</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> third_latin_letter = first_latin_letter + <span class="dv">2</span>;</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a>  CHECK(third_latin_letter == <span class="ch">&#39;C&#39;</span>);</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a>  CHECK(third_latin_letter - <span class="dv">1</span> == <span class="ch">&#39;B&#39;</span>);</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Representing single characters is done using the <code>char</code>
+type, and <code>char</code> literals are delimited by single quotes
+(<code>'</code>). Below are some of the operations that
+<code>char</code> supports.</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Single characters&quot;</span><span class="op">)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> first_latin_letter <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>first_latin_letter <span class="op">==</span> <span class="ch">&#39;A&#39;</span><span class="op">);</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>first_latin_letter <span class="op">!=</span> <span class="ch">&#39;a&#39;</span><span class="op">);</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>first_latin_letter <span class="op">&lt;</span>  <span class="ch">&#39;B&#39;</span><span class="op">);</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>first_latin_letter <span class="op">&gt;</span>  <span class="ch">&#39;0&#39;</span><span class="op">);</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> third_latin_letter <span class="op">=</span> first_latin_letter <span class="op">+</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>third_latin_letter <span class="op">==</span> <span class="ch">&#39;C&#39;</span><span class="op">);</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>third_latin_letter <span class="op">-</span> <span class="dv">1</span> <span class="op">==</span> <span class="ch">&#39;B&#39;</span><span class="op">);</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h5 id="strings">Strings</h5>
-<p>C++ doesn’t have a built-in string type: it’s instead a library type that gets imported when we write <code>#include &lt;string&gt;</code>. We use the <code>std::string</code> type to define a string.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="co">// ...</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Strings&quot;</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>{</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a>  <span class="bu">std::</span>string <span class="at">const</span> greeting = <span class="st">&quot;Hello, world!&quot;</span>;</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>}</span></code></pre></div>
-<p>At this point, you might be wondering why the string type isn’t built into the language if the string literal is. This is a great question, but its answer is fairly involved, so let’s defer this to a later chapter, when you’ll have a bit more C++ maturity.</p>
-<p>Strings support all of the comparison operations, and are case-sensitive. Equality and non-equality are fairly straightforward.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>CHECK(greeting == <span class="st">&quot;Hello, world!&quot;</span>);</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>CHECK(greeting != <span class="st">&quot;hello, world!&quot;</span>); <span class="co">// &#39;H&#39; != &#39;h&#39;</span></span></code></pre></div>
-<p>Inequalities perform lexicographical comparisons, so <code>"Good"</code> with a capital <code>'G'</code> is considered to be less than <code>"good"</code> with a lower-case <code>'g'</code>, because <code>'G'</code> comes before <code>'g'</code> in our system’s encoding.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="bu">std::</span>string <span class="at">const</span> good = <span class="st">&quot;good&quot;</span>;</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>CHECK(<span class="st">&quot;Good&quot;</span> &lt; good);</span></code></pre></div>
-<p><code>"goods"</code> is considered greater than <code>"good"</code>, because it contains all of <code>"good"</code> and is longer. If we change <code>"goods"</code> to <code>"foods"</code>, we see the answer change, the encoding places <code>'f'</code> before <code>'g'</code>.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>CHECK(<span class="st">&quot;goods&quot;</span> &gt; good);</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>CHECK(<span class="st">&quot;foods&quot;</span> &lt; good);</span></code></pre></div>
-<p>If we want to know how long a string is, we use the <code>size</code> member function, and to learn if the string has no characters, then we use the <code>empty</code> member function.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>CHECK(good.size() == <span class="dv">4</span>);</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>CHECK(<span class="kw">not</span> good.empty());</span></code></pre></div>
-<p>To concatenate strings, we use the plus (<code>+</code>) operator on characters, string literals, and other <code>std::string</code> objects.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a>CHECK(good + <span class="ch">&#39;s&#39;</span> == <span class="st">&quot;goods&quot;</span>);</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>CHECK(good + <span class="st">&quot; day&quot;</span> == <span class="st">&quot;good day&quot;</span>);</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a><span class="bu">std::</span>string <span class="at">const</span> news = <span class="st">&quot; news&quot;</span>;</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a>CHECK(good + news == <span class="st">&quot;good news&quot;</span>);</span></code></pre></div>
-<h3 id="object-representation-in-memory">Object representation in memory</h3>
-<p>C++ is a language that has a close relationship with hardware, so it’s important to understand how our built-in types are represented as objects in memory. To do this, we’ll create an “abstract machine”, which only exists on paper, and represents how a physical computer behaves<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. For the most part, we’re going to be focussing on computer memory. We can imagine the memory we’re going to use as a table of cells, where each cell is one byte. For this chapter, we’ll use an abstract machine that has 32 bytes of memory, arranged into four rows, each with eight columns<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Right now, all the cells are empty.</p>
+<p>C++ doesn’t have a built-in string type: it’s instead a library type
+that gets imported when we write <code>#include &lt;string&gt;</code>.
+We use the <code>std::string</code> type to define a string.</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Strings&quot;</span><span class="op">)</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span> greeting <span class="op">=</span> <span class="st">&quot;Hello, world!&quot;</span><span class="op">;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>At this point, you might be wondering why the string type isn’t built
+into the language if the string literal is. This is a great question,
+but its answer is fairly involved, so let’s defer this to a later
+chapter, when you’ll have a bit more C++ maturity.</p>
+<p>Strings support all of the comparison operations, and are
+case-sensitive. Equality and non-equality are fairly
+straightforward.</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>greeting <span class="op">==</span> <span class="st">&quot;Hello, world!&quot;</span><span class="op">);</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>greeting <span class="op">!=</span> <span class="st">&quot;hello, world!&quot;</span><span class="op">);</span> <span class="co">// &#39;H&#39; != &#39;h&#39;</span></span></code></pre></div>
+<p>Inequalities perform lexicographical comparisons, so
+<code>"Good"</code> with a capital <code>'G'</code> is considered to be
+less than <code>"good"</code> with a lower-case <code>'g'</code>,
+because <code>'G'</code> comes before <code>'g'</code> in our system’s
+encoding.</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span> good <span class="op">=</span> <span class="st">&quot;good&quot;</span><span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span><span class="st">&quot;Good&quot;</span> <span class="op">&lt;</span> good<span class="op">);</span></span></code></pre></div>
+<p><code>"goods"</code> is considered greater than <code>"good"</code>,
+because it contains all of <code>"good"</code> and is longer. If we
+change <code>"goods"</code> to <code>"foods"</code>, we see the answer
+change, the encoding places <code>'f'</code> before
+<code>'g'</code>.</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span><span class="st">&quot;goods&quot;</span> <span class="op">&gt;</span> good<span class="op">);</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span><span class="st">&quot;foods&quot;</span> <span class="op">&lt;</span> good<span class="op">);</span></span></code></pre></div>
+<p>If we want to know how long a string is, we use the <code>size</code>
+member function, and to learn if the string has no characters, then we
+use the <code>empty</code> member function.</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>good<span class="op">.</span>size<span class="op">()</span> <span class="op">==</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span><span class="kw">not</span> good<span class="op">.</span>empty<span class="op">());</span></span></code></pre></div>
+<p>To concatenate strings, we use the plus (<code>+</code>) operator on
+characters, string literals, and other <code>std::string</code>
+objects.</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>good <span class="op">+</span> <span class="ch">&#39;s&#39;</span> <span class="op">==</span> <span class="st">&quot;goods&quot;</span><span class="op">);</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>good <span class="op">+</span> <span class="st">&quot; day&quot;</span> <span class="op">==</span> <span class="st">&quot;good day&quot;</span><span class="op">);</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span> news <span class="op">=</span> <span class="st">&quot; news&quot;</span><span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>good <span class="op">+</span> news <span class="op">==</span> <span class="st">&quot;good news&quot;</span><span class="op">);</span></span></code></pre></div>
+<h3 id="object-representation-in-memory">Object representation in
+memory</h3>
+<p>C++ is a language that has a close relationship with hardware, so
+it’s important to understand how our built-in types are represented as
+objects in memory. To do this, we’ll create an “abstract machine”, which
+only exists on paper, and represents how a physical computer behaves<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. For the most part, we’re going to
+be focussing on computer memory. We can imagine the memory we’re going
+to use as a table of cells, where each cell is one byte. For this
+chapter, we’ll use an abstract machine that has 32 bytes of memory,
+arranged into four rows, each with eight columns<a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.
+Right now, all the cells are empty.</p>
 <center>
 <img class="abstract-machine"
      src="images/chapter-03/empty-memory.svg"
      title="An 8-by-4 grid of empty cells."
      alt="An 8-by-4 grid of empty cells." />
 </center>
-<div class="sourceCode" id="cb26"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a>{</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> first = <span class="ch">&#39;A&#39;</span>;</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> first <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>When we define a <code>char</code> object, it occupies one cell.</p>
 <center>
 <img class="abstract-machine"
@@ -521,61 +701,70 @@ assertions: 6 | 4 passed | 2 failed</code></pre>
      title="An 8-by-4 grid of cells with only the first cell filled in. The first cell has the type `char` and the value `'A'`."
      alt="An 8-by-4 grid of cells with only the first cell filled in. The first cell has the type `char` and the value `'A'`." />
 </center>
-<div class="sourceCode" id="cb27"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a>{</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> first = <span class="ch">&#39;A&#39;</span>;</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> second = <span class="ch">&#39;B&#39;</span>;</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a>}</span></code></pre></div>
-<p>If we define a second <code>char</code>, we see a second cell gets occupied.</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> first <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> second <span class="op">=</span> <span class="ch">&#39;B&#39;</span><span class="op">;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>If we define a second <code>char</code>, we see a second cell gets
+occupied.</p>
 <center>
 <img class="abstract-machine"
      src="images/chapter-03/two-char-memory.svg"
      title="An 8-by-4 grid of cells with the first two cells filled in. The first cell has the type `char` and the value `'A'`. The second cell has type `char` and value `B`."
      alt="An 8-by-4 grid of cells with the first two cells filled in. The first cell has the type `char` and the value `'A'`. The second cell has type `char` and value `B`." />
 </center>
-<div class="sourceCode" id="cb28"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a>{</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> first = <span class="ch">&#39;A&#39;</span>;</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> second = <span class="ch">&#39;B&#39;</span>;</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> third = <span class="kw">false</span>;</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth = <span class="kw">true</span>;</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true"></a>}</span></code></pre></div>
-<p>The same thing happens when we define two <code>bool</code> objects: they each take up one cell.</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> first <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> second <span class="op">=</span> <span class="ch">&#39;B&#39;</span><span class="op">;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> third <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The same thing happens when we define two <code>bool</code> objects:
+they each take up one cell.</p>
 <center>
 <img class="abstract-machine"
      src="images/chapter-03/bool-memory.svg"
      title="An 8-by-4 grid of cells with the first four cells filled in. The first two cells are as before. The next two cells both have type `bool`, and the values `false` and `true`, respectively."
      alt="An 8-by-4 grid of cells with the first four cells filled in. The first two cells are as before. The next two cells both have type `bool`, and the values `false` and `true`, respectively." />
 </center>
-<div class="sourceCode" id="cb29"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a>{</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> first = <span class="ch">&#39;A&#39;</span>;</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> second = <span class="ch">&#39;B&#39;</span>;</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> third = <span class="kw">false</span>;</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth = <span class="kw">true</span>;</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> fifth = <span class="dv">123</span>;</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true"></a>}</span></code></pre></div>
-<p>When we define an <code>int</code>, it doesn’t occupy a single cell. In this case, the region of memory that our <code>int</code> object occupies totals to four bytes.</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> first <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> second <span class="op">=</span> <span class="ch">&#39;B&#39;</span><span class="op">;</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> third <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="at">const</span> fifth <span class="op">=</span> <span class="dv">123</span><span class="op">;</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>When we define an <code>int</code>, it doesn’t occupy a single cell.
+In this case, the region of memory that our <code>int</code> object
+occupies totals to four bytes.</p>
 <center>
 <img class="abstract-machine"
      src="images/chapter-03/int-memory.svg"
      title="An 8-by-4 grid of cells with the entire first row filled. The first four cells are as before. The next four cells have been merged into one big cell, with the type `int`, and the value 123."
      alt="An 8-by-4 grid of cells with the entire first row filled. The first four cells are as before. The next four cells have been merged into one big cell, with the type `int`, and the value 123." />
 </center>
-<div class="sourceCode" id="cb30"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a>{</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> first = <span class="ch">&#39;A&#39;</span>;</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> second = <span class="ch">&#39;B&#39;</span>;</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> third = <span class="kw">false</span>;</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth = <span class="kw">true</span>;</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> fifth = <span class="dv">123</span>;</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> pi = <span class="fl">3.14159265</span>;</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true"></a>}</span></code></pre></div>
-<p>Notice that an object of type <code>double</code> is held by eight cells. This will be relevant in just a bit.</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> first <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> second <span class="op">=</span> <span class="ch">&#39;B&#39;</span><span class="op">;</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> third <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="at">const</span> fifth <span class="op">=</span> <span class="dv">123</span><span class="op">;</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> <span class="at">const</span> pi <span class="op">=</span> <span class="fl">3.14159265</span><span class="op">;</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Notice that an object of type <code>double</code> is held by eight
+cells. This will be relevant in just a bit.</p>
 <center>
 <img class="abstract-machine"
      src="images/chapter-03/double-memory.svg"
@@ -583,110 +772,176 @@ assertions: 6 | 4 passed | 2 failed</code></pre>
      alt="An 8-by-4 grid of cells with the entire first row filled. The first row is as before. The second row has merged all eight of its cells into one big cell. Its type is `double`, and its value is π to eight decimal places." />
 </center>
 <p>Finally, strings.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true"></a>{</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> first = <span class="ch">&#39;A&#39;</span>;</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true"></a>  <span class="dt">char</span> <span class="at">const</span> second = <span class="ch">&#39;B&#39;</span>;</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> third = <span class="kw">false</span>;</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth = <span class="kw">true</span>;</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> fifth = <span class="dv">123</span>;</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true"></a>  <span class="dt">double</span> <span class="at">const</span> pi = <span class="fl">3.14159265</span>;</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true"></a>  <span class="bu">std::</span>string message = <span class="st">&quot;This is 16B long&quot;</span>;</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true"></a>}</span></code></pre></div>
-<p>We’ll go more into the details of how strings are represented in memory later on (around the time we explore why the type isn’t built in, but the literal is), but for now, we can treat its representation as occupying one cell for every character in the string.</p>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Don&#39;t copy into Compiler Explorer.</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> first <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> <span class="at">const</span> second <span class="op">=</span> <span class="ch">&#39;B&#39;</span><span class="op">;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> third <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> <span class="at">const</span> fourth <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="at">const</span> fifth <span class="op">=</span> <span class="dv">123</span><span class="op">;</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> <span class="at">const</span> pi <span class="op">=</span> <span class="fl">3.14159265</span><span class="op">;</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">std::</span>string<span class="op"> </span>message <span class="op">=</span> <span class="st">&quot;This is 16B long&quot;</span><span class="op">;</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>We’ll go more into the details of how strings are represented in
+memory later on (around the time we explore why the type isn’t built in,
+but the literal is), but for now, we can treat its representation as
+occupying one cell for every character in the string.</p>
 <center>
 <img class="abstract-machine"
      src="images/chapter-03/string-memory.svg"
      title="An 8-by-4 grid of cells entirely filled. The first two rows are as before. The next two rows consist of `char`s spelling the sentence 'This is 16B long'."
      alt="An 8-by-4 grid of cells entirely filled. The first two rows are as before. The next two rows consist of `char`s spelling the sentence 'This is 16B long'." />
 </center>
-<p>At its core, <code>std::string</code> is a collection of <code>char</code>s organised linearly in memory, so we’re representing that in our diagram as sixteen <code>char</code> objects in place of showing you a string as a big blob. We’ll be showing strings as a big blob in the future for improved readability, but it is important to have an understanding of what it abstracts away.</p>
-<h3 id="variables-and-modifying-expressions">Variables and modifying expressions</h3>
-<p>Like a constant, a <em>variable</em> is an object that we’ve named, but we’re also allowed to modify them. Defining variables is extremely similar to defining constants.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;Variables&quot;</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>{</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a>  <span class="dt">int</span> meaning_of_life = <span class="dv">42</span>;</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true"></a>}</span></code></pre></div>
-<p>Type, name, initialisation. That’s it: our variable’s defined. At the object level, it matters not whether we have a constant or variable. This info is only relevant to programmers.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;variables&quot;</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a>{</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a>  <span class="dt">int</span> meaning_of_life = <span class="dv">42</span>;</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true"></a>  meaning_of_life = <span class="dv">0</span>;</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true"></a>  CHECK(meaning_of_life == <span class="dv">0</span>);</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true"></a>}</span></code></pre></div>
+<p>At its core, <code>std::string</code> is a collection of
+<code>char</code>s organised linearly in memory, so we’re representing
+that in our diagram as sixteen <code>char</code> objects in place of
+showing you a string as a big blob. We’ll be showing strings as a big
+blob in the future for improved readability, but it is important to have
+an understanding of what it abstracts away.</p>
+<h3 id="variables-and-modifying-expressions">Variables and modifying
+expressions</h3>
+<p>Like a constant, a <em>variable</em> is an object that we’ve named,
+but we’re also allowed to modify them. Defining variables is extremely
+similar to defining constants.</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;Variables&quot;</span><span class="op">)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> meaning_of_life <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Type, name, initialisation. That’s it: our variable’s defined. At the
+object level, it matters not whether we have a constant or variable.
+This info is only relevant to programmers.</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;variables&quot;</span><span class="op">)</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> meaning_of_life <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  meaning_of_life <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>meaning_of_life <span class="op">==</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <hr />
-<p><code>meaning_of_life = 0</code> is called <em>assignment</em>, which writes the value <code>0</code> into the object <code>meaning_of_life</code>. The syntax looks very similar to our definition, so we’re going to tread carefully here. In <code>int meaning_of_life = 42;</code>, the <code>=</code> represents <em>initialisation</em>, which is different to assignment. It might seem like we’re splitting hairs here, but as we progress to later chapters, this distinction will be of critical importance: so it’s best to get into the habit of using the correct terminology early on.</p>
+<p><code>meaning_of_life = 0</code> is called <em>assignment</em>, which
+writes the value <code>0</code> into the object
+<code>meaning_of_life</code>. The syntax looks very similar to our
+definition, so we’re going to tread carefully here. In
+<code>int meaning_of_life = 42;</code>, the <code>=</code> represents
+<em>initialisation</em>, which is different to assignment. It might seem
+like we’re splitting hairs here, but as we progress to later chapters,
+this distinction will be of critical importance: so it’s best to get
+into the habit of using the correct terminology early on.</p>
 <hr />
-<p>It’s possible to assign to variables of any type we’ve looked at so far: that’s left as an exercise for you to play with. Instead, let’s replace the contents of our test case with the following.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;variables&quot;</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a>{</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a>  <span class="dt">int</span> width = <span class="dv">2</span>;</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true"></a>  width += <span class="dv">1</span>; <span class="co">// same as `width = width + 1`</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true"></a>  CHECK(width == <span class="dv">3</span>);</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true"></a></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true"></a>  width -= <span class="dv">2</span>; <span class="co">// same as `width = width - 2`</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true"></a>  CHECK(width == <span class="dv">1</span>);</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true"></a></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true"></a>  width *= <span class="dv">8</span>; <span class="co">// same as `width = width * 8`</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true"></a>  CHECK(width == <span class="dv">8</span>);</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true"></a></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true"></a>  width /= <span class="dv">2</span>; <span class="co">// same as `width = width / 2`</span></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true"></a>  CHECK(width == <span class="dv">4</span>);</span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true"></a></span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true"></a>  width %= <span class="dv">3</span>; <span class="co">// same as `width = width % 3`</span></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true"></a>  CHECK(width == <span class="dv">1</span>);</span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true"></a>}</span></code></pre></div>
-<p>Each of these expressions is called compound assignment. Compound assignment can be done for all of the arithmetic operations and works for integers, characters, and doubles. If you’re unfamiliar with compound assignment, it’s a shorthand for assigning the result of a binary operation to the same object as its left-hand side. Essentially, <code>width += 1</code> is the same as <code>width = width + 1</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a>++width; <span class="co">// same as `width += 1`</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a>CHECK(width == <span class="dv">2</span>);</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true"></a>--width; <span class="co">// same as `width -= 1`</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true"></a>CHECK(width == <span class="dv">1</span>);</span></code></pre></div>
-<p><code>++width</code> is the increment operator, which increases the value of the object by one. <code>--width</code> is the decrement operator, which decreases the object’s value by one. Just as with compound assignment, you can use these on ints, doubles, and chars. Unlike other programming languages, in C++, we put the <code>++</code> and <code>--</code> operators <em>before</em> the variable name.</p>
+<p>It’s possible to assign to variables of any type we’ve looked at so
+far: that’s left as an exercise for you to play with. Instead, let’s
+replace the contents of our test case with the following.</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;variables&quot;</span><span class="op">)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> width <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  width <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span> <span class="co">// same as `width = width + 1`</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  width <span class="op">-=</span> <span class="dv">2</span><span class="op">;</span> <span class="co">// same as `width = width - 2`</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  width <span class="op">*=</span> <span class="dv">8</span><span class="op">;</span> <span class="co">// same as `width = width * 8`</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">8</span><span class="op">);</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  width <span class="op">/=</span> <span class="dv">2</span><span class="op">;</span> <span class="co">// same as `width = width / 2`</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  width <span class="op">%=</span> <span class="dv">3</span><span class="op">;</span> <span class="co">// same as `width = width % 3`</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Each of these expressions is called compound assignment. Compound
+assignment can be done for all of the arithmetic operations and works
+for integers, characters, and doubles. If you’re unfamiliar with
+compound assignment, it’s a shorthand for assigning the result of a
+binary operation to the same object as its left-hand side. Essentially,
+<code>width += 1</code> is the same as
+<code>width = width + 1</code>.</p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="op">++</span>width<span class="op">;</span> <span class="co">// same as `width += 1`</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">2</span><span class="op">);</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="op">--</span>width<span class="op">;</span> <span class="co">// same as `width -= 1`</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>width <span class="op">==</span> <span class="dv">1</span><span class="op">);</span></span></code></pre></div>
+<p><code>++width</code> is the increment operator, which increases the
+value of the object by one. <code>--width</code> is the decrement
+operator, which decreases the object’s value by one. Just as with
+compound assignment, you can use these on ints, doubles, and chars.
+Unlike other programming languages, in C++, we put the <code>++</code>
+and <code>--</code> operators <em>before</em> the variable name.</p>
 <p>We can also append to a string using <code>+=</code>.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="bu">std::</span>string greeting = <span class="st">&quot;Hello&quot;</span>;</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true"></a>CHECK(greeting != <span class="st">&quot;Hello, world!&quot;</span>);</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true"></a>greeting += <span class="st">&quot;, world!&quot;</span>;</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true"></a>CHECK(greeting == <span class="st">&quot;Hello, world!&quot;</span>);</span></code></pre></div>
-<p>If we want to clear a string so that it’s empty, we use the <code>clear</code> member function, like so:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a>CHECK(<span class="kw">not</span> greeting.empty());</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true"></a>greeting.clear();</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true"></a>CHECK(greeting.empty());</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string<span class="op"> </span>greeting <span class="op">=</span> <span class="st">&quot;Hello&quot;</span><span class="op">;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>greeting <span class="op">!=</span> <span class="st">&quot;Hello, world!&quot;</span><span class="op">);</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>greeting <span class="op">+=</span> <span class="st">&quot;, world!&quot;</span><span class="op">;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>greeting <span class="op">==</span> <span class="st">&quot;Hello, world!&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>If we want to clear a string so that it’s empty, we use the
+<code>clear</code> member function, like so:</p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span><span class="kw">not</span> greeting<span class="op">.</span>empty<span class="op">());</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>greeting<span class="op">.</span>clear<span class="op">();</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>CHECK<span class="op">(</span>greeting<span class="op">.</span>empty<span class="op">());</span></span></code></pre></div>
 <h3 id="const-correctness"><code>const</code>-correctness</h3>
-<p>Since it’s easier to define a variable than a constant, you might be wondering why we learnt about variables after constants. The answer comes down to expressing intention: we read code far more often than we write it, so we should be giving the reader as much useful information as possible.</p>
-<p>In C++, <code>const</code> is a contract between the programmer and the compiler, where the programmer promises that they are never going to modify the object, and the compiler agrees to reject all attempts to modify said object. Someone reading the code at a later point will have confidence that the object’s value won’t change at any point because of this contract.</p>
-<p>If we now change <code>meaning_of_life</code> into a constant, we’ll get the following output.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true"></a>TEST_CASE(<span class="st">&quot;variables&quot;</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true"></a>{</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true"></a>  <span class="dt">int</span> <span class="at">const</span> meaning_of_life = <span class="dv">42</span>;</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true"></a>  meaning_of_life = <span class="dv">0</span>;</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true"></a>  CHECK(meaning_of_life == <span class="dv">0</span>);</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Since it’s easier to define a variable than a constant, you might be
+wondering why we learnt about variables after constants. The answer
+comes down to expressing intention: we read code far more often than we
+write it, so we should be giving the reader as much useful information
+as possible.</p>
+<p>In C++, <code>const</code> is a contract between the programmer and
+the compiler, where the programmer promises that they are never going to
+modify the object, and the compiler agrees to reject all attempts to
+modify said object. Someone reading the code at a later point will have
+confidence that the object’s value won’t change at any point because of
+this contract.</p>
+<p>If we now change <code>meaning_of_life</code> into a constant, we’ll
+get the following output.</p>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;variables&quot;</span><span class="op">)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="at">const</span> meaning_of_life <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  meaning_of_life <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>meaning_of_life <span class="op">==</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <pre><code>&lt;source&gt;:7:19: error: cannot assign to variable &#39;meaning_of_life&#39; with const-qualified type &#39;const int&#39;
   meaning_of_life = 0;
   ~~~~~~~~~~~~~~~ ^
 &lt;source&gt;:5:13: note: variable &#39;meaning_of_life&#39; declared const here
   int const meaning_of_life = 42;
   ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~</code></pre>
-<p>This is telling us that we can’t write a new value into a constant. <strong>Because of these two reasons, I adhere to a simple rule when writing code: if you’re not absolutely certain the object is going to be modified, then make it a constant.</strong></p>
-<p>As you learn more about C++, we’ll revisit this notion of const-correctness.</p>
+<p>This is telling us that we can’t write a new value into a constant.
+<strong>Because of these two reasons, I adhere to a simple rule when
+writing code: if you’re not absolutely certain the object is going to be
+modified, then make it a constant.</strong></p>
+<p>As you learn more about C++, we’ll revisit this notion of
+const-correctness.</p>
 <h2 id="feedback">Feedback</h2>
-<p>If you’d like to provide feedback regarding this series, please <a href="https://github.com/cjdb/cjdb.github.io/issues" target="_blank">file an issue on GitHub</a>.</p>
-<p>If you’re interested in reading future chapters, subscribe to my <a href="https://blog.cjdb.xyz/feed.xml" target="_blank">RSS feed</a> to receive a notification at the time of publication. If you’d previously subscribed to my feed on my old website (www.cjdb.com.au), please be sure to note the new domain!</p>
+<p>If you’d like to provide feedback regarding this series, please <a
+href="https://github.com/cjdb/cjdb.github.io/issues"
+target="_blank">file an issue on GitHub</a>.</p>
+<p>If you’re interested in reading future chapters, subscribe to my <a
+href="https://blog.cjdb.xyz/feed.xml" target="_blank">RSS feed</a> to
+receive a notification at the time of publication. If you’d previously
+subscribed to my feed on my old website (www.cjdb.com.au), please be
+sure to note the new domain!</p>
 <h2 id="summary">Summary</h2>
-<p>This chapter’s main focus has been to acquaint you with the C++ type system and object model. We’ve done that by making simple programs and test cases using:</p>
+<p>This chapter’s main focus has been to acquaint you with the C++ type
+system and object model. We’ve done that by making simple programs and
+test cases using:</p>
 <ul>
 <li>five types fundamental to all useful programs</li>
 <li>exploring fundamental operations for each type</li>
 </ul>
-<p>This chapter was a fairly lengthy one, but it covers the most fundamental things you’ll need so you can press forward.</p>
+<p>This chapter was a fairly lengthy one, but it covers the most
+fundamental things you’ll need so you can press forward.</p>
 <div class="fixed-table">
 <div class="table-row-group">
 <div class="table-row">
@@ -694,19 +949,27 @@ assertions: 6 | 4 passed | 2 failed</code></pre>
 <a href="applied-modern-cxx-02.html">Chapter 2: Hello, C++!</a>
 </div>
 <div class="table-cell" style="text-align: center;">
-<a href="applied-modern-cxx-00.html" target="_blank">Table of contents</a>
+<a href="applied-modern-cxx-00.html" target="_blank">Table of
+contents</a>
 </div>
 <div class="table-cell" style="text-align: right;">
-<a href="applied-modern-cxx-04.html">Chapter 4: Conversions and initialisation</a>
+<a href="applied-modern-cxx-04.html">Chapter 4: Conversions and
+initialisation</a>
 </div>
 </div>
 </div>
 </div>
-<section class="footnotes" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>This is a heavily simplified view of what actually happens. We will be adding layers of complexity to the abstract machine as we learn more.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>This amount will grow and contract as chapters need more or less memory.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>This is a heavily simplified view of what actually
+happens. We will be adding layers of complexity to the abstract machine
+as we learn more.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This amount will grow and contract as chapters need more
+or less memory.<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
             </div>

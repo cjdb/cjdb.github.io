@@ -43,10 +43,86 @@
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
   <meta name="author" content="Christopher Di Bella" />
-  <title>Applied Modern C++: 404</title>
+  <meta name="date" content="2023-01-29" />
+  <title>Applied Modern C++ 5: Functions</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
   <link rel="stylesheet" href="style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HPGZG0F5PP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HPGZG0F5PP');
+  </script>
+  <meta name="keywords" content="C++, cplusplus, cpp, cxx" />
+  <meta name="description" content="Covers how to use functions in C++." />
 </head>
 <body>
 
@@ -54,10 +130,12 @@
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">Applied Modern C++: 404</span>
+        <span class="doc-title">Applied Modern C++ 5: Functions</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Christopher Di Bella</p></li>
-                            </ul>
+                    <li><p class="navbar-text">Christopher Di
+Bella</p></li>
+                              <li><p class="navbar-text">2023-01-29</p></li>
+                  </ul>
       </div>
     </div>
   </div>
@@ -69,15 +147,879 @@
       <div class="fixed-table">
 <div class="table-row-group">
 <div class="table-row">
+<div class="table-cell">
+<a href="applied-modern-cxx-04.html">Chapter 4: Conversions and
+initialisation</a>
+</div>
 <div class="table-cell" style="text-align: center;">
-<a href="applied-modern-cxx-00.html">Table of contents</a>
+<a href="applied-modern-cxx-00.html" target="_blank">Table of
+contents</a>
+</div>
+<div class="table-cell" style="text-align: right;">
+<a href="applied-modern-cxx-06.html">Chapter 6: C++ is a value-oriented
+language</a>
 </div>
 </div>
 </div>
 </div>
-<h1 id="this-chapter-is-a-work-in-progress">This chapter is a work in progress!</h1>
-<p>You can see the release schedule for <em>Applied Modern C++</em> in the <a href="applied-modern-cxx-00.html">Table of Contents</a>.</p>
-<p>Please check back later, or subscribe to my <a href="feed.xml">RSS feed</a> to receive a notification at the time of publication. If you’d previously subscribed to my feed on my old website (www.cjdb.com.au), please be sure to note the new domain!</p>
+<h1 id="functions-scope-and-object-lifetime">Functions; scope and object
+lifetime</h1>
+<p>Functions—sometimes known as subroutines—allow us to package code
+into a named operation that makes it available for reuse. We’ve already
+defined one function in Chapters 2 and 4: the nullary function
+<code>main</code>, which serves as the entry point for a program.</p>
+<p>In this chapter, we learn how to define other functions (and some of
+their subtleties), how C++ models functions, and the lifetime of
+objects.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ol type="1">
+<li><a href="#functions-scope-and-object-lifetime">Functions; scope and
+object lifetime</a>
+<ol type="1">
+<li><a href="#table-of-contents">Table of contents</a></li>
+<li><a href="#objectives-and-outcomes">Objectives and outcomes</a></li>
+<li><a href="#acknowledgements">Acknowledgements</a></li>
+<li><a href="#function-definitions">Function definitions</a>
+<ol type="1">
+<li><a href="#defining-functions">Defining functions</a></li>
+<li><a
+href="#functions-need-to-be-declared-before-they-can-be-used">Functions
+need to be declared before they can be used</a></li>
+<li><a href="#dont-forget-the-return-statement">Don’t forget the return
+statement!</a>
+<ol type="1">
+<li><a href="#main-is-a-special-function"><code>main</code> is a special
+function</a></li>
+<li><a href="#we-dont-return-const-objects">We don’t return
+<code>const</code> objects</a></li>
+</ol></li>
+<li><a href="#overloads-same-name-different-parameters">Overloads: same
+name, different parameters</a></li>
+<li><a href="#passing-parameters-as-references-to-const">Passing
+parameters as references-to-<code>const</code></a>
+<ol type="1">
+<li><a href="#dont-use-references-in-return-types-yet">Don’t use
+references in return types yet</a></li>
+</ol></li>
+<li><a href="#auto-as-a-parameter"><code>auto</code> as a
+parameter</a></li>
+</ol></li>
+<li><a
+href="#understanding-how-the-computer-sees-functions">Understanding how
+the computer sees functions</a>
+<ol type="1">
+<li><a href="#the-collatz-conjecture">The Collatz conjecture</a></li>
+<li><a href="#a-call-to-satisfies_collatz_conjecture">A call to
+<code>satisfies_collatz_conjecture</code></a></li>
+<li><a href="#looking-inside-a-stack-frame">Looking inside a stack
+frame</a></li>
+<li><a href="#tying-this-back-to-references">Tying this back to
+references</a></li>
+</ol></li>
+<li><a href="#feedback">Feedback</a></li>
+<li><a href="#summary">Summary</a></li>
+</ol></li>
+</ol>
+<h2 id="objectives-and-outcomes">Objectives and outcomes</h2>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Objective (you will develop)</th>
+<th>Outcome (you will be able to)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>an understanding of functions and skills in writing code that
+leverages functions</td>
+<td><ul>
+<li><em>synthesise</em> function definitions, including overloads.</li>
+<li><em>identify</em> a function’s return type, parameters, and
+name.</li>
+<li><em>identify</em> the difference between a value parameter and a
+reference parameter.</li>
+<li><em>explain</em> how the computer models and executes function
+calls.</li>
+<li><em>outline</em> how function overloads are chosen.</li>
+<li><em>identify</em> appropriate times to overload functions.</li>
+<li><em>outline</em> the differences between <code>main</code> and all
+other functions.</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to Janet Cobb, <a href="https://rietty.com"
+target="_blank">Juliette H. L.</a>, <a href="https://dippedrusk.com/"
+target="_blank">Vagrant Gautam</a>, <a
+href="https://github.com/strega-nil" target="_blank">Nicole Mazzuca</a>,
+Arien Judge, and <a href="https://github.com/tfpk" target="_blank">Tom
+Kunc</a>, for providing technical feedback, and to Maren Pan for
+providing artistic advice.</p>
+<h2 id="function-definitions">Function definitions</h2>
+<h3 id="defining-functions">Defining functions</h3>
+<p>Let’s suppose that we wanted to compute the hypotenuse of a
+right-angle triangle. The formula for this is <span
+class="math display">$$c = \sqrt{a^{\ 2} + b^{\ 2}}$$</span> In code,
+this would look like</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> hypotenuse<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> a<span class="op">,</span> <span class="dt">double</span> <span class="at">const</span> b<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">double</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">std::</span>sqrt<span class="op">((</span>a <span class="op">*</span> a<span class="op">)</span> <span class="op">+</span> <span class="op">(</span>b <span class="op">*</span> b<span class="op">));</span> <span class="co">// std::sqrt is in &lt;cmath&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>There are a few differences to <code>main</code>, but the structure
+is fairly similar. The key differences are that we have replaced
+<code>int</code> with <code>auto</code>, have a parameter list inside
+the parentheses, then follow up with <code>-&gt; double</code> to
+specify the return type, and finally, we have a
+<em>return-statement</em> inside the function’s body.</p>
+<h3 id="functions-need-to-be-declared-before-they-can-be-used">Functions
+need to be declared before they can be used</h3>
+<p>Before a function can be called, it needs to be declared. A function
+declaration is like an announcement to the compiler that a function
+exists. Unlike languages such as C♯ and Java, the position of a function
+matters. For example, this <a href="https://godbolt.org/z/xr7WozMoc"
+target="_blank">program fails to compile</a>, because the compiler
+doesn’t yet know about the existence of <code>hypotenuse</code>.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;hypotenuse&quot;</span><span class="op">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>hypotenuse<span class="op">(</span><span class="fl">3.0</span><span class="op">,</span> <span class="fl">4.0</span><span class="op">)</span> <span class="op">==</span> <span class="fl">5.0</span><span class="op">);</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> hypotenuse<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> a<span class="op">,</span> <span class="dt">double</span> <span class="at">const</span> b<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">double</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">std::</span>sqrt<span class="op">((</span>a <span class="op">*</span> a<span class="op">)</span> <span class="op">+</span> <span class="op">(</span>b <span class="op">*</span> b<span class="op">));</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre><code>error: use of undeclared identifier &#39;hypotenuse&#39;
+  CHECK(hypotenuse(3.0, 4.0) == 5.0);
+        ^
+error: use of undeclared identifier &#39;hypotenuse&#39;
+error: use of undeclared identifier &#39;hypotenuse&#39;
+3 errors generated.</code></pre>
+<hr />
+<p>You can ignore the repeated diagnostics: in order to deliver a
+high-quality test framework, Catch2 does some behind-the-scenes work
+that tricks the compiler into thinking the function is called three
+times, even though it’s only called once.</p>
+<hr />
+<p>The solution is to <a href="https://godbolt.org/z/WYzdKzbxs"
+target="_blank">put the function definition <em>before</em> its first
+use</a>.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> hypotenuse<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> a<span class="op">,</span> <span class="dt">double</span> <span class="at">const</span> b<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">double</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">std::</span>sqrt<span class="op">((</span>a <span class="op">*</span> a<span class="op">)</span> <span class="op">+</span> <span class="op">(</span>b <span class="op">*</span> b<span class="op">));</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;hypotenuse&quot;</span><span class="op">)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>hypotenuse<span class="op">(</span><span class="fl">3.0</span><span class="op">,</span> <span class="fl">4.0</span><span class="op">)</span> <span class="op">==</span> <span class="fl">5.0</span><span class="op">);</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre><code>===============================================================================
+All tests passed (1 assertion in 1 test case)</code></pre>
+<h3 id="dont-forget-the-return-statement">Don’t forget the return
+statement!</h3>
+<p>If we comment out the return statement, then we’ll get three
+errors.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> hypotenuse<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> a<span class="op">,</span> <span class="dt">double</span> <span class="at">const</span> b<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">double</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// return std::sqrt((a * a) + (b * b));</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre><code>error: unused parameter &#39;a&#39; [-Werror,-Wunused-parameter]
+auto hypotenuse(double const a, double const b) -&gt; double
+                             ^
+error: unused parameter &#39;b&#39; [-Werror,-Wunused-parameter]
+auto hypotenuse(double const a, double const b) -&gt; double
+                                             ^
+error: non-void function does not return a value [-Werror,-Wreturn-type]
+}
+^</code></pre>
+<p>The third error is the interesting one in this context. It’s telling
+us that our function doesn’t return something, despite our interface
+saying that we’ll return a <code>double</code>. We get this error
+because our current setup is configured to have the compiler fail and
+issue a diagnostic when we forget it. If we turn off all of the safety
+mechanisms, the program would have compiled, and then crashed when we
+ran it.</p>
+<p>If we don’t have a value that we wish to return, then we can use the
+type <code>void</code> to indicate as much.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;catch2/catch_test_macros.hpp&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> hypotenuse<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> a<span class="op">,</span> <span class="dt">double</span> <span class="at">const</span> b<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">double</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">std::</span>sqrt<span class="op">((</span>a <span class="op">*</span> a<span class="op">)</span> <span class="op">+</span> <span class="op">(</span>b <span class="op">*</span> b<span class="op">));</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> log<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> message<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;Checking &#39;</span><span class="sc">{}</span><span class="st">&#39;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> message<span class="op">);</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;hypotenuse&quot;</span><span class="op">)</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">auto</span> <span class="at">const</span> triples <span class="op">=</span> <span class="bu">std::</span>string<span class="op">(</span><span class="st">&quot;pythagorean triples&quot;</span><span class="op">);</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  log<span class="op">(</span>triples<span class="op">);</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  CHECK<span class="op">(</span>hypotenuse<span class="op">(</span><span class="fl">3.0</span><span class="op">,</span> <span class="fl">4.0</span><span class="op">)</span> <span class="op">==</span> <span class="fl">5.0</span><span class="op">);</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><code>void</code> is a special type that is used almost exclusively
+as a placeholder to indicate “we won’t be returning anything”. It’s
+important to understand, however, that a <code>void</code> function does
+still return: it just doesn’t have a return <em>value</em>. Some
+languages—such as Rust and Haskell—spell <code>void</code> as
+<code>()</code> and call it the ‘unit type’</p>
+<h4 id="main-is-a-special-function"><code>main</code> is a special
+function</h4>
+<p>At this point, you’re probably wondering why our usage of
+<code>main</code> doesn’t have a <em>return-statement</em>. We already
+know that <code>main</code> has some special rules attached to it, since
+it <em>must</em> have a return type of <code>int</code>. Another one of
+those rules is that if we reach the end of <code>main</code> and there
+isn’t a <em>return-statement</em>, the compiler will insert a
+<code>return 0;</code> on our behalf. It’s a programming convention to
+have <code>main</code> return <span class="math inline">0</span> for
+“successful” program runs, and all other values as an “unsuccessful”
+run. Although nothing in our program can use that value, <a
+href="https://en.wikipedia.org/wiki/Exit_status" target="_blank">the
+operating system gets that value back and can expose it through various
+means (e.g. a shell)</a>.</p>
+<p>Two other rules that are of interest are that we’re not allowed to
+call <code>main</code>, and that there can only be one overload of
+<code>main</code>.</p>
+<h4 id="we-dont-return-const-objects">We don’t return <code>const</code>
+objects</h4>
+<p>Something important to notice is that none of the return types in
+this chapter (or in this book) will ever take the form
+<code>&lt;type&gt; const</code>: they’ll always be
+<code>&lt;type&gt;</code>. <code>const</code>-qualifying a return type
+doesn’t achieve anything useful (it doesn’t force the caller to make a
+<code>const</code> object), and in many cases, will inhibit optimisation
+opportunities.</p>
+<h3 id="overloads-same-name-different-parameters">Overloads: same name,
+different parameters</h3>
+<p>Suppose that we’re sick of writing <code>fmt::print("{}\n", x)</code>
+and instead want to make a function so that we never forget to write the
+newline. We could do this:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_int<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_double<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_char<span class="op">(</span><span class="dt">char</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_bool<span class="op">(</span><span class="dt">bool</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_string<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This is kind of tedious and error-prone because we are embedding the
+type into the function’s name. It would be much better if we could
+instead just call the function <code>println</code>, right? C++ allows
+us to do this by creating <em>overload sets</em>: that is, a set of
+functions that share the same name, but have different parameters. A
+single function in an overload set is called an “overload”.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">char</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">bool</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Overloads don’t need to have the same number of parameters: we can
+have overloads that take fewer parameters, and we can have ones that
+take more. We can also change the return type of an overload!</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">()</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> x<span class="op">,</span> <span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> y<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">,</span> y<span class="op">);</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">,</span> <span class="dt">int</span> <span class="at">const</span> y<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">int</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}\n</span><span class="st">&quot;</span> x<span class="op">,</span> y<span class="op">);</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">2</span><span class="op">;</span> <span class="co">// returning the number of parameters</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<p>We aren’t able to overload <em>solely</em> based on return types
+though.</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">int</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This will produce the error below.</p>
+<pre><code>error: functions that differ only in their return type cannot be overloaded
+auto println(int const x) -&gt; int
+     ^
+note: previous definition is here
+auto println(int const x) -&gt; void
+~~~~ ^</code></pre>
+<p>Similarly, we can’t overload on top-level <code>const</code>ness.
+These two functions are the same from the compiler’s perspective: both
+<code>println(int)</code>.</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre><code>error: redefinition of &#39;println&#39;
+auto println(int x) -&gt; void
+     ^
+note: previous definition is here
+auto println(int const x) -&gt; void
+     ^</code></pre>
+<hr />
+<p>Overloads are chosen by the compiler based on how “close” of a
+“match” the arguments are to an overload’s parameters. This process is
+known as <em>overload resolution</em>, and its finer points are an
+expert topic, but there are some things we can learn about it now.
+Suppose that we only defined the following <code>println</code>
+overloads.</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="st">&quot;hello&quot;</span><span class="op">);</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The first call to <code>println</code> has the argument
+<code>0</code>, which has the type <code>int</code>. There happens to be
+an overload for <code>println</code> that takes a single
+<code>int</code> as a parameter: this is an exact match, and so the
+compiler chooses the <code>println(int)</code> overload. The second call
+to <code>println</code> has the argument <code>"hello"</code>. This is a
+string literal: we don’t have an overload that directly takes the string
+literal type, so there are no direct matches. We do, however, have the
+overload <code>println(std::string const&amp;)</code>. Since the
+compiler can implicitly convert the string literal to a
+<code>std::string</code><a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>, it does that, and then calls
+<code>println(std::string const&amp;)</code>. The third call is more or
+less the same as the second in principle, except that
+<code>double</code> narrows to <code>int</code>.</p>
+<p>A problem arises, however, when there are no exact matches and
+multiple overloads that could be chosen. Which overload is chosen for
+<code>println(0.0)</code> when we add the following overload to our
+overload set?</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">char</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The answer is none of them. There’s no <code>println(double)</code>
+overload, so the compiler looks for other overloads that it might be
+able to convert <code>double</code> to, and finds two such overloads:
+<code>println(int)</code> and <code>println(char)</code>. Both of these
+are considered to be “equal” choices in the compiler’s eyes, and so the
+best that it can do is provide a diagnostic and ask the programmer to
+make an explicit conversion. When the compiler can’t choose a specific
+overload, we call the overload set <em>ambiguous</em>.</p>
+<pre><code>error: call to &#39;println&#39; is ambiguous
+  println(0.0);
+  ^~~~~~~
+note: candidate function
+auto println(int const x) -&gt; void
+     ^
+note: candidate function
+auto println(char const x) -&gt; void
+     ^</code></pre>
+<h3 id="passing-parameters-as-references-to-const">Passing parameters as
+references-to-<code>const</code></h3>
+<p>You may have noticed that the previous two sections both passed
+strings as <code>std::string const&amp;</code>, rather than as
+<code>std::string const</code> like we’ve used for the built-in types.
+This is known as passing by reference-to-<code>const</code>. A
+<em>reference</em> is an alias to an object, sort of like a reference at
+the end of a paper or a hyperlink on the web. Rather than copying the
+entire contents into your function, you’re saying “when I say
+<code>message</code>, I really mean the <code>std::string</code> object
+<code>triples</code> from <code>TEST_CASE("hypotenuse")</code>”.</p>
+<p>The reason we want to pass by reference-to-<code>const</code> is
+because copying is both a slow thing for computers to do, and because it
+means that our program will use more memory (often unnecessarily).</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_value<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span> message<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> message<span class="op">.</span>size<span class="op">());</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_reference<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> message<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> message<span class="op">.</span>size<span class="op">());</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Whenever you make a claim about performance, you <em>always</em> need
+to back it up with a benchmark. <code>println_reference(triples)</code>
+is roughly ten times faster than <code>println_value(triples)</code>,
+and it’s only nineteen bytes long. As the length of a string increases,
+so too, does the delta between passing-by-value and
+passing-by-reference: a string that’s the same length as this chapter’s
+manuscript (about 15kB) shows <code>println_reference</code> as 140x
+faster!</p>
+<p>A lot of the code won’t make sense right now, but if you’re
+interested in seeing the raw numbers for yourself, you can find them on
+<a href="https://quick-bench.com/q/55v6w3-4qf2Z_FgWAFmP5s6JXQI"
+target="_blank">quick-bench.com</a>. As indicated before: performance is
+only a concern if you’ve measured the results, so we’ll be running
+benchmarks every now and again. Once we’ve covered all the material
+needed to understand how to write benchmarks, we’ll learn how to write
+our own.</p>
+<p>We need to cover two more things, and then we’ll explore why
+<code>println_reference</code> outpaces <code>println_value</code> by so
+much.</p>
+<h4 id="dont-use-references-in-return-types-yet">Don’t use references in
+return types yet</h4>
+<p>There are some rules that we must follow when doing
+<code>auto f(std::string x) -&gt; std::string const&amp;</code>. For
+now, always return by value, and we’ll revisit returning references in
+Module 3.</p>
+<h3 id="auto-as-a-parameter"><code>auto</code> as a parameter</h3>
+<p>We defined the following five <code>println</code> overloads much
+earlier on.</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">double</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">char</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="dt">bool</span> <span class="at">const</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The function bodies are all identical, so it’s still somewhat tedious
+and error-prone for us to keep so many definitions around. We don’t need
+to write out and maintain all of these overloads by hand: we can instead
+get the compiler to generate overloads as necessary:</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println<span class="op">(</span><span class="kw">auto</span> <span class="at">const</span><span class="op">&amp;</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="dv">144</span><span class="op">);</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="fl">0.915</span><span class="op">);</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="ch">&#39;F&#39;</span><span class="op">);</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  println<span class="op">(</span><span class="bu">std::</span>string<span class="op">(</span><span class="st">&quot;Elbereth Gilthoniel&quot;</span><span class="op">));</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Each of the above calls will instruct the compiler to generate a
+<code>println</code> overload for the type that we passed as a
+parameter. Because we intend to pass <code>std::string</code> objects to
+<code>println</code>, we need to make sure that <code>x</code> is a
+reference-to-<code>const</code>.</p>
+<p>You might think that using <code>auto</code> parameters for
+everything is the natural direction that we’d be taking, but this isn’t
+the case. Unlike constants and variables, we prefer spelling out
+parameters’ types whenever possible. Similarly to returning references,
+we’ll explore why in detail in Module 3. The general rule of thumb for
+now is to only parameterise your type when you have multiple function
+bodies that are <strong>textually</strong> identical.</p>
+<h2 id="understanding-how-the-computer-sees-functions">Understanding how
+the computer sees functions</h2>
+<p>Why is passing a string object by reference <em>so much faster</em>
+than when we pass it by value? Well, this all comes down to how
+functions themselves are represented in memory. When we call a function,
+the computer needs to carve out some space in memory for the function.
+This region of memory is called a <a
+href="https://en.wikipedia.org/wiki/Call_stack"
+target="_blank"><em>stack frame</em></a>. Many languages have a concept
+of “the stack”, and it’s incredibly similar to that.</p>
+<h3 id="the-collatz-conjecture">The Collatz conjecture</h3>
+<p>To demonstrate this, we’ll use the <a
+href="https://en.wikipedia.org/wiki/Collatz_conjecture"
+target="_blank">Collatz conjecture</a>. The Collatz sequence is an
+algorithm that takes an integer <span
+class="math inline"><em>n</em></span> and either halves it if is <span
+class="math inline"><em>n</em></span> even, or triples it and adds <span
+class="math inline">1</span> if it <span
+class="math inline"><em>n</em></span> is odd. Mathematically, this looks
+like <span class="math display">$$f(n) = \begin{cases}\frac{n}{2} &amp;
+\text{if } n \equiv 0\ (\text{mod } 2),\\ 3n + 1      &amp; \text{if } n
+\equiv 1\ (\text{mod } 2).\end{cases}$$</span> The Collatz
+<em>conjecture</em> is a question that has remained unsolved, which asks
+whether or not the Collatz sequence eventually reaches <span
+class="math inline">1</span> for all positive integers. We can express a
+naive implementation of the conjecture as follows:</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> satisfies_collatz_conjecture<span class="op">(</span><span class="dt">int</span> <span class="at">const</span> n<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">bool</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="op">(</span>n <span class="op">&lt;=</span> <span class="dv">0</span><span class="op">)</span>     <span class="op">?</span> <span class="kw">false</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">1</span><span class="op">)</span>     <span class="op">?</span> <span class="kw">true</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> <span class="op">(</span>n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">?</span> satisfies_collatz_conjecture<span class="op">(</span>n <span class="op">/</span> <span class="dv">2</span><span class="op">)</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span>                satisfies_collatz_conjecture<span class="op">(</span><span class="dv">3</span> <span class="op">*</span> n <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><code>satisfies_collatz_conjecture</code> is a <a
+href="https://users.cs.utah.edu/~germain/PPS/Topics/recursion.html"
+target="_blank">recursive function</a> that uses the conditional
+operator. The <a
+href="https://en.wikipedia.org/wiki/Ternary_conditional_operator"
+target="_blank">conditional operator</a> allows programs to make
+decisions in an expression, and is similar to Python’s
+<code>x if condition else y</code> and Haskell’s
+<code>if condition then x else y</code>. We write it as
+<code>condition ? x : y</code> in C++. The program checks the value of
+<code>condition</code> and then evaluates one of <code>x</code> or
+<code>y</code>, depending on whether <code>condition</code> is
+respectively true or false. <a href="https://godbolt.org/z/Wxv4zEf31"
+target="_blank">This Compiler Explorer session</a> demonstrates simple
+examples of the operator.</p>
+<h3 id="a-call-to-satisfies_collatz_conjecture">A call to
+<code>satisfies_collatz_conjecture</code></h3>
+<p>Ordinarily, we wouldn’t need to <a
+href="https://godbolt.org/z/sdv8Y9Ehd" target="_blank">switch Compiler
+Explorer sessions</a> in the middle of a chapter, but we need to use
+<code>int main()</code> for our examples to be simple, and we can’t when
+we’re using Catch2. Let’s consider the following listing.</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  satisfies_collatz_conjecture<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  satisfies_collatz_conjecture<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>If we were to pause program execution just before we call
+<code>satisfies_collatz_conjecture</code>, then the call stack will have
+a stack frame for <code>main</code> that sits on top of the operating
+system.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-01.svg"
+     title=""
+     alt="" />
+</center>
+<p>When we resume program execution, we call
+<code>satisfies_collatz_conjecture(1)</code> , and push a
+<code>satisfies_collatz_conjecture</code> frame to the top of the call
+stack.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-02.svg"
+     title=""
+     alt="" />
+</center>
+<p>Since <code>n == 1</code>, we have a base case, and immediately
+return to <code>main</code> with the value <code>true</code>. When we
+return back to <code>main</code>, we pop the
+<code>satisfies_collatz_conjecture</code> frame from the top of the call
+stack.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-01.svg"
+     title=""
+     alt="" />
+</center>
+<p>The second call to <code>satisfies_collatz_conjecture</code> will
+have some more interesting effects. As before, when we call
+<code>satisfies_collatz_conjecture(2)</code>, we push a
+<code>satisfies_collatz_conjecture</code> frame on to the call
+stack.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-02.svg"
+     title=""
+     alt="" />
+</center>
+<p>We don’t have a base-case this time, and so we need to call
+<code>satisfies_collatz_conjecture(n / 2)</code>. We <em>again</em> push
+a <code>satisfies_collatz_conjecture</code> frame on to the stack,
+because we need to preserve the information that the first call has.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-03.svg"
+     title=""
+     alt="" />
+</center>
+<p>This second call has <code>n == 1</code>, so it immediately returns
+<code>true</code>, and we pop the top frame off the call stack.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-02.svg"
+     title=""
+     alt="" />
+</center>
+<p>From here, we return the value we got back from our second call to
+<code>main</code>, and pop the top frame off.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-01.svg"
+     title=""
+     alt="" />
+</center>
+<p>Finally, since we’re not going to make any further calls to
+<code>satisfies_collatz_conjecture</code>, <code>main</code> returns,
+and we exit to the operating system.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-00.svg"
+     title=""
+     alt="" />
+</center>
+<h3 id="looking-inside-a-stack-frame">Looking inside a stack frame</h3>
+<p>Now that we understand how stack frames are added when functions are
+called and removed when functions return, we should look at what a stack
+frame looks like from the memory perspective in our fictional abstract
+machine. For brevity, we’ll consider only the largest snapshot from the
+previous section. Every frame contains metadata that says who the
+function is, and who called it (and where they called it from). The
+first bit is used by any potential callees, and the latter is important
+for knowing where to return to. The top frame then has an
+<code>int</code> that’s used to store the parameter <code>n</code>. The
+next byte is used to store the result of any
+<code>satisfies_collatz_conjecture</code> calls we might make (it goes
+unused because we don’t make any further calls into
+<code>satisfies_collatz_conjecture</code>, but the compiler has no way
+of knowing this). The remaining three bytes don’t get used.</p>
+<center>
+<img class="abstract-machine-large"
+     src="images/chapter-05/stack-frame-3.svg"
+     title=""
+     alt="" />
+</center>
+<p>The middle frame also has a parameter object that is distinct from
+the top object. Its result object is separate from the top frame, and
+will contain what’s returned from the
+<code>satisfies_collatz_conjecture</code> that just returned.</p>
+<center>
+<img class="abstract-machine-large"
+     src="images/chapter-05/stack-frame-2.svg"
+     title=""
+     alt="" />
+</center>
+<p>The final frame is for <code>main</code>. It doesn’t have any
+parameter objects, and it has one (not two) result object. Since the
+result of the first function goes unused, the result of the second call
+can go in the same spot (thereby not needing to occupy another
+cell).</p>
+<center>
+<img class="abstract-machine-large"
+     src="images/chapter-05/stack-frame-1.svg"
+     title=""
+     alt="" />
+</center>
+<p>Putting this all together, our call stack looks like this. The
+operating system bit has been dropped off because that’s not relevant to
+this section.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-full.svg"
+     title=""
+     alt="" />
+</center>
+<h3 id="tying-this-back-to-references">Tying this back to
+references</h3>
+<p>We now have all the pieces in place to understand why passing a
+strings as references-to-<code>const</code> are expeditious, as opposed
+to when they’re passed by value. Suppose that we have the following
+code:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_value<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span> message<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> message<span class="op">);</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> println_reference<span class="op">(</span><span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span><span class="op">&amp;</span> message<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">void</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">{}\n</span><span class="st">&quot;</span><span class="op">,</span> message<span class="op">)</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">auto</span> <span class="at">const</span> mushrooms <span class="op">=</span> <span class="bu">std::</span>string<span class="op">(</span><span class="st">&quot;Grip, Fang, Wolf: all good boys!&quot;</span><span class="op">);</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  println_value<span class="op">(</span>mushrooms<span class="op">);</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  println_reference<span class="op">(</span>mushrooms<span class="op">);</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Our <code>main</code> function will look like this:</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-05/stack-frame-main.svg"
+     title=""
+     alt="" />
+</center>
+<p>When we call <code>println_value</code>, we copy the contents of our
+string as we pass it <code>mushrooms</code> to the function. That means
+that every character of <code>mushrooms</code> needs to be recreated in
+<code>message</code>, and so its stack frame looks incredibly
+similar.</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-05/stack-frame-println_value.svg"
+     title=""
+     alt="" />
+</center>
+<p>This might be made more clear if we look at the full call stack when
+we’re inside <code>println_value</code>.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-call-println_value.svg"
+     title=""
+     alt="" />
+</center>
+<p>As the length of the string grows, so too, does the time required to
+copy its value. However, when we call <code>println_reference</code>, we
+<em>do not</em> duplicate the contents of <code>mushrooms</code>:
+instead, we’re telling the compiler that when we say
+<code>message</code>, we really mean <code>mushrooms</code>. The length
+of the string doesn’t influence anything in this case.</p>
+<center>
+<img class="abstract-machine"
+     src="images/chapter-05/stack-frame-println_reference.svg"
+     title=""
+     alt="" />
+</center>
+<p>Similarly, here is what the full call stack looks like while calling
+<code>println_reference</code>.</p>
+<center>
+<img class="abstract-machine-small"
+     src="images/chapter-05/stack-call-println_reference.svg"
+     title=""
+     alt="" />
+</center>
+<p>For this reason, we pass large types and types that can grow in size
+(like <code>std::string</code>) by reference-to-<code>const</code>. We
+will give a first definition of what a “large type” is in Chapter 6, and
+properly explore what that means in Module 4 or beyond.</p>
+<h2 id="feedback">Feedback</h2>
+<p>If you’d like to provide feedback regarding this series, please <a
+href="https://github.com/cjdb/cjdb.github.io/issues"
+target="_blank">file an issue on GitHub</a>.</p>
+<p>If you’re interested in reading future chapters, subscribe to my <a
+href="https://blog.cjdb.xyz/feed.xml" target="_blank">RSS feed</a> to
+receive a notification at the time of publication. If you’d previously
+subscribed to my feed on my old website (www.cjdb.com.au), please be
+sure to note the new domain!</p>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduced function definitions, overloads, immutable
+references, and parameterised functions. We learnt that we always need
+to provide a return statement for functions that don’t have a
+<code>void</code> return type, with <code>main</code> being the sole
+exception. We learnt how computers call functions at a machine level,
+and the implications this has when writing code. Finally, we lightly
+touched on how an overload is selected, and what it means to have an
+ambiguous overload set.</p>
+<div class="fixed-table">
+<div class="table-row-group">
+<div class="table-row">
+<div class="table-cell">
+<a href="applied-modern-cxx-04.html">Chapter 4: Conversions and
+initialisation</a>
+</div>
+<div class="table-cell" style="text-align: center;">
+<a href="applied-modern-cxx-00.html" target="_blank">Table of
+contents</a>
+</div>
+<div class="table-cell" style="text-align: right;">
+<a href="applied-modern-cxx-06.html">Chapter 6: C++ is a value-oriented
+language</a>
+</div>
+</div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>It’s considered okay to implicitly convert a string
+literal into a <code>std::string</code>. We’ll revisit this in the next
+chapter.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
             </div>
     </div>
   </div>

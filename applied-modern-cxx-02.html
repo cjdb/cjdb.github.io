@@ -51,6 +51,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -83,11 +84,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -96,14 +97,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -113,8 +114,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <link rel="stylesheet" href="style.css" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HPGZG0F5PP"></script>
-  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-  gtag('config', 'G-HPGZG0F5PP'); </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HPGZG0F5PP');
+  </script>
   <meta name="keywords" content="C++, cplusplus, cpp, cxx" />
   <meta name="description" content="Introduces the reader to their first C++ programs." />
 </head>
@@ -126,7 +132,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <div class="container">
         <span class="doc-title">Applied Modern C++ 2: Hello, C++!</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Christopher Di Bella</p></li>
+                    <li><p class="navbar-text">Christopher Di
+Bella</p></li>
                               <li><p class="navbar-text">2023-01-16</p></li>
                   </ul>
       </div>
@@ -147,21 +154,27 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <a href="applied-modern-cxx-00.html">Table of contents</a>
 </div>
 <div class="table-cell" style="text-align: right;">
-<a href="applied-modern-cxx-03.html">Chapter 3: Simple types and objects</a>
+<a href="applied-modern-cxx-03.html">Chapter 3: Simple types and
+objects</a>
 </div>
 </div>
 </div>
 </div>
 <h1 id="chapter-2-hello-c">Chapter 2: Hello, C++!</h1>
-<p>This chapter gives you a sample of C++ so that you can ease into both your initial development environment, and into your new programming language. We’re going to write two very simple C++ programs and take a look at what Compiler Explorer gives us.</p>
+<p>This chapter gives you a sample of C++ so that you can ease into both
+your initial development environment, and into your new programming
+language. We’re going to write two very simple C++ programs and take a
+look at what Compiler Explorer gives us.</p>
 <h2 id="chapter-table-of-contents">Chapter table of contents</h2>
 <ol type="1">
 <li><a href="#chapter-2-hello-c">Chapter 2: Hello, C++!</a>
 <ol type="1">
 <li><a href="#objectives-and-outcomes">Objectives and outcomes</a></li>
 <li><a href="#acknowledgements">Acknowledgements</a></li>
-<li><a href="#c-is-a-compiled-language">C++ is a compiled language</a></li>
-<li><a href="#hello-compiler-explorer">Hello, Compiler Explorer!</a></li>
+<li><a href="#c-is-a-compiled-language">C++ is a compiled
+language</a></li>
+<li><a href="#hello-compiler-explorer">Hello, Compiler
+Explorer!</a></li>
 <li><a href="#the-simplest-c-program">The simplest C++ program</a></li>
 <li><a href="#classic-hello-world">Classic hello world</a>
 <ol type="1">
@@ -193,56 +206,124 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <tr class="even">
 <td>skills in writing simple C++ programs</td>
 <td><ul>
-<li><em>synthesise</em> a C++ program that writes to standard output</li>
+<li><em>synthesise</em> a C++ program that writes to standard
+output</li>
 <li><em>describe</em> the contents of a function</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
 <h2 id="acknowledgements">Acknowledgements</h2>
-<p>Thank you to Sy Brand and Hana Dusíková for providing feedback on early drafts of this blog.</p>
+<p>Thank you to Sy Brand and Hana Dusíková for providing feedback on
+early drafts of this blog.</p>
 <h2 id="c-is-a-compiled-language">C++ is a compiled language</h2>
-<p>Computers are only interested in machine code that instructs their circuitry to do the next thing (for some definition of “thing”). We don’t directly understand electricity, so we need some way to communicate with both the computer and other human programmers. This is where code comes in: it’s a medium that humans can be trained to understand, and can be <em>translated</em> to electricity by a computer. There are two main methods of translation: interpretation and compilation.</p>
-<p>Interpreters are programs that translate code and execute it at the same time, but the catch is that you always need to have the code and the interpreter on-hand. Python and JavaScript are traditionally <em>interpreted languages</em>.</p>
-<p>Compilers are programs that translate code and output a file for later use. If the file is executable, you can run the program without the need for the code or the compiler, but it comes with the trade-off of only being able to run the program on certain computers (e.g. a program that was compiled for Linux cannot run on macOS). C++ and Rust fall into this category, and are known as <em>compiled languages</em>.</p>
+<p>Computers are only interested in machine code that instructs their
+circuitry to do the next thing (for some definition of “thing”). We
+don’t directly understand electricity, so we need some way to
+communicate with both the computer and other human programmers. This is
+where code comes in: it’s a medium that humans can be trained to
+understand, and can be <em>translated</em> to electricity by a computer.
+There are two main methods of translation: interpretation and
+compilation.</p>
+<p>Interpreters are programs that translate code and execute it at the
+same time, but the catch is that you always need to have the code and
+the interpreter on-hand. Python and JavaScript are traditionally
+<em>interpreted languages</em>.</p>
+<p>Compilers are programs that translate code and output a file for
+later use. If the file is executable, you can run the program without
+the need for the code or the compiler, but it comes with the trade-off
+of only being able to run the program on certain computers (e.g. a
+program that was compiled for Linux cannot run on macOS). C++ and Rust
+fall into this category, and are known as <em>compiled
+languages</em>.</p>
 <h2 id="hello-compiler-explorer">Hello, Compiler Explorer!</h2>
-<p>Let’s start by opening up our editor, <a href="https://godbolt.org/z/b19Y9Mb5P" target="_blank">Compiler Explorer</a>. Compiler Explorer is an online tool that many developers use to prototype simple content and see how different compilers process their code. In our case, we’re going to be using it as an off-the-shelf editor that will work on pretty much any computer that isn’t a phone.</p>
+<p>Let’s start by opening up our editor, <a
+href="https://godbolt.org/z/b19Y9Mb5P" target="_blank">Compiler
+Explorer</a>. Compiler Explorer is an online tool that many developers
+use to prototype simple content and see how different compilers process
+their code. In our case, we’re going to be using it as an off-the-shelf
+editor that will work on pretty much any computer that isn’t a
+phone.</p>
 <figure>
-<img src="images/compiler-explorer-1.webp" width="1400" alt="" /><figcaption>A screenshot showing our Compiler Explorer environment.</figcaption>
+<img src="images/compiler-explorer-1.webp" width="1400"
+alt="A screenshot showing our Compiler Explorer environment." />
+<figcaption aria-hidden="true">A screenshot showing our Compiler
+Explorer environment.</figcaption>
 </figure>
-<p>You should see an empty textbox that takes up about half the screen on the left-hand side of the page, and message in the pane to the right.</p>
+<p>You should see an empty textbox that takes up about half the screen
+on the left-hand side of the page, and message in the pane to the
+right.</p>
 <pre><code>Could not execute the program
 Compiler returned: -1
 Compiler stderr
 
 &lt;File example.cpp has no content or file is missing&gt;</code></pre>
-<p>Our primary usage of Compiler Explorer in Module 1 will be to write code into the textbox and read the output that the compiler provides.</p>
-<p>Compiler Explorer automatically updates as you type, so we don’t need to save any files. This might mean that you’ll often be told that programs are incorrect until you finish typing. You can hide the output until you’ve finished typing by pressing the ‘Compiler output’ button in the right pane.</p>
-<p>In this case, the reason is because we haven’t written any code. Let’s fix that. ## The simplest C++ program</p>
-<p>To make the message from the previous section go away, we’ll write the simplest possible C++ program into the textbox on the left.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="dt">int</span> main() {}</span></code></pre></div>
+<p>Our primary usage of Compiler Explorer in Module 1 will be to write
+code into the textbox and read the output that the compiler
+provides.</p>
+<p>Compiler Explorer automatically updates as you type, so we don’t need
+to save any files. This might mean that you’ll often be told that
+programs are incorrect until you finish typing. You can hide the output
+until you’ve finished typing by pressing the ‘Compiler output’ button in
+the right pane.</p>
+<p>In this case, the reason is because we haven’t written any code.
+Let’s fix that. ## The simplest C++ program</p>
+<p>To make the message from the previous section go away, we’ll write
+the simplest possible C++ program into the textbox on the left.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{}</span></span></code></pre></div>
 <p>After a few seconds, you should notice that the output changes to</p>
 <pre><code>Program returned: 0</code></pre>
-<p>If you see that output, it means that we were able to successfully run our program. Congratulations! We’ve just written our first C++ program! But what did we do?</p>
-<p>This program consists of a global nullary function called <code>main</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The program does nothing.</p>
-<p>In C++, programs need what’s known as an <a href="https://en.wikipedia.org/wiki/Entry_point" target="_blank">entry point</a>: that is, a way that the system can interface with our program to start execution. This entry point is always called <code>main</code>, and it always needs to have the return type<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <code>int</code>. Since the entry point is always known as <code>main</code>, and it’s always required, our tools assume that we’re going to provide it in some fashion.</p>
-<p>Like most modern programming languages, C++ uses parentheses (<code>(</code> and <code>)</code>) to group function parameters. In this case, there aren’t any parameters, so we leave the parentheses empty. We use braces (<code>{</code> and <code>}</code>) to group various other things. Since we don’t have anything to do yet, we leave the braces empty too. C++ is case-sensitive, so if, for example, we change <code>main</code> to <code>Main</code>, then our tools won’t be able to find the entry point any more, and will complain once again.</p>
+<p>If you see that output, it means that we were able to successfully
+run our program. Congratulations! We’ve just written our first C++
+program! But what did we do?</p>
+<p>This program consists of a global nullary function called
+<code>main</code><a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. The program does nothing.</p>
+<p>In C++, programs need what’s known as an <a
+href="https://en.wikipedia.org/wiki/Entry_point" target="_blank">entry
+point</a>: that is, a way that the system can interface with our program
+to start execution. This entry point is always called <code>main</code>,
+and it always needs to have the return type<a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
+<code>int</code>. Since the entry point is always known as
+<code>main</code>, and it’s always required, our tools assume that we’re
+going to provide it in some fashion.</p>
+<p>Like most modern programming languages, C++ uses parentheses
+(<code>(</code> and <code>)</code>) to group function parameters. In
+this case, there aren’t any parameters, so we leave the parentheses
+empty. We use braces (<code>{</code> and <code>}</code>) to group
+various other things. Since we don’t have anything to do yet, we leave
+the braces empty too. C++ is case-sensitive, so if, for example, we
+change <code>main</code> to <code>Main</code>, then our tools won’t be
+able to find the entry point any more, and will complain once again.</p>
 <h2 id="classic-hello-world">Classic hello world</h2>
-<p>Our current program doesn’t do anything useful. A classic hello world program is slightly more interesting than this. Let’s get the following source into Compiler Explorer.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co">// This is my first meaningful C++ program!</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>{</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>}</span></code></pre></div>
-<p>After a few seconds, you should see the pane on the right now show</p>
+<p>Our current program doesn’t do anything useful. A classic hello world
+program is slightly more interesting than this. Let’s get the following
+source into Compiler Explorer.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// This is my first meaningful C++ program!</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;fmt/format.h&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>After a few seconds, you should see the pane on the right now
+show</p>
 <pre><code>Program returned: 0
 Program stdout
 
 Hello, world!</code></pre>
-<p>The first line starts with <code>//</code>. Two consecutive forward slashes start a comment, which is delimited by the line’s end.</p>
-<p>Source files in C++ are bare-bones: that means that most functionality needs to be imported from some library. In this program, we’re writing to standard output, so we need to include an I/O library that gives us the facilities to do that. To import our library, we placed <code>#include &lt;fmt/format.h&gt;</code> at the top of the file. This lets us use the <code>fmt::print</code> function below. If we remove this line, then this appears:</p>
+<p>The first line starts with <code>//</code>. Two consecutive forward
+slashes start a comment, which is delimited by the line’s end.</p>
+<p>Source files in C++ are bare-bones: that means that most
+functionality needs to be imported from some library. In this program,
+we’re writing to standard output, so we need to include an I/O library
+that gives us the facilities to do that. To import our library, we
+placed <code>#include &lt;fmt/format.h&gt;</code> at the top of the
+file. This lets us use the <code>fmt::print</code> function below. If we
+remove this line, then this appears:</p>
 <pre><code>Could not execute the program
 Compiler returned: 1
 Compiler stderr
@@ -251,26 +332,48 @@ Compiler stderr
   fmt::print(&quot;Hello, world!\n&quot;);
   ^
 1 error generated.</code></pre>
-<p>The <code>"Hello, world!\n"</code> enclosed in double quotes (<code>"</code>) is a string literal, where the <code>\n</code> is processed as a line-feed character. In C++, all string literals are enclosed in double quotes, unlike some languages like Python, where you can interchange single quotes (<code>'</code>) and double quotes.</p>
-<p><code>fmt::print("Hello, world!\n")</code> is a function call, where our <code>"Hello, world!\n"</code> string literal is passed as a function argument. This call to <code>fmt::print</code> writes the string literal to standard output.</p>
-<p>Most statements in C++ end with a semicolon (<code>;</code>). Ending statements with semicolons lets us split them over multiple lines, when they become too long.</p>
+<p>The <code>"Hello, world!\n"</code> enclosed in double quotes
+(<code>"</code>) is a string literal, where the <code>\n</code> is
+processed as a line-feed character. In C++, all string literals are
+enclosed in double quotes, unlike some languages like Python, where you
+can interchange single quotes (<code>'</code>) and double quotes.</p>
+<p><code>fmt::print("Hello, world!\n")</code> is a function call, where
+our <code>"Hello, world!\n"</code> string literal is passed as a
+function argument. This call to <code>fmt::print</code> writes the
+string literal to standard output.</p>
+<p>Most statements in C++ end with a semicolon (<code>;</code>). Ending
+statements with semicolons lets us split them over multiple lines, when
+they become too long.</p>
 <h3 id="greeting-with-a-date">Greeting with a date</h3>
-<p><code>fmt::print</code> does special processing that replaces <code>{}</code> in string literals with external values. The first <code>{}</code> is replaced by the second argument to <code>fmt::print</code>, the second <code>{}</code> is replaced by the third argument, and so on. Let’s use this to print out the date.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="dt">int</span> main()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>{</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>  fmt::print(<span class="st">&quot;It is </span><span class="sc">{}</span><span class="st">-</span><span class="sc">{}</span><span class="st">-</span><span class="sc">{}</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="dv">2022</span>, <span class="dv">12</span>, <span class="dv">30</span>);</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>}</span></code></pre></div>
+<p><code>fmt::print</code> does special processing that replaces
+<code>{}</code> in string literals with external values. The first
+<code>{}</code> is replaced by the second argument to
+<code>fmt::print</code>, the second <code>{}</code> is replaced by the
+third argument, and so on. Let’s use this to print out the date.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;Hello, world!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  fmt<span class="op">::</span>print<span class="op">(</span><span class="st">&quot;It is </span><span class="sc">{}</span><span class="st">-</span><span class="sc">{}</span><span class="st">-</span><span class="sc">{}</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> <span class="dv">2022</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">30</span><span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <pre><code>Hello, world!
 It is 2022-12-30.</code></pre>
 <h2 id="feedback">Feedback</h2>
-<p>If you’d like to provide feedback regarding this series, please <a href="https://github.com/cjdb/cjdb.github.io/issues" target="_blank">file an issue on GitHub</a>.</p>
-<p>If you’re interested in reading future chapters, subscribe to my <a href="https://blog.cjdb.xyz/feed.xml" target="_blank">RSS feed</a> to receive a notification at the time of publication. If you’d previously subscribed to my feed on my old website (www.cjdb.com.au), please be sure to note the new domain!</p>
+<p>If you’d like to provide feedback regarding this series, please <a
+href="https://github.com/cjdb/cjdb.github.io/issues"
+target="_blank">file an issue on GitHub</a>.</p>
+<p>If you’re interested in reading future chapters, subscribe to my <a
+href="https://blog.cjdb.xyz/feed.xml" target="_blank">RSS feed</a> to
+receive a notification at the time of publication. If you’d previously
+subscribed to my feed on my old website (www.cjdb.com.au), please be
+sure to note the new domain!</p>
 <h2 id="summary">Summary</h2>
-<p>And that’s a wrap for our first two C++ programs! In this chapter, we learnt:</p>
+<p>And that’s a wrap for our first two C++ programs! In this chapter, we
+learnt:</p>
 <ul>
 <li>about Compiler Explorer, our editor</li>
-<li>that <code>main</code> is a function required for all C++ programs</li>
+<li>that <code>main</code> is a function required for all C++
+programs</li>
 <li>how to import a library</li>
 <li>how to write to standard output</li>
 </ul>
@@ -284,16 +387,22 @@ It is 2022-12-30.</code></pre>
 <a href="applied-modern-cxx-00.html">Table of contents</a>
 </div>
 <div class="table-cell" style="text-align: right;">
-<a href="applied-modern-cxx-03.html">Chapter 3: Simple types and objects</a>
+<a href="applied-modern-cxx-03.html">Chapter 3: Simple types and
+objects</a>
 </div>
 </div>
 </div>
 </div>
-<section class="footnotes" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>A “nullary function” is one that takes zero arguments.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>If you’re not familiar with “return types”, we’ll cover what that means in Chapter 4. For now, assume it means that <code>int</code> always needs to precede <code>main</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>A “nullary function” is one that takes zero arguments.<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If you’re not familiar with “return types”, we’ll cover
+what that means in Chapter 4. For now, assume it means that
+<code>int</code> always needs to precede <code>main</code>.<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
             </div>
