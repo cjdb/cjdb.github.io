@@ -93,3 +93,5 @@ In this article, we explore what concepts are, where they are useful, and how th
 things that exist in vanilla C++17.
 
 ## [RSS Feed](feed.xml)
+
+<a rel="me" href="https://mastodon.cjdb.xyz/@cjdb">Mastodon</a>
