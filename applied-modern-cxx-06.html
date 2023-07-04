@@ -44,7 +44,7 @@
     <meta name="generator" content="pandoc" />
   <meta name="author" content="Christopher Di Bella" />
   <meta name="date" content="2023-01-29" />
-  <title>Applied Modern C++ 8: User-defined types and scope</title>
+  <title>Applied Modern C++ 6: Series Project</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -122,7 +122,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     gtag('config', 'G-HPGZG0F5PP');
   </script>
   <meta name="keywords" content="C++, cplusplus, cpp, cxx" />
-  <meta name="description" content="In this chapter we explore how to build simple types and how scope works." />
+  <meta name="description" content="This chapter introduces the series' project." />
 </head>
 <body>
 
@@ -130,8 +130,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">Applied Modern C++ 8: User-defined types
-and scope</span>
+        <span class="doc-title">Applied Modern C++ 6: Series
+Project</span>
         <ul class="nav pull-right doc-info">
                     <li><p class="navbar-text">Christopher Di
 Bella</p></li>
@@ -156,18 +156,69 @@ Bella</p></li>
 contents</a>
 </div>
 <div class="table-cell" style="text-align: right;">
-<a href="applied-modern-cxx-07.html">Chapter 9: Control flow</a>
+<a href="applied-modern-cxx-07.html">Chapter 7: Lexical analysis</a>
 </div>
 </div>
 </div>
 </div>
-<h1 id="user-defined-types-and-scope">User-defined types and scope</h1>
-<p>Since we’ve been placing an emphasis on types and values, it’s
-hopefully unsurprising that C++ has ways for programmers to define their
-own types. In this instalment, we’ll learn how to define and use our own
-types. We’ll then explore some standard library types. Following that,
-we’ll learn how scope works in C++, and what that means for objects.</p>
+<h1 id="series-project">Series Project</h1>
+<p>Throughout this series, we’re going to be implementing a BF compiler.
+This chapter introduces you to both a high-level overview of a compiler
+and to the BF language. As a result, we won’t be learning anything about
+C++ in this chapter (but everything we learn will be relevant to the
+next chapter). It’s okay to not get this chapter on the first go: we’ll
+be implementing the compiler over a great many chapters, so feel free to
+refer to this chapter as often as necessary.</p>
+<p>Compilers are a fun<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> technology to implement and require
+a wide variety of data structures and algorithms. Although we won’t be
+implementing part of the compiler in every chapter, we will be using it
+as a common and practical motivation, so that you can observe how
+features are used in a context that isn’t contrived and needs some
+design.</p>
 <h2 id="chapter-table-of-contents">Chapter table of contents</h2>
+<ol type="1">
+<li><a href="#series-project">Series Project</a>
+<ol type="1">
+<li><a href="#chapter-table-of-contents">Chapter table of
+contents</a></li>
+<li><a href="#objectives-and-outcomes">Objectives and outcomes</a></li>
+<li><a href="#acknowledgements">Acknowledgements</a></li>
+<li><a href="#an-overview-of-compilers">An overview of compilers</a>
+<ol type="1">
+<li><a href="#front-end">Front-end</a>
+<ol type="1">
+<li><a href="#front-end-phase-1-lexical-analysis">Front-end phase 1:
+lexical analysis</a></li>
+<li><a href="#front-end-phase-2-parsing">Front-end phase 2:
+parsing</a></li>
+<li><a href="#front-end-phase-3-semantic-analysis">Front-end phase 3:
+semantic analysis</a></li>
+</ol></li>
+<li><a href="#back-end">Back-end</a>
+<ol type="1">
+<li><a href="#back-end-phase-1-optimisation-optional">Back-end phase 1:
+optimisation (optional)</a></li>
+<li><a href="#back-end-phase-2-code-generation">Back-end phase 2: code
+generation</a></li>
+</ol></li>
+<li><a href="#intermediate-representation">Intermediate
+representation</a></li>
+<li><a href="#further-reading">Further reading</a></li>
+</ol></li>
+<li><a href="#bf">BF</a>
+<ol type="1">
+<li><a href="#what-is-bf">What is BF?</a></li>
+<li><a
+href="#does-this-mean-ill-need-to-learn-how-to-program-in-bf-too">Does
+this mean I’ll need to learn how to program in BF too?</a></li>
+<li><a href="#memory-model">Memory model</a></li>
+<li><a href="#instruction-set">Instruction set</a></li>
+</ol></li>
+<li><a href="#feedback">Feedback</a></li>
+<li><a href="#summary">Summary</a></li>
+</ol></li>
+</ol>
 <h2 id="objectives-and-outcomes">Objectives and outcomes</h2>
 <table>
 <colgroup>
@@ -182,145 +233,338 @@ we’ll learn how scope works in C++, and what that means for objects.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td>an understanding of user-defined types and skills in using and
-defining them</td>
+<td>an understanding of how a compiler translates source code into
+target code</td>
 <td><ul>
-<li><em>distinguish</em> user-defined types from built-in types.</li>
-<li><em>synthesise</em> enumerations.</li>
-<li><em>synthesise</em> simple data structures that have:
+<li><em>identify</em> the three major components of a compiler.</li>
+<li><em>describe</em> the five main compiler passes:
 <ul>
-<li>data members</li>
-<li>constructors</li>
-<li>member functions</li>
-<li>generated comparison operations</li>
+<li>scanning, parsing, semantic analysis, optimisation, and code
+generation.</li>
 </ul></li>
-<li><em>identify</em> when to make members public and when to make them
-private.</li>
+<li><em>explain</em> why an intermediate representation plays a key
+component in the design of a compiler.</li>
 </ul></td>
 </tr>
 <tr class="even">
-<td>skills in using containers</td>
+<td>an understanding of the rules of the BF programming language</td>
 <td><ul>
-<li><em>describe</em> what <code>std::vector</code> and
-<code>std::map</code> represent.</li>
-<li><em>synthesise</em> code that can leverage:
-<ul>
-<li>inserting, extracting, and erasing elements</li>
-<li>counting, finding, and sorting elements</li>
-</ul></li>
-<li><em>distinguishes</em> between <code>std::string</code> and
-<code>std::vector&lt;char&gt;</code>.</li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td>an understanding of scope and object lifetime</td>
-<td><ul>
-<li><em>identify</em> what designates the beginning and end of a
-scope.</li>
-<li><em>outline</em> what happens to an object once it goes out of
-scope.</li>
-<li><em>identify</em> unsafe code that permits references to live beyond
-the referee’s actual lifetime.</li>
+<li><em>describe</em> the language’s memory model.</li>
+<li><em>describe</em> the language’s “architecture”.</li>
+<li><em>identify</em> all eight instructions.</li>
+<li><em>identify</em> comment characters.</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
 <h2 id="acknowledgements">Acknowledgements</h2>
-<p>Nary a person has reviewed this.</p>
-<h2 id="user-defined-types">User-defined types</h2>
-<h3 id="data-structures">Data structures</h3>
-<p>https://godbolt.org/z/KnE71jeEs</p>
-<p>Let’s suppose that we want to write a program that recorded some of
-our favourite films. For now, let’s store the film’s title, director,
-and composer. In C++, we’re able to make simple record types using the
-<code>struct</code> keyword.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> film <span class="op">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">std::</span>string<span class="op"> </span>title<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">std::</span>string<span class="op"> </span>director<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">std::</span>string<span class="op"> </span>composer<span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<p>After we introduce a struct, we provide it with a name, and then we
-open a scope to define the contents of the data structure. In our
-<code>film</code> data structure, we have three <em>data members</em>,
-all of which are defined using the non-<code>auto</code> syntax (there’s
-no way to define a data member using <code>auto</code>). Notice that
-we’re also not <code>const</code>-qualifying our members: that causes
-issues when we try to do assignment, so we leave the constness for when
-we define our objects. Let’s now create a <code>film</code> object:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>TEST_CASE<span class="op">(</span><span class="st">&quot;some fun films&quot;</span><span class="op">)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">auto</span> <span class="at">const</span> star_wars <span class="op">=</span> film<span class="op">{</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>title <span class="op">=</span> <span class="st">&quot;Star Wars Episode VIII: The Last Jedi&quot;</span><span class="op">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>director <span class="op">=</span> <span class="st">&quot;Johnson, Rian&quot;</span><span class="op">,</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>composer <span class="op">=</span> <span class="st">&quot;Williams, John&quot;</span><span class="op">,</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">};</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>When you want to initialise a <code>film</code> object, you do so by
-opening a pair of curly braces and name the elements in the order that
-they’re defined in the struct. For example, if we’d try swapping the
-title and director, the compiler will complain.</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> <span class="at">const</span> star_wars <span class="op">=</span> film<span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span>director <span class="op">=</span> <span class="st">&quot;Johnson, Rian&quot;</span><span class="op">,</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span>title <span class="op">=</span> <span class="st">&quot;Star Wars Episode VIII: The Last Jedi&quot;</span><span class="op">,</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span>composer <span class="op">=</span> <span class="st">&quot;Williams, John&quot;</span><span class="op">,</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<pre><code>error: ISO C++ requires field designators to be specified in declaration order; field &#39;director&#39; will be initialized after field &#39;title&#39; [-Werror,-Wreorder-init-list]
-    .title = &quot;Star Wars Episode VIII: The Last Jedi&quot;,
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-note: previous initialization for field &#39;director&#39; is here
-    .director = &quot;Johnson, Rian&quot;,
-                ^~~~~~~~~~~~~~~</code></pre>
-<p>The <code>.data_member = value</code> syntax is called a
-<em>designated initialiser</em>. Designated initialisers are a recent
-addition to C++, and so the bulk of production code will use what is
-known as <em>list initialisation</em> (you can forget both of these
-terms after the chapter ends, but knowing the technical names will make
-discussion easier).</p>
+<p>Thanks to <a href="https://github.com/tfpk" target="_blank">Tom
+Kunc</a>, Janet Cobb, David Ledger, <a href="https://dippedrusk.com/"
+target="_blank">Vagrant Gautam</a>, <a href="https://chandlerc.blog"
+target="_blank">Chandler Carruth</a>, <a
+href="https://github.com/killerbee13" target="_blank">killerbee13</a>,
+Kate Gregory, Luke D’Alessandro, Corentin Jabot, and John Filleau for
+their feedback on this chapter.</p>
+<h2 id="an-overview-of-compilers">An overview of compilers</h2>
+<p>You may recall from <a
+href="applied-modern-cxx-02.html#c-is-a-compiled-language"
+target="_blank">Chapter 2</a> that a compiler is a program that
+translates a program written in one language into an equivalent program
+in another language. Compilers are typically comprised of three parts: a
+front-end, an optional middle-end, and a back-end. <em>Applied Modern
+C++</em> isn’t a book on compilers, so we’ll sadly be skipping over a
+lot of interesting compiler theory. This chapter will give you an
+overview of these three parts, and then we’ll go into more detail about
+each part—along with a design—prior to implementing them in C++.</p>
+<p>A compiler must preserve the meaning of its input, otherwise it
+wouldn’t make for a useful tool.</p>
+<h3 id="front-end">Front-end</h3>
+<p>The front-end is responsible for reading the input (called the
+<em>source program</em>), understanding its meaning, and diagnosing any
+problems with the program. Since the front-end needs knowledge of the
+language it’s reading, it is very source-language specific. The
+front-end is broken down further into three distinct phases.</p>
+<h4 id="front-end-phase-1-lexical-analysis">Front-end phase 1: lexical
+analysis</h4>
+<p>The first pass is called <a
+href="https://en.wikipedia.org/wiki/Lexical_analysis"
+target="_blank">lexical analysis</a>, or scanning. The scanner directly
+reads the source, groups characters into meaningful symbols called
+<em>tokens</em>, and then feeds this information to the next pass. You
+can think of this step like reading individual words and punctuation,
+and then categorising them as nouns, adjectives, verbs, punctuation,
+etc.. For example, the sentence “Failure is the greatest teacher.” has
+six tokens. A simple scanner might tokenise them as follows:</p>
+<pre><code>&lt;kind = noun,      spelling = &quot;Failure&quot;,  position = 1&gt;
+&lt;kind = verb,      spelling = &quot;is&quot;,       position = 2&gt;
+&lt;kind = article,   spelling = &quot;the&quot;,      position = 3&gt;
+&lt;kind = adjective, spelling = &quot;greatest&quot;, position = 4&gt;
+&lt;kind = noun,      spelling = &quot;teacher&quot;,  position = 5&gt;
+&lt;kind = full stop, spelling = &quot;.&quot;,        position = 6&gt;</code></pre>
+<p>The next chapter will cover lexical analysis in more detail as we
+will be writing a scanner to motivate the remaining C++ chapters for
+this module.</p>
+<h4 id="front-end-phase-2-parsing">Front-end phase 2: parsing</h4>
+<p>The second pass is called <a
+href="https://en.wikipedia.org/wiki/Parsing" target="_blank">syntax
+analysis</a>, or parsing. The parser is responsible for checking the
+program’s structure is correct according to a <a
+href="https://en.wikipedia.org/wiki/Formal_grammar"
+target="_blank">grammar</a>. Unlike natural languages, which have
+flexible grammars, programming languages need to have a rigid grammar to
+help ensure that there aren’t any ambiguities in a program: it won’t be
+feasible for the compiler to ask for clarification. Here’s an incredibly
+simplified grammar for a sentence in English<a href="#fn2"
+class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>.</p>
+<pre><code>sentence  = subject verb object endmark
+endmark   = &quot;.&quot; | &quot;!&quot;
+subject   = article? adjective? noun
+object    = article? adjective? noun
+article   = &quot;the&quot; | &quot;an&quot; | &quot;a&quot;</code></pre>
+<p><code>adjective</code>, <code>noun</code>, and <code>verb</code> have
+their usual meanings. <code>endmark</code> uses <code>|</code> to
+indicate alternatives: it’s either a full stop or an exclamation mark.
+<code>subject</code> and <code>object</code> use <code>?</code> to
+indicate something is optional: an article <em>may</em> be present, but
+it doesn’t need to be. This grammar is compatible with the token stream
+from our hypothetical scanner. Now suppose we tokenise “The greatest
+teacher failure is.” Will this be a valid <code>sentence</code>?</p>
+<pre><code>&lt;kind = article,   spelling = &quot;The&quot;,      position = 1&gt;
+&lt;kind = adjective, spelling = &quot;greatest&quot;, position = 2&gt;
+&lt;kind = noun,      spelling = &quot;teacher&quot;,  position = 3&gt;
+&lt;kind = noun,      spelling = &quot;failure&quot;,  position = 4&gt;
+&lt;kind = verb,      spelling = &quot;is&quot;,       position = 5&gt;
+&lt;kind = full stop, spelling = &quot;.&quot;,        position = 6&gt;</code></pre>
+<p>If we expand <code>sentence</code>, we can—on inspection—identify why
+“The greatest teacher failure is” is considered an invalid sentence by
+our parser.</p>
+<pre><code>//               subject expanded               object expanded
+sentence = (article? adjective? noun) verb (article? adjective? noun) endmark</code></pre>
+<p>Notice that we have two consectuive nouns in our second token stream,
+and that our grammar requires nouns to be split by a verb. As a result
+of this, the parser will issue a syntax error.</p>
+<h4 id="front-end-phase-3-semantic-analysis">Front-end phase 3: semantic
+analysis</h4>
+<p>Once this stage is completed, the parser will hand over to the third
+pass, for <a
+href="https://en.wikipedia.org/wiki/Semantic_analysis_(compilers)"
+target="_blank">semantic analysis</a>. The semantic analyser checks that
+the program’s meaning is correct. This is often concerned with checking
+things that aren’t expressible in the grammar. For example, the sentence
+“The colourless idea is a wooden happiness” is a valid
+<code>sentence</code> according to the parser, but it fails semantic
+analysis because ideas don’t have colour, and because ideas don’t
+express emotions such as happiness<a href="#fn3" class="footnote-ref"
+id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>The semantic analyser is also responsible for
+<em>canonicalisation</em>, which transforms the program so that <a
+href="https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning"
+target="_blank">idempotent expressions</a> are all expressed in the same
+way. For example, there are many ways to ask about the colour of a ball.
+Here are just a few:</p>
+<blockquote>
+<p>Is the ball red or blue?</p>
+<p>Is the ball red, or is it blue?</p>
+<p>Is the ball blue, or is it red?</p>
+<p>Is the ball red in colour, or blue in colour?</p>
+</blockquote>
+<p>These are all asking the same question, so we pick one of the
+phrasings, and turn all other phrasings with the same meaning into that
+one. This is important for keeping intermediate representations simple,
+which we’ll look at later on.</p>
+<h3 id="back-end">Back-end</h3>
+<p>Once the compiler established that the source program is correct and
+translatable, it needs to actually do said translation. The back-end is
+responsible for producing an output (called the <em>target
+program</em>). Similar to how the source program was written in a source
+language, the target program is written in a target language. For the
+purposes of this chapter, we’ll split the back-end into two main
+phases.</p>
+<h4 id="back-end-phase-1-optimisation-optional">Back-end phase 1:
+optimisation (optional)</h4>
+<p>Source code is a tool used to communicate with humans and computers,
+and we should always be striving to write code that is correct first,
+easy-to-understand second, and efficient third. The <a
+href="https://en.wikipedia.org/wiki/Program_optimization"
+target="_blank">optimiser’s</a> role in translation is to take our
+readable code and make it more “efficient”. This could mean that the
+code is made faster, smaller, more power-efficient, or some combination
+of the three. For example, the following code is a questionable—but
+valid—way to set an integer to 5:</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> <span class="at">const</span> jurassic_park <span class="op">=</span> film<span class="op">{</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Jurassic Park&quot;</span><span class="op">,</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Speilberg, Stephen&quot;</span><span class="op">,</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Williams, John&quot;</span><span class="op">,</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<p>List initialisation isn’t nearly as nice as designated initialisers
-because it is easy to mix up the parameters. We’re also not allowed to
-mix designated initialisers with list initialisation.</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> <span class="at">const</span> jurassic_park <span class="op">=</span> film<span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Jurassic Park&quot;</span><span class="op">,</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span>director <span class="op">=</span> <span class="st">&quot;Speilberg, Stephen&quot;</span><span class="op">,</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span>composer <span class="op">=</span> <span class="st">&quot;Williams, John&quot;</span><span class="op">,</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<pre><code>error: mixture of designated and non-designated initializers in the same initializer list is a C99 extension [-Werror,-Wc99-designator]
-    .director = &quot;Speilberg, Stephen&quot;,
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-note: first non-designated initializer is here
-    &quot;Jurassic Park&quot;,
-    ^~~~~~~~~~~~~~~</code></pre>
-<h3 id="enumerations">Enumerations</h3>
-<p>Now let’s suppose that we want to also record the medium in which we
-can access the films in our catalogue. This data could be stored as a
-string, but unless we’re going to record exactly which streaming service
-the film is available on, we only need around seven options to store
-everything (with “streaming” as a single option). When we have a
-countable set of discrete values, we can name them using a <em>scoped
-enumeration</em>.</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> <span class="kw">class</span> media_format <span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  vhs<span class="op">,</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  betamax<span class="op">,</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  dvd<span class="op">,</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  dvd_hd<span class="op">,</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  bluray<span class="op">,</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  bluray_4k<span class="op">,</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  digital<span class="op">,</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  online<span class="op">,</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<h2 id="containers">Containers</h2>
-<h2 id="scope">Scope</h2>
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> x <span class="op">=</span> zero<span class="op">();</span> <span class="co">// x == 0</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">++</span>x<span class="op">;</span> <span class="co">// x == 1</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">++</span>x<span class="op">;</span> <span class="co">// x == 2</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">++</span>x<span class="op">;</span> <span class="co">// x == 3</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">++</span>x<span class="op">;</span> <span class="co">// x == 4</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="op">++</span>x<span class="op">;</span> <span class="co">// x == 5</span></span></code></pre></div>
+<p>If the compiler were to faithfully translate this code, it would be
+quite slow due to the repeated increments. The optimiser would step in
+and change it to <code>auto x = zero() + 5</code>. If it can prove that
+<code>zero()</code> always returns <code>0</code>, then it is allowed to
+simplify it further, to simply <code>auto x = 5;</code>.</p>
+<h4 id="back-end-phase-2-code-generation">Back-end phase 2: code
+generation</h4>
+<p>The last thing that the back-end will need to do is to produce the
+target program itself. We call this <em><a
+href="https://en.wikipedia.org/wiki/Code_generation_(compiler)"
+target="_blank">code generation</a></em>. Compilers are often associated
+with generating assembly as their target program, though many will also
+generate some high-level source code as well. The code generator has
+expert knowledge about its target language, and uses this expertise to
+generate the best possible target program given the information it’s
+provided with.</p>
+<h3 id="intermediate-representation">Intermediate representation</h3>
+<p>Linux is designed to work on many different kinds of platforms:
+various distributions can run on <a
+href="https://en.wikipedia.org/wiki/X86-64" target="_blank">x86-64</a>
+(desktops/laptops/servers), <a
+href="https://en.wikipedia.org/wiki/ARM_architecture_family#32-bit_architecture"
+target="_blank">ARMv7</a> (mobile phones/some laptops/servers), <a
+href="https://en.wikipedia.org/wiki/ARM_architecture_family#Armv8"
+target="_blank">ARMv8</a> (ditto), and <a
+href="https://en.wikipedia.org/wiki/MIPS_architecture"
+target="_blank">MIPS</a> (older gaming consoles), just to name a few. If
+we were to write a C++ compiler for each of these platforms with the
+workflow described above, we’d have to write out four C++ compilers (one
+for each platform). If we also want a Rust compiler, we’ll need to write
+another four, and another four to add a Swift compiler, and another four
+to add a C compiler (we require sixteen separate codebases now). If we
+plan to support the <a href="https://en.wikipedia.org/wiki/RISC-V"
+target="_blank">RISC-V</a> chipset, we’ll need to do that for all of the
+languages, bringing us to 20 codebases. This results in a <a
+href="https://en.wikipedia.org/wiki/Combinatorial_explosion"
+target="_blank">combinatorial explosion</a>: if we wish to support <span
+class="math inline"><em>L</em></span>  languages and <span
+class="math inline"><em>P</em></span>  platforms, we’re going to need to
+write <span class="math inline"><em>L</em> ⋅ <em>P</em></span> 
+compilers. That’s untenable!</p>
+<p>Good software engineering practices allow us to avoid this problem by
+decoupling the front-end and the back-end. Recall that the front-end is
+an expert in the source language, and the back-end is an expert in the
+target language. Neither of them have <em>any</em> knowledge of the
+other, so we can put them into completely different modules. This means
+that there will be <em>one</em> front-end for each language and
+<em>one</em> back-end for each of the platforms we support. That reduces
+the number of components that we need to write from <span
+class="math inline"><em>L</em>  ⋅ <em>P</em></span>  down to <span
+class="math inline"><em>L</em>  + <em>P</em></span>. In our hypothetical
+scenario, this means that we’d write a total of four front-ends and five
+back-ends: then we plug them together to create our set of 20
+compilers.</p>
+<p>In order to facilitate this <a
+href="https://en.wikipedia.org/wiki/Separation_of_concerns"
+target="_blank">separation of concerns</a>, we need a way for the two
+components to talk with one another. This is called the <em><a
+href="https://en.wikipedia.org/wiki/Intermediate_representation"
+target="_blank">intermediate representation</a></em>. An intermediate
+representation is a data structure that serves as the glue between two
+different components, by offering an interface that both parties
+understand. There are many different kinds of intermediate
+representations that compilers use. We’ll explore this in some detail
+later on, but won’t need to get into the specifics terribly much for our
+own purposes.</p>
+<p>This may seem like a tangent, but the idea of an intermediate
+representation comes up a <em>lot</em> in C++, and so it’s worth taking
+some time out to get an understanding of the concept.</p>
+<h3 id="further-reading">Further reading</h3>
+<p>Since we’re not going to be exploring compilers in detail, you may
+wish to read <a
+href="https://www.oreilly.com/library/view/engineering-a-compiler/9780080916613/"
+target="_blank">Engineering a Compiler</a> if you find this project
+interesting.</p>
+<p>We’re about to take a hard context switch into learning about the toy
+language we’ll be implementing, so now is a probably a good time to
+stretch your legs, grab a glass of water, and then read on.</p>
+<h2 id="bf">BF</h2>
+<h3 id="what-is-bf">What is BF?</h3>
+<p>BF<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a> is an <a
+href="https://en.wikipedia.org/wiki/Esoteric_programming_language"
+target="_blank">esoteric programming language</a> that’s
+<em>extremely</em> simple to implement, with only eight instructions.
+Due to this simplicity, BF is a popular language for implementing simple
+language translators.</p>
+<h3 id="does-this-mean-ill-need-to-learn-how-to-program-in-bf-too">Does
+this mean I’ll need to learn how to program in BF too?</h3>
+<p>No! You don’t need to know how to write programs in BF in order to
+complete this project. We’ll be using examples online (such as those
+found on Wikipedia) as our test programs. All that you need to learn are
+how the memory model and the instruction set work, so that you can
+translate the source code to target code.</p>
+<h3 id="memory-model">Memory model</h3>
+<p>BF programs have an array of at least 30kB readable and writable
+memory at their disposal, and an index to tell us where in the array
+we’re currently reading/writing. At program start, all of the values in
+the array are zero. Since that’s quite a lot of cells, we won’t visually
+represent it like we usually do: we’ll instead refer to the memory as
+<code>data[data_index]</code>.</p>
+<h3 id="instruction-set">Instruction set</h3>
+<p>As previously mentioned, BF has only eight instructions, which reside
+in an instruction cache, which is indexed too. We’ll call this
+<code>instructions[instruction_index]</code>. After executing the
+instruction at <code>instruction[instruction_index]</code>, we increment
+the instruction index.</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Instruction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&gt;</code></td>
+<td><code>++data_index</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;</code></td>
+<td><code>--data_index</code></td>
+</tr>
+<tr class="odd">
+<td><code>+</code></td>
+<td><code>++data[data_index]</code></td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td><code>--data[data_index]</code></td>
+</tr>
+<tr class="odd">
+<td><code>.</code></td>
+<td><code>fmt::print(data[data_index])</code></td>
+</tr>
+<tr class="even">
+<td><code>,</code></td>
+<td>Reads input from the user.</td>
+</tr>
+<tr class="odd">
+<td><code>[</code></td>
+<td>If <code>data[data_index] == 0</code>: set
+<code>instruction_index</code> to the index of the matching
+<code>]</code> + <code>1</code> (see below).</td>
+</tr>
+<tr class="even">
+<td><code>]</code></td>
+<td>If <code>data[data_index] != 0</code>: set
+<code>instruction_index</code> to the index of the matching
+<code>[</code> + <code>1</code> (see below).</td>
+</tr>
+</tbody>
+</table>
+<p>Any character that isn’t an instruction is a comment.</p>
+<p>Every <code>[</code> must be matched with a following <code>]</code>,
+and vice versa. This means that <code>[</code>, <code>[[]</code>,
+<code>]</code>, <code>[]]</code>, and <code>][</code> are all invalid
+programs, because sometimes the brackets aren’t balanced, and sometimes
+they’re in the wrong order. <code>[[]]</code> on the other hand, would
+be valid.</p>
+<p>This is everything you need to know about BF in order to complete the
+project!</p>
 <h2 id="feedback">Feedback</h2>
 <p>If you’d like to provide feedback regarding this series, please <a
 href="https://github.com/cjdb/cjdb.github.io/issues"
@@ -331,6 +575,12 @@ receive a notification at the time of publication. If you’d previously
 subscribed to my feed on my old website (www.cjdb.com.au), please be
 sure to note the new domain!</p>
 <h2 id="summary">Summary</h2>
+<p>In this chapter, we learnt about the five main phases that compilers
+enact, how they’re categorised, and what is used to facilitate their
+separation. Finally, we learnt about our project’s source language. As
+teased earlier on, we’re going to look at lexical analysis more closely
+in the next chapter, since it will directly relevant to everything left
+in the module. After that, it’s back to C++!</p>
 <div class="fixed-table">
 <div class="table-row-group">
 <div class="table-row">
@@ -342,11 +592,43 @@ sure to note the new domain!</p>
 contents</a>
 </div>
 <div class="table-cell" style="text-align: right;">
-<a href="applied-modern-cxx-07.html">Chapter 7: Control flow</a>
+<a href="applied-modern-cxx-07.html">Chapter 7: Lexical analysis</a>
 </div>
 </div>
 </div>
 </div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>As a compiler engineer, I’m slightly biased on the fun
+part, but the broadness is fairly objective.<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>I really need to stress that this is a
+<em>simplified</em> grammar, and that anyone with a background in
+linguistics will notice that it allows for many invalid sentences in a
+real-world setting (e.g. “C++ is fun language”). Vagrant—one of my
+reviewers—is a linguist and was able to identify many problems with the
+syntax (some of which I wasn’t even aware of). Writing a true set of
+rules for natural languages is not the done thing anymore, and that’s
+way beyond the scope of this book (when I asked for further reading
+material, I was told that it can probably fill an entire course).<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>There’s also an argument that happiness can’t be
+“wooden”, although having “wooden enthusiasm” implies that someone is
+feigning their emotion, and I think that might apply to happiness too.<a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The full name of BF contains strong language, which may
+cause some folks distress to the point of not reading the text. In order
+to be as inclusive as possible, while still using this very simple
+language, I’m using the shorthand “BF” instead. If you’d like to read
+more about the language, you can do so on <a
+href="https://en.wikipedia.org/wiki/Brainfuck"
+target="_blank">Wikipedia</a>, but please be aware that it uses the
+unabbreviated name in the article.<a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
             </div>
     </div>
   </div>
